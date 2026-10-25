@@ -108,11 +108,11 @@
   .nav-row{ max-width:1440px; margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .brand{ display:flex; align-items:center; gap:.6em; text-decoration:none; }
   .brand .logo{ height:68px; width:auto; display:block; flex:none; }
-  .brand .word{ font-weight:700; font-size:.92rem; color:var(--ink-soft); letter-spacing:.02em; }
-  nav.links{ display:flex; align-items:center; gap: 28px; }
-  nav.links a{ font-size:1.12rem; font-weight:600; color:var(--ink-soft); text-decoration:none; transition:color .15s ease; cursor:pointer; }
+  .brand .word{ white-space:nowrap; font-weight:700; font-size:.92rem; color:var(--ink-soft); letter-spacing:.02em; }
+  nav.links{ display:flex; align-items:center; gap: clamp(14px, 2vw, 28px); }
+  nav.links a{ white-space:nowrap; font-size:1.12rem; font-weight:600; color:var(--ink-soft); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
-  .nav-actions{ display:flex; align-items:center; gap:16px; }
+  .nav-actions{ display:flex; align-items:center; gap:16px; white-space:nowrap; }
   .menu-toggle{ display:none; background:none; border:1.5px solid var(--border); border-radius:10px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); }
   #mobileNav{ display:none; flex-direction:column; gap:2px; padding-top:16px; }
   #mobileNav a{ padding:.7em .2em; font-weight:500; color:var(--ink-soft); text-decoration:none; border-top:1px solid var(--border); cursor:pointer; }
@@ -384,6 +384,15 @@
   .social-row a:hover{ border-color:var(--cardinal); color:var(--cardinal); background:var(--cardinal-tint); }
   #form-status{ font-size:.85rem; color:var(--ink-soft); min-height:1.2em; }
 
+  /* ============ MEMBERS ============ */
+  .members-card{ max-width:520px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:clamp(26px,4vw,40px); box-shadow:0 18px 36px -28px hsl(var(--shadow)/.4); }
+  .members-card .icon-badge{ margin-bottom:16px; }
+  .members-card h3{ font-size:1.3rem; }
+  .members-card > p{ margin-top:.5em; color:var(--ink-soft); font-size:.92rem; }
+  .members-card form{ display:flex; flex-direction:column; gap:16px; margin-top:22px; }
+  #login-status{ font-size:.85rem; color:var(--cardinal); min-height:1.2em; }
+  .members-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+
   /* ============ NEWSLETTER ============ */
   .newsletter{ background:var(--dark-band); color:#F3E9E1; border-radius:24px; padding: clamp(30px,4vw,48px); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
   .newsletter h3{ color:#fff; font-size:clamp(1.3rem,2.4vw,1.7rem); }
@@ -466,6 +475,7 @@
       <a href="#events" data-route-link>Events</a>
       <a href="#resources" data-route-link>Resources</a>
       <a href="#contact" data-route-link>Contact</a>
+      <a href="#members" data-route-link>Members Only</a>
     </nav>
     <div class="nav-actions">
       <a href="#join" class="btn sm" data-route-link>Join Us</a>
@@ -481,6 +491,7 @@
     <a href="#resources" data-route-link>Resources</a>
     <a href="#join" data-route-link>Join Us</a>
     <a href="#contact" data-route-link>Contact</a>
+    <a href="#members" data-route-link>Members Only</a>
   </nav>
 </header>
 
@@ -893,6 +904,40 @@
     </section>
   </div>
 
+  <!-- ============ PAGE: MEMBERS ONLY ============ -->
+  <div class="page" data-route="members" id="page-members">
+    <section>
+      <div class="section-head">
+        <span class="eyebrow"><span class="bar"></span>Members Only</span>
+        <h2>The SCHO shared drive</h2>
+        <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
+      </div>
+
+      <div class="members-card" id="membersLocked">
+        <div class="icon-badge c1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Member login</h3>
+        <form id="membersForm">
+          <div class="field"><label for="m-user">Username</label><input id="m-user" name="username" type="text" autocomplete="username" autocapitalize="none" required></div>
+          <div class="field"><label for="m-pass">Password</label><input id="m-pass" name="password" type="password" autocomplete="current-password" required></div>
+          <div style="display:flex; align-items:center; gap:16px; margin-top:4px;">
+            <button type="submit" class="btn">Log In</button>
+            <span id="login-status" role="status"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="members-card" id="membersUnlocked" hidden>
+        <div class="icon-badge c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Welcome back!</h3>
+        <p>Meeting slides, flyers, outreach materials and more are all in the shared drive.</p>
+        <div class="members-actions">
+          <a class="btn" id="driveLink" href="#" target="_blank" rel="noopener noreferrer">Open the Shared Drive &nearr;</a>
+          <button type="button" class="btn outline" id="membersLogout">Log Out</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </main>
 
 <footer>
@@ -1078,5 +1123,42 @@
     var sheet=document.getElementById('sheetLink');
     if (SHEET_URL){ sheet.href=SHEET_URL; sheet.hidden=false; }
     render();
+  })();
+  (function(){
+    // The Drive link is stored encrypted with the members' username + password, so it isn't readable in the page source.
+    var VAULT={salt:'4EudMHAmLCRZADy1GFkYbg==', iv:'pg8x9lPJYidI5ZKe', ct:'EpD+FyuUGVT2v7hfXibfcUxBAPz+da7Gt6OUzEvYUnmxeaYwQ6AprA0='};
+    var form=document.getElementById('membersForm');
+    var status=document.getElementById('login-status');
+    var locked=document.getElementById('membersLocked');
+    var unlocked=document.getElementById('membersUnlocked');
+    var driveLink=document.getElementById('driveLink');
+    function bytes(b64){ return Uint8Array.from(atob(b64), function(c){ return c.charCodeAt(0); }); }
+    function unlock(user, pass){
+      var enc=new TextEncoder();
+      return crypto.subtle.importKey('raw', enc.encode(user.trim().toLowerCase()+':'+pass), 'PBKDF2', false, ['deriveKey'])
+        .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2', salt:bytes(VAULT.salt), iterations:250000, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']); })
+        .then(function(key){ return crypto.subtle.decrypt({name:'AES-GCM', iv:bytes(VAULT.iv)}, key, bytes(VAULT.ct)); })
+        .then(function(buf){ return new TextDecoder().decode(buf); });
+    }
+    function show(url){
+      driveLink.href=url;
+      locked.hidden=!!url; unlocked.hidden=!url;
+    }
+    try{ var saved=sessionStorage.getItem('scho-drive'); if(saved) show(saved); }catch(e){}
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent='Checking…';
+      unlock(document.getElementById('m-user').value, document.getElementById('m-pass').value).then(function(url){
+        try{ sessionStorage.setItem('scho-drive', url); }catch(e){}
+        form.reset(); status.textContent='';
+        show(url);
+      }).catch(function(){
+        status.textContent='That username or password isn\'t right.';
+      });
+    });
+    document.getElementById('membersLogout').addEventListener('click', function(){
+      try{ sessionStorage.removeItem('scho-drive'); }catch(e){}
+      show('');
+    });
   })();
 </script>
