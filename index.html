@@ -393,13 +393,6 @@
   #login-status{ font-size:.85rem; color:var(--cardinal); min-height:1.2em; }
   .members-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
 
-  /* ============ NEWSLETTER ============ */
-  .newsletter{ background:var(--dark-band); color:#F3E9E1; border-radius:24px; padding: clamp(30px,4vw,48px); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
-  .newsletter h3{ color:#fff; font-size:clamp(1.3rem,2.4vw,1.7rem); }
-  .newsletter p{ color:#C9BAB0; margin-top:.5em; font-size:.9rem; max-width:40ch; }
-  .newsletter-form{ display:flex; gap:10px; flex-wrap:wrap; }
-  .newsletter-form input{ font-family:"Pally",sans-serif; padding:.85em 1.1em; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06); color:#fff; min-width:220px; }
-  .newsletter-form input::placeholder{ color:#B7A89E; }
 
   footer{ max-width:1440px; margin-inline:auto; padding-block:56px 40px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; border-top:1px solid var(--border); margin-top:20px; }
   footer .fbrand{ display:flex; align-items:center; gap:.6em; margin-bottom:10px; text-decoration:none; }
@@ -887,18 +880,6 @@
       </div>
     </section>
 
-    <section style="padding-top:0;">
-      <div class="newsletter reveal">
-        <div>
-          <h3>Stay in the loop</h3>
-          <p>Subscribe for event updates, new resources, and healthcare policy news.</p>
-        </div>
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" id="nl-email" placeholder="you@usc.edu" required>
-          <button type="submit" class="btn gold">Subscribe</button>
-        </form>
-      </div>
-    </section>
   </div>
 
   <!-- ============ PAGE: MEMBERS ONLY ============ -->
@@ -1014,16 +995,6 @@
     });
   })();
 
-  (function(){
-    var form = document.getElementById('newsletterForm');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var email = document.getElementById('nl-email').value;
-      window.location.href = 'mailto:schealthcareoutreach@gmail.com'
-        + '?subject=' + encodeURIComponent('Newsletter signup')
-        + '&body=' + encodeURIComponent('Please add ' + email + ' to the SCHO newsletter list.');
-    });
-  })();
 
   (function(){
     var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
