@@ -41,7 +41,7 @@
     --ink-soft: #6B615C;
     --ink-faint: #9C9089;
     --cardinal: #9D2235;
-    --cardinal-deep: #7A1A29;
+    --cardinal-deep: #9D2235;
     --cardinal-ink: #FFFFFF;
     --cardinal-tint: #F7E4E7;
     --gold: #E8A400;
@@ -225,7 +225,7 @@
   /* ============ STORY PANEL ============ */
   .story{ display:grid; grid-template-columns: .9fr 1.1fr; gap:clamp(28px,4vw,56px); align-items:center; }
   .story-visual{
-    aspect-ratio:4/3; border-radius:20px; background:linear-gradient(150deg, var(--cardinal), color-mix(in srgb, var(--cardinal) 75%, black));
+    aspect-ratio:4/3; border-radius:20px; background:var(--cardinal);
     position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding: 30px;
   }
   .story-visual .grid-overlay{ position:absolute; inset:0; opacity:.18;
