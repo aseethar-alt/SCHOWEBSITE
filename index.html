@@ -324,6 +324,8 @@
   .res-card ul{ list-style:none; margin:.6em 0 0; padding:0; display:flex; flex-direction:column; gap:.4em; }
   .res-card li{ font-size:.87rem; color:var(--ink-soft); padding-left:1em; position:relative; }
   .res-card li::before{ content:"\2022"; position:absolute; left:0; color:var(--gold); }
+  .res-card li a{ color:var(--cardinal); text-decoration:none; font-weight:500; }
+  .res-card li a:hover{ text-decoration:underline; text-underline-offset:3px; }
   .res-card .note{ font-size:.8rem; color:var(--ink-faint); font-style:italic; margin-top:.6em; }
   .navigator{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; background:linear-gradient(135deg,var(--cardinal),var(--cardinal-deep)); color:#fff; border-radius:20px; padding:clamp(22px,3vw,32px) clamp(24px,3vw,36px); margin-bottom:28px; box-shadow:0 24px 44px -24px hsl(var(--shadow)/.5); }
   .navigator-icon{ width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; flex:none; color:var(--gold); }
@@ -354,6 +356,22 @@
   .checklist li svg{ flex:none; color:var(--cardinal); }
   .privacy-note{ font-size:.82rem; color:var(--ink-faint); font-style:italic; }
   .enroll-cta{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+
+  /* ============ GUIDE PAGES ============ */
+  .back-link{ display:inline-flex; align-items:center; gap:.4em; font-size:.9rem; font-weight:700; color:var(--cardinal); text-decoration:none; cursor:pointer; }
+  .back-link:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .guide{ max-width:760px; margin-top:28px; }
+  .guide h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); }
+  .guide p{ margin-top:1em; color:var(--ink-soft); font-size:1.02rem; line-height:1.75; }
+  .guide strong{ color:var(--ink); }
+  .guide h3{ font-family:"Pally",sans-serif; font-weight:700; font-size:1.1rem; margin-top:2em; }
+  .guide-points{ list-style:none; margin:1em 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
+  .guide-points li{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px 24px; }
+  .guide-points li > strong{ font-size:1.05rem; }
+  .guide-points li p{ margin-top:.4em; }
+  .guide a{ color:var(--cardinal); font-weight:700; }
+  .guide .soon{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 26px; margin-top:24px; }
+  .guide .soon p{ margin-top:0; }
 
   /* ============ JOIN US ============ */
   .join-box{ display:grid; grid-template-columns:1.15fr .85fr; gap:0; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
@@ -760,11 +778,11 @@
           <div>
             <h3>Start Here</h3>
             <ul>
-              <li>Why should I get health insurance?</li>
-              <li>I want insurance. How do I get started?</li>
-              <li>When can I enroll?</li>
-              <li>Staying insured while recently unemployed</li>
-              <li>I'm undocumented. What are my options?</li>
+              <li><a href="#why-insurance" data-route-link>Why should I get health insurance?</a></li>
+              <li><a href="#get-started" data-route-link>I want insurance. How do I get started?</a></li>
+              <li><a href="#when-to-enroll" data-route-link>When can I enroll?</a></li>
+              <li><a href="#unemployed" data-route-link>Staying insured while recently unemployed</a></li>
+              <li><a href="#undocumented" data-route-link>I'm undocumented. What are my options?</a></li>
             </ul>
           </div>
         </div>
@@ -809,6 +827,63 @@
         </div>
         <a class="btn gold" href="mailto:schealthcareoutreach@gmail.com?subject=Question%20about%20health%20insurance">Email SCHO</a>
       </div>
+    </section>
+  </div>
+
+  <!-- ============ GUIDE PAGES (Resources > Start Here) ============ -->
+  <div class="page" data-route="why-insurance" data-nav="resources" id="page-why-insurance">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Health Insurance?</h2>
+        <p><strong>Health insurance</strong> is a specific type of insurance coverage that provides individuals with coverage for a variety of healthcare-related expenses, primarily: medical, surgical, and prescription-drug coverage. With some plans, dental coverage is included as well. Health insurance can help reimburse individuals for the cost of care for illness and injury or in many cases, pay the healthcare provider directly.</p>
+        <h3>There are a few reasons why you should get insurance:</h3>
+        <ul class="guide-points">
+          <li><strong>Save money</strong><p>When you opt to have insurance, you will pay significantly less for office visits than you would without insurance, assuming the health care providers you see are within your <strong>network</strong> (meaning that this provider takes your insurance).</p></li>
+          <li><strong>Stay healthy</strong><p>Having insurance means you have access to preventative care like annual check-ups and immunizations. Chronic disease management is also covered, and other health screenings are free, such as those for blood pressure, diabetes, cancer and depression. Having health insurance makes it easier to <em>catch and treat a health issue before it causes longer-term damage</em>. And even if you eat right, exercise and are currently healthy, the <em>risk of accident or illness is always present</em>.</p></li>
+          <li><strong>You may qualify for financial aid</strong><p>Financial help can reduce costs of health insurance for more people than ever before. To see if you qualify, check out Covered California&rsquo;s <a href="https://www.coveredca.com/#quick-calculator" target="_blank" rel="noopener noreferrer">interactive calculator</a>.</p></li>
+        </ul>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="get-started" data-nav="resources" id="page-get-started">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>I want insurance. How do I get started?</h2>
+        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="when-to-enroll" data-nav="resources" id="page-when-to-enroll">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>When can I enroll?</h2>
+        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="unemployed" data-nav="resources" id="page-unemployed">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Staying insured while recently unemployed</h2>
+        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="undocumented" data-nav="resources" id="page-undocumented">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>I'm undocumented. What are my options?</h2>
+        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
     </section>
   </div>
 
@@ -946,10 +1021,15 @@
 
     function render(){
       var route = routeFromHash();
-      pages.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-route') === route); });
+      var navRoute = route;
+      pages.forEach(function(p){
+        var on = p.getAttribute('data-route') === route;
+        p.classList.toggle('active', on);
+        if (on && p.getAttribute('data-nav')) navRoute = p.getAttribute('data-nav');
+      });
       navLinks.forEach(function(a){
         var target = (a.getAttribute('href') || '').replace('#','');
-        a.classList.toggle('active', target === route);
+        a.classList.toggle('active', target === navRoute);
       });
       window.scrollTo(0, 0);
     }
