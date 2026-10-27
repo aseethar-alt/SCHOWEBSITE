@@ -389,6 +389,12 @@
   .guide .plan-card .btn{ margin-top:.8em; color:var(--cardinal-ink); }
   .plan-soon{ margin-top:.8em; font-size:.8rem; font-weight:700; color:var(--ink-faint); padding:.6em 0; }
   @media (max-width: 760px){ .plan-cards{ grid-template-columns:1fr; } }
+  .gloss{ list-style:none; counter-reset:g; margin:1.6em 0 0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  .gloss li{ counter-increment:g; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px 22px; }
+  .gloss li b{ display:flex; align-items:baseline; gap:.6em; font-size:1.05rem; color:var(--ink); }
+  .gloss li b::before{ content:counter(g); font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:.9rem; color:var(--cardinal); min-width:1.4em; }
+  .guide .gloss li p{ margin-top:.45em; font-size:.95rem; line-height:1.65; padding-left:calc(1.4em + .6em); }
+  @media (max-width: 560px){ .guide .gloss li p{ padding-left:0; } }
   .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:1em; }
   .part{ background:var(--card); border:1px solid var(--border); border-top:4px solid var(--cardinal); border-radius:14px; padding:18px; }
   .part b{ display:block; font-family:'Alpino','Pally',sans-serif; font-size:1.2rem; color:var(--cardinal); }
@@ -897,7 +903,8 @@
         </div>
 
         <h3>What Does Everything Mean?</h3>
-        <p>There are so many terms to learn when navigating the complicated world of health insurance. A glossary of common vocabulary and their definitions you might come across as you go through the application process is coming soon!</p>
+        <p>There are so many terms to learn when navigating the complicated world of health insurance. Check this link out to see a comprehensive list of common vocabulary and their definitions you might come across as you go through the application process!</p>
+        <a class="btn guide-btn" href="#glossary" data-route-link>Glossary</a>
 
         <h3>Feeling Lost?</h3>
         <p>Email <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> to ask us a question or set up an appointment to talk about it!</p>
@@ -1026,6 +1033,45 @@
             <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
             <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
             <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="glossary" data-nav="resources" id="page-glossary">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Glossary</h2>
+        <p>This is a list of commonly used terms in reference to health insurance that can be referenced whenever needed.</p>
+        <ol class="gloss">
+          <li><b>Actuarial Value</b><p>The percentage of total average costs for covered benefits that a plan will cover. For example, with a plan with an actuarial value of 70% you would be responsible for about 30% of your healthcare costs.</p></li>
+          <li><b>Affordable</b><p>A healthcare plan is considered affordable if the cost does not exceed 9.5% of your annual household income. This percentage is adjusted slightly every year - in 2020, the cutoff was 9.78% of your household income.</p></li>
+          <li><b>Co-Insurance</b><p>The percentage of the cost for a health care service that you pay after you've paid your deductible. The percentage is specified by your insurance plan. For example, if your co-insurance is 20% and the cost of an office visit to your primary care doctor is $100, you will pay 20% of $100 which is $20 for the visit yourself and the insurance provider will cover the rest.</p></li>
+          <li><b>Co-Payment</b><p>A fixed amount (ex. $15) you pay to health care providers for a covered health care service, usually at the time of service. Co-payments usually don't apply until you've met your deductible.</p></li>
+          <li><b>Cost Sharing Reductions</b><p>A discount that lowers the amount you have to pay for deductibles, copayments, and coinsurance. In the Health Insurance Marketplace®, cost-sharing reductions are often called “extra savings.” If you qualify, you must enroll in a plan in the Silver category to get the extra savings.</p></li>
+          <li><b>Deductible</b><p>The amount you owe for health care services before their health insurance plans begins to pay. For example, if the deductible for your plan is $1,000, you pay for care out-of-pocket up to $1,000 at which point your insurance starts to pay. After, the deductible has been met, you typically only pay a co-payment or coinsurance for covered services. Many plans will also cover some services like check-ups before you've reached the deductible. All marketplace plans require the insurance provider to pay the full cost of certain preventative services before the deductible is met as well.</p></li>
+          <li><b>Federal Poverty Line (FPL)</b><p>A measure of income issued every year by the Department of Health and Human Services. This measure is used to determine individuals' eligibility for certain health care programs and benefits, including savings on Marketplace health insurance, Medicaid, and CHIP coverage. The federal poverty line is different for different household sizes.</p></li>
+          <li><b>Household income</b><p>Your MAGI (Modified Adjusted Gross Income) plus that of every other member of your family that files a federal income tax return.</p></li>
+          <li><b>Household size</b><p>The household size generally includes the tax filer, their spouse (if legally married), and their dependents (such as children and other family members or people that are supported financially by the tax filer). The household size is used to determine the income limits to qualify for the various federal and state health insurance and financial assistance programs.</p></li>
+          <li><b>Medi-Cal</b><p>The California-specific version of Medicaid.</p></li>
+          <li><b>Minimum Value</b><p>Minimum value health coverage applies to job-based health plans. If your employer's plan meets this standard and is considered “affordable” you are not eligible for premium tax credits if you try to purchase a private plan through the marketplace instead. A coverage plan meets the minimum value standard if it has a 60% actuarial value (it is designed to pay 60% of your health care costs) and its benefits include substantial coverage of physician and inpatient hospital services.</p></li>
+          <li><b>Open Enrollment Period</b><p>The open enrollment period is the time frame in which you can enroll in a health insurance plan through Covered California or another state/federal marketplace. If you register for a plan outside of this window, you will most likely have to pay extra fees unless you experience a qualifying life event. Normally, the open enrollment period is from November 1st - January 31st; however, for 2020-2021 the open enrollment period was extended due to the COVID-19 pandemic. This special enrollment period will last until August 15th 2021.</p></li>
+          <li><b>Out-of-Pocket Maximum</b><p>The maximum amount you will be required to pay per year for health care services including deductibles, co-payments, and co-insurance. Once you reach the out-of-pocket maximum, your health insurance provider is responsible for 100% of the costs of covered services.</p></li>
+          <li><b>Premium</b><p>A fixed amount you pay monthly to have a health insurance plan.</p></li>
+          <li><b>Premium Tax Credit (PTC)</b><p>A tax credit you can use to lower your monthly insurance payment (premium) when you enroll in a plan through a health insurance marketplace. If your income is between 100%-400% of the FPL you are eligible for a PTC in all states. In 2021 you may also qualify if you make above 400% of the FPL.</p></li>
+          <li><b>Qualified Health Plan (QHP)</b><p>The types of insurance offered in the Market places in which qualified consumers can enroll during the Open Enrollment Period (OEP). QHPs must cover essential health benefits, often at no additional cost to the consumer, including annual check-ups, vaccinations, emergency care, maternity care, and some preventative care. QHPs also must follow established guidelines that set maximums for deductibles, co-payments, and out-of-pocket maximums.</p></li>
+          <li><b>Qualifying Life Event (QLE)</b><p>QLEs are things that may happen in your life that allow you to enroll in a different health insurance plan outside of the open enrollment period without additional fees. Examples of QLEs are losing your job, getting married, getting divorced, turning 26 (no longer eligible to be covered by parent's insurance plan), having a child, or otherwise losing health coverage.</p></li>
+        </ol>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#get-started" data-route-link>Signing Up for Insurance</a></li>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
           </ul>
         </div>
       </article>
