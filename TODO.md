@@ -7,7 +7,7 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 **From the "What is COBRA?" page (Next section):**
 - [ ] What is minimum essential coverage?
 - [ ] What is unemployment insurance?
-- [ ] What is a qualifying event?
+- [ ] What is a qualifying event? (also the Next link on "What Happens If You Lose Your Insurance Or Your Job?")
 - [ ] How do I initiate COBRA coverage?
 
 **Other links without pages yet:**
