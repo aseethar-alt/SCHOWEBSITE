@@ -11,7 +11,6 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - [ ] How do I initiate COBRA coverage?
 
 **Other links without pages yet:**
-- [ ] What is CHIP? (Medicaid page, Signing Up for Insurance page, Resources page)
 - [ ] What is Medi-Cal? (Medicaid page)
 - [ ] I'm undocumented. What are my options? (Resources page, currently a "coming soon" page)
 
@@ -20,6 +19,10 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - [ ] Metal Plans on the Marketplace / What are Metal Plans?
 - [ ] Who is eligible for Cost Sharing Reductions?
 - [ ] The Three Tiers of CSRs
+
+**CHIP page:**
+- [ ] MCAP (Medi-Cal Access Program) and MCAIP (Medi-Cal Access Infant Program): add links once we have them
+- [ ] Add the CHIP video from the Wix page (need the video file or a YouTube link)
 
 ## Other
 - [ ] Members Only: replace the placeholder Google Drive link with the real shared drive link
