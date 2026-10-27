@@ -25,4 +25,3 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - [ ] Add the CHIP video from the Wix page (need the video file or a YouTube link)
 
 ## Other
-- [ ] Members Only: replace the placeholder Google Drive link with the real shared drive link
