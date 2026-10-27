@@ -381,6 +381,14 @@
   .guide-next h3:first-child{ margin-top:0; }
   .guide-next ul{ margin:.6em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
   .guide-next li::marker{ color:var(--gold); }
+  .guide .guide-btn{ margin-top:1.2em; color:var(--cardinal-ink); }
+  .plan-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:1em; }
+  .plan-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; flex-direction:column; align-items:flex-start; gap:.4em; }
+  .plan-card b{ font-family:'Alpino','Pally',sans-serif; font-size:1.15rem; color:var(--ink); }
+  .guide .plan-card p{ margin:0; font-size:.88rem; line-height:1.55; flex:1; }
+  .guide .plan-card .btn{ margin-top:.8em; color:var(--cardinal-ink); }
+  .plan-soon{ margin-top:.8em; font-size:.8rem; font-weight:700; color:var(--ink-faint); padding:.6em 0; }
+  @media (max-width: 760px){ .plan-cards{ grid-template-columns:1fr; } }
   .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:1em; }
   .part{ background:var(--card); border:1px solid var(--border); border-top:4px solid var(--cardinal); border-radius:14px; padding:18px; }
   .part b{ display:block; font-family:'Alpino','Pally',sans-serif; font-size:1.2rem; color:var(--cardinal); }
@@ -874,8 +882,35 @@
     <section>
       <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
       <article class="guide">
-        <h2>I want insurance. How do I get started?</h2>
-        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+        <h2>Signing Up for Insurance</h2>
+        <p>Signing up for insurance is stressful! This page will help get you started on finding what's right for you and how to sign up. Keep scrolling to learn more about insurance options you may already be eligible for.</p>
+
+        <h3>Which Insurance Option Should I Choose?</h3>
+        <p>Everyone has different needs and different eligibilities for certain programs. With our newly Certified Enrollment Counselors, we can now help provide you with the necessary insurance information so you can make the best choice for your health plan!</p>
+        <a class="btn guide-btn" href="mailto:schealthcareoutreach@gmail.com?subject=Enrollment%20Appointment%20Request&body=Hi%20SCHO%2C%0A%0AI'd%20like%20help%20getting%20insured.%20Here's%20a%20good%20time%20for%20me%3A">Get Insured Now!</a>
+
+        <h3>Learn More About Your Insurance</h3>
+        <div class="plan-cards">
+          <div class="plan-card"><b>MediCal</b><p>California's version of Medicaid.</p><a class="btn sm" href="#medicaid" data-route-link>MediCal</a></div>
+          <div class="plan-card"><b>Medicare</b><p>Insurance for those over 65, or with disabilities/end stage renal disease</p><a class="btn sm" href="#medicare" data-route-link>Medicare</a></div>
+          <div class="plan-card"><b>CHIP</b><p>A low cost insurance option for children</p><span class="plan-soon">Guide coming soon</span></div>
+        </div>
+
+        <h3>What Does Everything Mean?</h3>
+        <p>There are so many terms to learn when navigating the complicated world of health insurance. A glossary of common vocabulary and their definitions you might come across as you go through the application process is coming soon!</p>
+
+        <h3>Feeling Lost?</h3>
+        <p>Email <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> to ask us a question or set up an appointment to talk about it!</p>
+
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+          </ul>
+        </div>
       </article>
     </section>
   </div>
