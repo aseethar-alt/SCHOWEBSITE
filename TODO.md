@@ -15,5 +15,11 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - [ ] What is Medi-Cal? (Medicaid page)
 - [ ] I'm undocumented. What are my options? (Resources page, currently a "coming soon" page)
 
+**Tax credit and cost sharing pages:**
+- [ ] What are Premium Tax Credits?
+- [ ] Metal Plans on the Marketplace / What are Metal Plans?
+- [ ] Who is eligible for Cost Sharing Reductions?
+- [ ] The Three Tiers of CSRs
+
 ## Other
 - [ ] Members Only: replace the placeholder Google Drive link with the real shared drive link

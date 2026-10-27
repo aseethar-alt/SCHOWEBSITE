@@ -375,6 +375,7 @@
 
   .guide-list{ margin:.8em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
   .guide-list li::marker{ color:var(--gold); }
+  .guide-list .guide-list{ margin-top:.4em; list-style:circle; }
   .guide-links{ list-style:none; margin:1.4em 0 0; padding:0; display:flex; flex-direction:column; gap:.5em; }
   .guide-next{ margin-top:2.2em; padding-top:1.4em; border-top:1px solid var(--border); }
   .guide-next h3{ margin-top:1em; }
@@ -830,9 +831,9 @@
           <div>
             <h3>Reducing the Cost of Coverage</h3>
             <ul>
-              <li>Cost Sharing Reductions</li>
-              <li>Premium Tax Credits</li>
-              <li>Income-related subsidies</li>
+              <li><a href="#csr" data-route-link>Cost Sharing Reductions</a></li>
+              <li><a href="#ptc-qualify" data-route-link>Premium Tax Credits</a></li>
+              <li><a href="#ptc-use" data-route-link>Income-related subsidies</a></li>
             </ul>
           </div>
         </div>
@@ -1142,6 +1143,87 @@
             <li><a href="#unemployed" data-route-link>What is COBRA?</a></li>
             <li><a href="#special-enrollment" data-route-link>Special Enrollment</a></li>
             <li><a href="#eligibility" data-route-link>Providing Information of Eligibility</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="ptc-qualify" data-nav="resources" id="page-ptc-qualify">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>How can I Qualify for Premium Tax Credits?</h2>
+        <h3>A person can qualify for PTC if:</h3>
+        <ul class="guide-list">
+          <li>They have a household income within 100%-400% of the <strong>FPL (Federal Poverty Line)</strong></li>
+          <li>Do not file a &ldquo;Married Filing Separately&rdquo; tax return. (There are exceptions for victims of domestic violence or spousal abandonment)</li>
+          <li>In the same month you or a family member:
+            <ul class="guide-list">
+              <li>Do not qualify for coverage through a government program (<a href="#medicare" data-route-link>Medicare</a>, <a href="#medicaid" data-route-link>Medicaid</a>, TRICARE, CHIP, etc)</li>
+              <li>Enrolled in coverage under a plan (excluding &ldquo;catastrophic&rdquo; plans from the Marketplace)</li>
+              <li>Am unable to get or qualify for an employer-sponsored plan that provides <strong>minimum value, affordable coverage.</strong></li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Some Definitions:</h3>
+        <ul class="guide-list">
+          <li><strong>Affordable coverage</strong> is defined by: The plan does not exceed 9.5% of your annual household income. This percentage is adjusted slightly every year - in 2020, the cutoff was 9.78% of your household income.</li>
+          <li>A <strong>minimum value</strong> coverage plan has 60% actuarial value. This is equivalent to a <strong>bronze</strong> metal plan on the <strong>Marketplace</strong>.</li>
+        </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#ptc-use" data-route-link>How can I use Premium Tax Credits?</a></li>
+          </ul>
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li>What are Premium Tax Credits?</li>
+            <li>Metal Plans on the Marketplace</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="ptc-use" data-nav="resources" id="page-ptc-use">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>How Can I Use Advance Premium Tax Credits?</h2>
+        <p><strong>Premium tax credits</strong> can be used to cover insurance <strong>premiums</strong> by making direct payments to your insurance company. In this case, the awarded amount would be used to pay for your premiums in your name. This would be known as <strong>Advance Premium Tax Credits (APTC)</strong>.</p>
+        <p>Alternatively, you could pay your insurance premiums as usual and not use APTC over the course of the year. In this case, you would be able to claim the full amount of the PTC as a <strong>tax refund</strong>. If the full amount of awarded PTC is not completely finished when utilizing APTC (in the case the PTC funds are paid directly to your insurance company), then the remaining amount may be claimed as a tax refund while filing your <strong>tax return</strong>.</p>
+        <p><strong>NOTE:</strong> <em>Whatever method you decide to use when making use of your PTC, the claimant is required to file <strong>Form 8962</strong> (Premium Tax Credit) on their tax return.</em></p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#csr" data-route-link>Cost-Sharing Reductions</a></li>
+          </ul>
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li>What are Premium Tax Credits?</li>
+            <li><a href="#ptc-qualify" data-route-link>How can I qualify for Premium Tax Credits?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="csr" data-nav="resources" id="page-csr">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Cost-Sharing Reductions</h2>
+        <p><strong>Cost sharing reductions</strong> (CSR) are discounts on deductibles, copayments, and coinsurance that make having insurance more affordable. CSRs also lower your <strong>out-of-pocket maximum,</strong> which is the maximum amount you are required to pay for health care services per year. Once you reach the out-of-pocket maximum, the insurance plan must pay for 100% of the costs of covered services. If you qualify for CSRs, you must enroll in a <strong>silver plan</strong> to receive the benefits.</p>
+        <div class="guide-next">
+          <h3>Related Topics:</h3>
+          <ul>
+            <li>Who is eligible for Cost Sharing Reductions?</li>
+            <li>The Three Tiers of CSRs</li>
+            <li><a href="#ptc-use" data-route-link>Advanced Premium Tax Credits</a></li>
+            <li><a href="#ptc-qualify" data-route-link>How Can I Qualify for Premium Tax Credits?</a></li>
+            <li><a href="#ptc-use" data-route-link>How Can I Use Premium Tax Credits?</a></li>
+            <li>What are Metal Plans?</li>
           </ul>
         </div>
       </article>
