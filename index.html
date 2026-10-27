@@ -373,6 +373,21 @@
   .guide .soon{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 26px; margin-top:24px; }
   .guide .soon p{ margin-top:0; }
 
+  .guide-list{ margin:.8em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
+  .guide-list li::marker{ color:var(--gold); }
+  .guide-links{ list-style:none; margin:1.4em 0 0; padding:0; display:flex; flex-direction:column; gap:.5em; }
+  .guide-next{ margin-top:2.2em; padding-top:1.4em; border-top:1px solid var(--border); }
+  .guide-next h3{ margin-top:1em; }
+  .guide-next h3:first-child{ margin-top:0; }
+  .guide-next ul{ margin:.6em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
+  .guide-next li::marker{ color:var(--gold); }
+  .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:1em; }
+  .part{ background:var(--card); border:1px solid var(--border); border-top:4px solid var(--cardinal); border-radius:14px; padding:18px; }
+  .part b{ display:block; font-family:'Alpino','Pally',sans-serif; font-size:1.2rem; color:var(--cardinal); }
+  .part span{ display:block; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-top:.1em; }
+  .guide .part p{ font-size:.88rem; line-height:1.6; margin-top:.7em; }
+  @media (max-width: 560px){ .parts{ grid-template-columns:1fr; } }
+
   /* ============ JOIN US ============ */
   .join-box{ display:grid; grid-template-columns:1.15fr .85fr; gap:0; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
   .join-left{ background:linear-gradient(150deg,var(--cardinal),var(--cardinal-deep)); color:#fff; padding:clamp(30px,4vw,48px); }
@@ -791,7 +806,7 @@
           <div>
             <h3>Specific Programs</h3>
             <ul>
-              <li>What is Medi-Cal / Medicaid?</li>
+              <li><a href="#medicaid" data-route-link>What is Medi-Cal / Medicaid?</a></li>
               <li>Insurance for children &amp; pregnant women (CHIP)</li>
             </ul>
           </div>
@@ -843,6 +858,14 @@
           <li><strong>Stay healthy</strong><p>Having insurance means you have access to preventative care like annual check-ups and immunizations. Chronic disease management is also covered, and other health screenings are free, such as those for blood pressure, diabetes, cancer and depression. Having health insurance makes it easier to <em>catch and treat a health issue before it causes longer-term damage</em>. And even if you eat right, exercise and are currently healthy, the <em>risk of accident or illness is always present</em>.</p></li>
           <li><strong>You may qualify for financial aid</strong><p>Financial help can reduce costs of health insurance for more people than ever before. To see if you qualify, check out Covered California&rsquo;s <a href="https://www.coveredca.com/#quick-calculator" target="_blank" rel="noopener noreferrer">interactive calculator</a>.</p></li>
         </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+          </ul>
+        </div>
       </article>
     </section>
   </div>
@@ -883,6 +906,80 @@
       <article class="guide">
         <h2>I'm undocumented. What are my options?</h2>
         <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="medicare" data-nav="resources" id="page-medicare">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Medicare?</h2>
+        <p><strong>Medicare</strong> is a federally run program that aims to provide subsidized and accessible health insurance to a specific population within the United States. You may qualify for Medicare if you are:</p>
+        <ul class="guide-list">
+          <li>65 years of age and over</li>
+          <li>Under age 65 and have a disability</li>
+          <li>Under age 65 and have End Stage Renal Disease (ESRD)</li>
+        </ul>
+        <p>Medicaid enrollment is NOT a barrier to Medicare enrollment. You can dual enroll in Medicare and <a href="#medicaid" data-route-link>Medicaid</a>!</p>
+        <p>There are four parts to Medicare:</p>
+        <ul class="guide-list">
+          <li><strong>Part A &amp; B,</strong> which cover all hospital and preventative care necessities</li>
+          <li><strong>Parts C &amp; D</strong>, which include the <strong>Medicare Advantage Plan</strong> and <strong>prescription drug coverage</strong> respectively.</li>
+        </ul>
+        <p>Standard Medicare includes parts A &amp; B with the addition of Part D if consistent prescription drug coverage is also needed. Part C, or the Medicare Advantage Plan can be acquired through a private insurance provider and includes coverage that matches parts A &amp; B plus additional aspects.</p>
+        <h3>Know your Medicare basics</h3>
+        <div class="parts">
+          <div class="part"><b>Part A</b><span>Hospital</span><p>Medicare Part A is Hospital insurance and helps cover cost if you are staying in a hospital, skilled nursing facility or hospice care.</p></div>
+          <div class="part"><b>Part B</b><span>Medical</span><p>Medicare Part B is Medical insurance and helps cover cost for doctor services, outpatient care, durable medical equipment and other medical services. If you enroll in a Medicare Advantage Plan you must continue to pay your Part B premium.</p></div>
+          <div class="part"><b>Part D</b><span>Prescriptions</span><p>Medicare Part D is Prescription Drug coverage, and helps cover the cost of many outpatient prescription drugs. If you enroll in a Medicare Advantage Plan this drug coverage is usually included into the plan, otherwise it is offered through insurance companies as a separate plan.</p></div>
+          <div class="part"><b>Part C</b><span>Medicare Advantage</span><p>Part C, also known as Medicare Advantage, includes Part A, Part B, and sometimes Part D. It is all in one plan.</p></div>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="medicaid" data-nav="resources" id="page-medicaid">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Medicaid?</h2>
+        <p><strong>Medicaid</strong> is a jointly-funded federal and state health insurance program dedicated to providing healthcare for eligible low-income families or individuals, pregnant women, parents, seniors, and individuals with disabilities.</p>
+        <p>Medicaid is the single largest source of health insurance for residents of the United States. The <a href="#aca" data-route-link>ACA</a> (also known as <strong>Obamacare</strong>) gave states the opportunity to expand Medicaid coverage to cover the majority of low income Americans under the age of 65. Eligibility for children was extended to 133% of the federal poverty line (FPL) and states were given the option to extend eligibility to adults with income at or below 133% of the FPL. Most states have chosen to expand coverage to adults, and those that have not yet expanded may choose to do so at any time. Medicaid in California is called Medi-Cal.</p>
+        <p>Additionally, &ldquo;medically needy&rdquo; Americans who wouldn&rsquo;t otherwise qualify for subsidized healthcare due to their income level exceeding the standard income ceiling may still qualify for Medicaid coverage if their expenses meet or exceed a certain threshold.</p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#resources" data-route-link>View Our Medicaid Resources Here</a></li>
+          </ul>
+          <h3>Related Topics:</h3>
+          <ul>
+            <li><a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="_blank" rel="noopener noreferrer">Federal Poverty Line (FPL) Guidelines</a></li>
+            <li>What is Medi-Cal?</li>
+            <li>What is CHIP (Children's Health Insurance Program)?</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="aca" data-nav="resources" id="page-aca">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is the Affordable Care Act?</h2>
+        <p><strong>The Affordable Care Act (ACA)</strong>, commonly known as <strong>Obamacare</strong>, was signed into law in 2010. The main goals of the ACA were to provide accessible healthcare to all Americans (via expanding <a href="#medicaid" data-route-link>Medicaid</a> eligibility, and expanding financial assistance), to protect those with preexisting conditions, and to innovate within healthcare delivery. So far, millions of Americans with and without pre-existing conditions have benefited from the ACA.</p>
+        <p>Additionally, under the ACA&rsquo;s <strong>individual mandate</strong>, uninsured individuals were required to pay an annual fee, further encouraging people to acquire healthcare. However, under the Trump administration, this individual mandate was repealed and has not been since reinstated.</p>
+        <ul class="guide-links">
+          <li><a href="https://www.healthcare.gov/health-care-law-protections/" target="_blank" rel="noopener noreferrer">Your rights and protections under the ACA</a></li>
+          <li><a href="https://www.congress.gov/bill/111th-congress/house-bill/3590/text" target="_blank" rel="noopener noreferrer">Read the full text of the ACA</a></li>
+        </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+          </ul>
+        </div>
       </article>
     </section>
   </div>
