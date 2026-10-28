@@ -263,14 +263,14 @@
   .board-pill{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.5rem; background:var(--muted); color:var(--ink); padding:.4em 1em; border-radius:999px; }
 
   .board-list{ display:flex; flex-direction:column; gap:18px; }
-  .person-row{ display:flex; gap:36px; align-items:center; background:var(--muted); border-radius:18px; padding: clamp(22px,3vw,34px); transition:transform .2s ease, box-shadow .2s ease; }
+  .person-row{ display:flex; gap:44px; align-items:center; background:var(--muted); border-radius:18px; padding: clamp(22px,3vw,34px); transition:transform .2s ease, box-shadow .2s ease; }
   .person-row:hover{ transform:translateY(-2px); box-shadow:0 16px 28px -20px hsl(var(--shadow)/.35); }
   img.avatar{ object-fit:cover; background:var(--muted); }
-  .avatar{ width:180px; height:180px; border-radius:50%; background:var(--cardinal); color:var(--cardinal-ink); display:flex; align-items:center; justify-content:center; font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:2.6rem; flex:none; }
-  .person-name{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.75rem; line-height:1.2; }
-  .person-role{ font-size:1.1rem; font-weight:700; color:var(--cardinal); margin-top:.25em; }
+  .avatar{ width:240px; height:240px; border-radius:50%; background:var(--cardinal); color:var(--cardinal-ink); display:flex; align-items:center; justify-content:center; font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:3.4rem; flex:none; }
+  .person-name{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:2.2rem; line-height:1.2; }
+  .person-role{ font-size:1.3rem; font-weight:700; color:var(--cardinal); margin-top:.25em; }
   .person-meta{ font-size:.72rem; color:var(--ink-faint); letter-spacing:.03em; margin-top:.5em; }
-  .person-bio, .person-quote{ font-size:1.05rem; color:var(--ink-soft); margin-top:.6em; }
+  .person-bio, .person-quote{ font-size:1.15rem; color:var(--ink-soft); margin-top:.6em; }
   .person-quote{ font-family:'Alpino','Pally',sans-serif; font-weight:400; font-style:normal; color:var(--ink); border-left:2px solid var(--gold); padding-left:.8em; }
 
   /* ============ TIMELINE (Events) ============ */
@@ -483,7 +483,7 @@
     .checklist{ grid-template-columns:1fr; }
     .statband .wrap{ grid-template-columns:1fr 1fr; }
     .person-row{ flex-direction:column; align-items:center; text-align:center; gap:18px; }
-    .avatar{ width:200px; height:200px; }
+    .avatar{ width:240px; height:240px; }
   }
   @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
 
