@@ -588,6 +588,22 @@
   .who-title{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); margin-bottom:.45em; }
   #page-home .sec-blue{ padding-block:clamp(24px, 3vw, 36px) clamp(32px, 4vw, 52px); }
   #page-home .sec-blue .section-head h2{ margin-top:0; }
+  #page-home .sec-flow{ padding-block:clamp(24px, 3vw, 36px) clamp(24px, 3vw, 40px); }
+  #page-home .sec-flow .section-head{ margin-bottom:0; }
+  #page-home .sec-flow .section-head h2{ margin-top:0; }
+  #page-home .co-head{ text-align:center; }
+  .slideshow{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:16 / 9; background:var(--ink); margin-bottom:clamp(28px, 3.4vw, 48px); }
+  .slides{ display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; }
+  .slides::-webkit-scrollbar{ display:none; }
+  .slides img{ flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; }
+  .slide-btn{ position:absolute; top:50%; transform:translateY(-50%); width:clamp(40px, 3.4vw, 56px); height:clamp(40px, 3.4vw, 56px); border-radius:50%; border:0; background:rgba(255,249,230,.92); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px -8px rgba(0,0,0,.4); }
+  .slide-btn:hover{ color:var(--cardinal); }
+  .slide-btn.prev{ left:clamp(10px, 1.4vw, 20px); }
+  .slide-btn.next{ right:clamp(10px, 1.4vw, 20px); }
+  .slide-dots{ position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(10px, 1.4vw, 20px); display:flex; gap:10px; padding:8px 12px; border-radius:999px; background:rgba(20,10,10,.45); }
+  .slide-dots button{ width:10px; height:10px; padding:0; border-radius:50%; border:0; background:rgba(255,255,255,.55); cursor:pointer; }
+  .slide-dots button[aria-current="true"]{ background:#fff; }
+  @media (max-width: 760px){ .slideshow{ aspect-ratio:4 / 3; } }
 
 
   /* ============ HERO LOGO ART ============ */
@@ -674,7 +690,7 @@
     </section>
 
 
-    <section class="sec-blue bleed">
+    <section class="sec-blue sec-flow bleed">
       <div class="bleed-inner">
       <div class="section-head">
         <h2>Resources &amp; education <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800"></h2>
@@ -684,7 +700,7 @@
       </div>
     </section>
 
-    <section class="sec-gold bleed">
+    <section class="sec-gold sec-flow bleed">
       <div class="bleed-inner">
       <div class="section-head">
         <h2>Covered California Certified Enrollment Counselors <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800"></h2>
@@ -698,9 +714,19 @@
       </div>
     </section>
 
-    <section class="sec-blue bleed">
+    <section class="sec-blue sec-flow bleed">
       <div class="bleed-inner">
-      <div class="section-head">
+      <div class="slideshow" aria-roledescription="carousel" aria-label="Community outreach photos">
+        <div class="slides" tabindex="0">
+          <img src="images/outreach-1.jpg" alt="SCHO members at a Covered California table outside a grocery store" width="1600" height="1200" loading="lazy">
+          <img src="images/outreach-2.jpg" alt="SCHO members in matching shirts beside a bilingual health insurance poster board" width="1024" height="768" loading="lazy">
+          <img src="images/outreach-3.jpg" alt="SCHO members at an information table inside a community restaurant" width="1600" height="1200" loading="lazy">
+        </div>
+        <button type="button" class="slide-btn prev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="slide-btn next" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="slide-dots"></div>
+      </div>
+      <div class="section-head co-head">
         <h2>Community outreach <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800"></h2>
         <p>We partner with local organizations to educate LA residents on health insurance, and serve as a resource for USC students navigating the Student Health Insurance Plan (SHIP).</p>
       </div>
@@ -1709,6 +1735,26 @@
     document.getElementById('membersLogout').addEventListener('click', function(){
       try{ sessionStorage.removeItem('scho-drive'); }catch(e){}
       show('');
+    });
+  })();
+
+  // Home page photo slideshow: arrows and dots scroll the snap track.
+  (function(){
+    document.querySelectorAll('.slideshow').forEach(function(show){
+      var track = show.querySelector('.slides'), imgs = track.querySelectorAll('img'), dots = show.querySelector('.slide-dots');
+      var current = function(){ return Math.round(track.scrollLeft / track.clientWidth); };
+      var go = function(i){ track.scrollTo({ left: ((i + imgs.length) % imgs.length) * track.clientWidth }); };
+      imgs.forEach(function(_, i){
+        var d = document.createElement('button');
+        d.type = 'button'; d.setAttribute('aria-label', 'Show photo ' + (i + 1));
+        d.addEventListener('click', function(){ go(i); });
+        dots.appendChild(d);
+      });
+      var sync = function(){ var c = current(); Array.prototype.forEach.call(dots.children, function(d, i){ d.setAttribute('aria-current', i === c ? 'true' : 'false'); }); };
+      show.querySelector('.prev').addEventListener('click', function(){ go(current() - 1); });
+      show.querySelector('.next').addEventListener('click', function(){ go(current() + 1); });
+      track.addEventListener('scroll', sync, { passive: true });
+      sync();
     });
   })();
 
