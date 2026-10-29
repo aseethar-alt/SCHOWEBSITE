@@ -540,7 +540,10 @@
   .who-band{ margin-top:clamp(24px, 3vw, 40px); padding-block:clamp(24px, 3vw, 40px); text-align:left; }
   .who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px, 4vw, 64px); align-items:center; }
   .who-copy .lede{ margin-top:0; }
-  .who-actions .cta-row{ margin-top:0; }
+  .who-copy .cta-row{ margin-top:clamp(20px, 2.4vw, 30px); }
+  .who-actions{ display:flex; flex-direction:column; align-items:center; }
+  .cc-logo{ display:block; width:clamp(150px, 16vw, 220px); height:auto; }
+  .who-actions .info-card{ width:100%; }
   .who-actions .info-card{ margin-top:clamp(20px, 2.4vw, 28px); }
   @media (max-width: 860px){ .who-grid{ grid-template-columns:1fr; } }
   .who-title{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); margin-bottom:.45em; }
@@ -624,12 +627,13 @@
           <div class="who-copy">
             <h2 class="who-title">Who we are</h2>
             <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
-          </div>
-          <div class="who-actions">
             <div class="cta-row">
               <a href="#about" class="btn" data-route-link>Our Mission</a>
               <a href="#resources" class="btn outline" data-route-link>Learn More</a>
             </div>
+          </div>
+          <div class="who-actions">
+            <img class="cc-logo" src="images/cc-logo.png" alt="Covered California">
             <div class="info-card">
               <div>
                 <h4>Certified Enrollment Counselors</h4>
