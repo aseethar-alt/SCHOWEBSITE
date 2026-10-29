@@ -121,8 +121,8 @@
   }
   .nav-row{ max-width:1920px; margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   :root{ --logo-h:clamp(66px, 5.6vw, 106px); }
-  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:auto; height:calc(var(--logo-h) + 46px); flex:none; padding-top:4px; }
-  .brand .logo{ height:calc(var(--logo-h) * .8); width:auto; overflow:visible; width:auto; display:block; flex:none; margin-bottom:-3px; }
+  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:auto; height:auto; flex:none; padding-top:4px; }
+  .brand .logo{ height:calc(var(--logo-h) * 1.5); width:auto; overflow:visible; width:auto; display:block; flex:none; margin-bottom:-3px; }
   .brand .word{ white-space:nowrap; font-family:"Pally", ui-sans-serif, system-ui, sans-serif; font-weight:700; font-size:clamp(1rem, .95vw, 1.4rem); line-height:1; color:var(--cardinal); letter-spacing:.12em; }
   nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:auto; margin-right:clamp(16px, 2.4vw, 40px); }
   nav.links a{ white-space:nowrap; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:500; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
@@ -576,7 +576,7 @@
   .hero-photo-text{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(18px, 3vw, 44px); color:#fff; }
   .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; text-transform:none; color:#fff; font-weight:700; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
   .hero-stack .hero-photo h1 em{ color:#FFC93C; font-style:italic; font-weight:900; position:relative; display:inline-block; transform:skewX(-6deg); }
-  .hero-stack .hero-photo h1 em::after{ content:""; position:absolute; left:0; right:0; top:calc(100% - 8px); height:6px; background:#912E38; }
+  .hero-stack .hero-photo h1 em::after{ content:""; position:absolute; left:0; right:0; top:calc(100% - 8px); height:6px; background:var(--cardinal); }
   .hero-stack .hero-photo h1 em{ text-decoration:none; text-decoration-skip-ink:none; }
   .hero-stack .hero-photo h1 .h1-dot{ color:#fff; }
   .hero-est{ margin:.5em 0 0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(.95rem, 1.4vw, 1.25rem); color:#fff; }
