@@ -530,13 +530,12 @@
   .hero-lower{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(28px, 4vw, 56px); align-items:center; margin-top:clamp(36px, 5vw, 64px); text-align:left; }
   .hero-lower .lede{ margin-top:0; }
   .hero-lower .info-card{ margin-top:clamp(22px, 2.6vw, 32px); }
-  .hero-stats{ display:grid; grid-template-columns:repeat(2, 1fr); background:var(--cardinal); border-radius:22px; overflow:hidden; box-shadow:0 30px 60px -32px hsl(var(--shadow) / .5); }
-  .hero-stats .stat{ padding:clamp(20px, 2.4vw, 30px) 14px; text-align:center; border-right:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(255,255,255,.16); }
-  .hero-stats .stat:nth-child(2n){ border-right:none; }
-  .hero-stats .stat:last-child{ grid-column:1 / -1; border-right:none; border-bottom:none; }
-  .hero-stats .num{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:clamp(1.6rem, 2.6vw, 2.1rem); color:#FFC93C; }
-  .hero-stats .lbl{ font-size:.76rem; font-weight:500; color:#F4DEE0; margin-top:.4em; text-transform:uppercase; letter-spacing:.05em; }
   @media (max-width: 940px){ .hero-lower{ grid-template-columns:1fr; } }
+  .hero-stack .statband{ margin-top:clamp(28px, 3.5vw, 48px); }
+  .statband.stat-3 .wrap{ grid-template-columns:repeat(3, 1fr); }
+  .statband.stat-3 .stat:nth-child(3){ border-left:1px solid rgba(255,255,255,.16); }
+  .hero-lower .scrapbook{ align-self:stretch; aspect-ratio:auto; min-height:420px; }
+  @media (max-width: 560px){ .statband.stat-3 .stat{ padding:24px 8px; } .hero-lower .scrapbook{ aspect-ratio:4/4.4; min-height:0; } }
 
   /* ============ HERO LOGO ART ============ */
   .hero-art{ display:flex; align-items:center; justify-content:center; width:100%; }
@@ -606,6 +605,13 @@
         <p class="hero-blurb">100% USC student run</p>
       </div>
       <h1>Making healthcare <em>accessible</em> for everyone</h1>
+      <div class="statband stat-3 bleed">
+        <div class="wrap bleed-inner">
+          <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
+          <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
+          <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
+        </div>
+      </div>
       <div class="hero-lower">
         <div class="hero-lower-copy">
           <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
@@ -620,10 +626,13 @@
             </div>
           </div>
         </div>
-        <div class="hero-stats">
-          <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
-          <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
-          <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
+        <div class="scrapbook">
+          <div class="torn t1"><img src="images/group-photo.jpg" alt="SCHO members gathered together after a general meeting"></div>
+          <div class="torn t2"><img src="images/team-photo.jpg" alt="SCHO members staffing an outreach information booth"></div>
+          <div class="torn t3"><img src="images/event-photo.jpg" alt="SCHO members tabling with informational flyers about health insurance"></div>
+          <div class="torn t4"><img src="images/club-photo.jpg" alt="SCHO members gathered in a lecture hall in front of the SCHO slide"></div>
+          <svg class="sticker-star" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 7.2L22 11l-6.5 4.3L17 23l-5-4.2L7 23l1.5-7.7L2 11l7.1-2.8z"/></svg>
+          <div class="tape">SCHO &middot; Est. 2019</div>
         </div>
       </div>
     </section>
