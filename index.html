@@ -109,7 +109,9 @@
   .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:90px; height:90px; flex:none; border-radius:50%; background:#fff; padding-top:4px; }
   .brand .logo{ height:50px; width:auto; display:block; flex:none; margin-bottom:-3px; }
   .brand .word{ white-space:nowrap; font-weight:700; font-size:.8rem; line-height:1; color:var(--cardinal); letter-spacing:.12em; }
-  nav.links{ display:flex; align-items:center; gap: clamp(14px, 2vw, 28px); margin-left:clamp(12px, 2vw, 28px); margin-right:auto; }
+  nav.links{ display:flex; align-items:center; gap: clamp(14px, 2vw, 28px); margin-right:auto; order:1; }
+  .nav-row .nav-actions{ order:2; }
+  .nav-row .brand{ order:3; margin-left:clamp(6px, 1vw, 12px); }
   nav.links a{ white-space:nowrap; font-size:1.12rem; font-weight:600; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
   .nav-drop{ position:relative; }
