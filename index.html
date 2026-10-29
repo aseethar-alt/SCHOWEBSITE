@@ -568,6 +568,11 @@
   .who-band{ margin-top:0; padding-block:clamp(20px, 2.4vw, 36px) clamp(24px, 3vw, 40px); text-align:left; }
   .who-grid{ display:grid; grid-template-columns:1fr; gap:clamp(28px, 4vw, 64px); align-items:center; }
   .who-copy .lede{ margin-top:0; max-width:none; font-size:clamp(19px, 1.7vw, 32px); line-height:1.5; }
+  .who-top{ display:grid; grid-template-columns:1fr auto; gap:clamp(24px, 4vw, 72px); align-items:center; }
+  .who-mark{ display:block; height:clamp(150px, 14vw, 280px); width:auto; }
+  @media (max-width: 760px){ .who-top{ grid-template-columns:1fr; } .who-mark{ order:-1; height:130px; justify-self:center; } }
+  #page-home .section-head{ max-width:none; }
+  #page-home .section-head p, #page-home .story-text p, #page-home .explore-card p{ font-size:clamp(19px, 1.7vw, 32px); line-height:1.5; }
   .learn-bar{ display:flex; justify-content:center; width:100%; box-sizing:border-box; margin-top:clamp(20px, 2.4vw, 30px); padding-block:1.1em; border-radius:999px; font-size:clamp(.92rem, 1.1vw, 1.2rem); }
   .who-copy .cta-row{ margin-top:clamp(20px, 2.4vw, 30px); }
   .who-actions{ display:flex; flex-direction:column; align-items:center; }
@@ -657,8 +662,13 @@
       <div class="who-band bleed">
         <div class="bleed-inner who-grid">
           <div class="who-copy">
-            <h2 class="who-title">Who we are</h2>
-            <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
+            <div class="who-top">
+              <div>
+                <h2 class="who-title">Who we are</h2>
+                <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
+              </div>
+              <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800">
+            </div>
             <a href="#about" class="btn outline learn-bar" data-route-link>Learn about our mission</a>
           </div>
         </div>
@@ -669,22 +679,17 @@
     <section class="sec-blue bleed">
       <div class="bleed-inner">
       <div class="section-head">
-        <h2>How we take action</h2>
-        <p>Founded in Fall 2019 at USC, SCHO partners with churches, elementary schools, food banks, FQHCs, and community organizations across Los Angeles to bridge the health insurance literacy gap.</p>
+        <h2>Resources &amp; education</h2>
+        <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
       </div>
-      <div class="pillars reveal">
-        <div class="pillar">
-          <h3>Community Outreach</h3>
-          <p>We partner with local organizations to educate LA residents on health insurance, and serve as a resource for USC students navigating the Student Health Insurance Plan (SHIP).</p>
-        </div>
-        <div class="pillar">
-          <h3>Resources &amp; Education</h3>
-          <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
-        </div>
-        <div class="pillar">
-          <h3>Professional Development</h3>
-          <p>We host guest speaker events and seminars each semester, giving members the chance to explore healthcare research trends and policy news from field experts.</p>
-        </div>
+      </div>
+    </section>
+
+    <section class="sec-blue bleed">
+      <div class="bleed-inner">
+      <div class="section-head">
+        <h2>Community outreach</h2>
+        <p>We partner with local organizations to educate LA residents on health insurance, and serve as a resource for USC students navigating the Student Health Insurance Plan (SHIP).</p>
       </div>
       </div>
     </section>
