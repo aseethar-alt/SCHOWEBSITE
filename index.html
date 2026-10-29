@@ -518,31 +518,31 @@
 
   /* ============ STACKED HERO ============ */
   .hero-stack{ text-align:center; }
-  .hero-top{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:clamp(16px, 3vw, 48px); }
-  .hero-blurb{ margin:0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(1.05rem, 1.7vw, 1.5rem); line-height:1.3; color:var(--gold); text-align:center; }
-  @media (max-width: 760px){
-    .hero-top{ grid-template-columns:1fr 1fr; }
-    .hero-top .hero-mark{ grid-column:1 / -1; grid-row:1; }
-  }
   .hero-stack .hero-mark{ display:block; margin:0 auto; height:clamp(220px, 32vw, 500px); width:auto; max-width:100%; }
   .hero-stack h1{ margin-top:clamp(20px, 2.6vw, 36px); font-size:clamp(2rem, 4.2vw, 3.9rem); }
   @media (min-width: 761px){ .hero-stack h1{ white-space:nowrap; } }
-  .hero-lower{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(28px, 4vw, 56px); align-items:center; margin-top:clamp(36px, 5vw, 64px); text-align:left; }
-  .hero-lower .lede{ margin-top:0; }
-  .hero-lower .info-card{ margin-top:clamp(22px, 2.6vw, 32px); }
-  @media (max-width: 940px){ .hero-lower{ grid-template-columns:1fr; } }
-  .hero-stack .statband{ margin-top:clamp(28px, 3.5vw, 48px); }
-  .statband.stat-3 .wrap{ grid-template-columns:repeat(3, 1fr); }
-  .statband.stat-3 .stat:nth-child(3){ border-left:1px solid rgba(255,255,255,.16); }
-  .statband.stat-3 .stat{ display:flex; align-items:baseline; justify-content:center; gap:.7em; padding:16px 14px; }
-  .statband.stat-3 .num{ font-family:"Pally",sans-serif; font-size:clamp(1.25rem, 1.9vw, 1.6rem); }
-  .statband.stat-3 .lbl{ margin-top:0; }
+  .hero-stack{ padding-bottom:0; }
+  .hero-mark-wrap{ position:relative; display:inline-block; }
+  .hero-tag{ position:absolute; top:24%; right:calc(100% - 4%); margin:0; white-space:nowrap; transform:rotate(-24deg); transform-origin:right center; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(1rem, 1.6vw, 1.45rem); }
+  .tag-k{ color:var(--ink); }
+  .tag-v{ color:var(--gold); }
+  @media (max-width: 760px){ .hero-tag{ position:static; transform:rotate(-4deg); display:inline-block; margin-top:10px; } }
+  .hero-stack .statband{ margin-top:clamp(28px, 3.5vw, 48px); background:transparent; }
+  .statband.stat-3 .wrap{ display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(12px, 2vw, 28px); padding-block:6px clamp(36px, 4.5vw, 60px); }
+  .statband.stat-3 .stat{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3em; aspect-ratio:1; max-width:210px; width:100%; margin-inline:auto; padding:16px; border:none; border-radius:50%; background:var(--cardinal); box-shadow:0 18px 32px -20px hsl(var(--shadow) / .55); }
+  .statband.stat-3 .num{ font-family:"Pally",sans-serif; font-size:clamp(1.3rem, 2.3vw, 2rem); color:#FFC93C; }
+  .statband.stat-3 .lbl{ margin-top:0; color:#F4DEE0; font-size:clamp(.62rem, .9vw, .76rem); text-align:center; }
+  @media (max-width: 560px){ .statband.stat-3 .wrap{ grid-template-columns:repeat(2, 1fr); } .statband.stat-3 .stat{ max-width:150px; } }
+  .who-band{ background:#fff; padding-block:clamp(40px, 5vw, 72px); text-align:left; }
+  .who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px, 4vw, 64px); align-items:center; }
+  .who-copy .lede{ margin-top:0; }
+  .who-actions .cta-row{ margin-top:0; }
+  .who-actions .info-card{ margin-top:clamp(20px, 2.4vw, 28px); }
+  @media (max-width: 860px){ .who-grid{ grid-template-columns:1fr; } }
   .who-title{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); margin-bottom:.45em; }
   #page-home .sec-blue{ padding-block:clamp(24px, 3vw, 36px) clamp(32px, 4vw, 52px); }
   #page-home .sec-blue .section-head h2{ margin-top:0; }
-  .hero-lower .scrapbook{ align-self:stretch; aspect-ratio:auto; min-height:420px; }
-  @media (max-width: 760px){ .statband.stat-3 .stat{ flex-direction:column; align-items:center; gap:.25em; padding:14px 6px; } }
-  @media (max-width: 560px){ .hero-lower .scrapbook{ aspect-ratio:4/4.4; min-height:0; } }
+
 
   /* ============ HERO LOGO ART ============ */
   .hero-art{ display:flex; align-items:center; justify-content:center; width:100%; }
@@ -607,9 +607,10 @@
   <div class="page active" data-route="home" id="page-home">
     <section class="hero hero-stack">
       <div class="hero-top">
-        <p class="hero-blurb">Established 2019</p>
-        <img class="hero-mark" src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
-        <p class="hero-blurb">100% USC student run</p>
+        <div class="hero-mark-wrap">
+          <img class="hero-mark" src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
+          <p class="hero-tag"><span class="tag-k">Established</span> <span class="tag-v">2019 @ USC</span></p>
+        </div>
       </div>
       <h1>Making healthcare <em>accessible</em> for everyone</h1>
       <div class="statband stat-3 bleed">
@@ -617,30 +618,27 @@
           <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
           <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
           <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
+          <div class="stat"><div class="num">100%</div><div class="lbl">USC Student Run</div></div>
         </div>
       </div>
-      <div class="hero-lower">
-        <div class="hero-lower-copy">
-          <h2 class="who-title">Who we are</h2>
-          <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
-          <div class="cta-row">
-            <a href="#about" class="btn" data-route-link>Our Mission</a>
-            <a href="#resources" class="btn outline" data-route-link>Learn More</a>
+      <div class="who-band bleed">
+        <div class="bleed-inner who-grid">
+          <div class="who-copy">
+            <h2 class="who-title">Who we are</h2>
+            <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
           </div>
-          <div class="info-card">
-            <div>
-              <h4>Certified Enrollment Counselors</h4>
-              <p>Our trained members can directly sign people up for Covered California insurance plans!</p>
+          <div class="who-actions">
+            <div class="cta-row">
+              <a href="#about" class="btn" data-route-link>Our Mission</a>
+              <a href="#resources" class="btn outline" data-route-link>Learn More</a>
+            </div>
+            <div class="info-card">
+              <div>
+                <h4>Certified Enrollment Counselors</h4>
+                <p>Our trained members can directly sign people up for Covered California insurance plans!</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="scrapbook">
-          <div class="torn t1"><img src="images/group-photo.jpg" alt="SCHO members gathered together after a general meeting"></div>
-          <div class="torn t2"><img src="images/team-photo.jpg" alt="SCHO members staffing an outreach information booth"></div>
-          <div class="torn t3"><img src="images/event-photo.jpg" alt="SCHO members tabling with informational flyers about health insurance"></div>
-          <div class="torn t4"><img src="images/club-photo.jpg" alt="SCHO members gathered in a lecture hall in front of the SCHO slide"></div>
-          <svg class="sticker-star" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 7.2L22 11l-6.5 4.3L17 23l-5-4.2L7 23l1.5-7.7L2 11l7.1-2.8z"/></svg>
-          <div class="tape">SCHO &middot; Est. 2019</div>
         </div>
       </div>
     </section>
