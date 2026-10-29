@@ -506,9 +506,10 @@
     .page > section.hero{ padding-top:28px; }
     .hero-grid{ row-gap:16px; }
     .hero-visual{ display:contents; }
-    .hero-copy{ grid-column:1; grid-row:1; }
-    .scrapbook{ grid-column:2; grid-row:1; align-self:stretch; aspect-ratio:auto; }
-    .info-card{ grid-column:2; grid-row:2; }
+    .hero-grid{ row-gap:28px; }
+    .hero-copy{ grid-column:1; grid-row:1; align-self:end; }
+    .scrapbook{ grid-column:2; grid-row:1 / span 2; align-self:stretch; aspect-ratio:auto; min-height:460px; }
+    .info-card{ grid-column:1; grid-row:2; align-self:start; }
   }
 
   @media (min-width: 941px) and (max-height: 780px){
