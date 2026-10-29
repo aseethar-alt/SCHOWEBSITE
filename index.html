@@ -511,7 +511,7 @@
     .hero-grid{ row-gap:28px; }
     .hero-grid{ grid-template-columns: .95fr 1.05fr; }
     .hero-copy{ grid-column:2; grid-row:1; align-self:end; }
-    .scrapbook{ grid-column:1; grid-row:1 / span 2; align-self:stretch; aspect-ratio:auto; min-height:460px; }
+    .hero-art{ grid-column:1; grid-row:1 / span 2; align-self:center; }
     .info-card{ grid-column:2; grid-row:2; align-self:start; }
   }
 
@@ -522,6 +522,11 @@
     .hero .lede{ font-size:1rem; margin-top:.8em; }
     .hero .cta-row{ margin-top:1.3em; }
   }
+
+  /* ============ HERO LOGO ART ============ */
+  .hero-art{ display:flex; align-items:center; justify-content:center; width:100%; }
+  .hero-art img{ display:block; width:100%; max-width:640px; height:auto; }
+  @media (max-width: 940px){ .hero-art img{ max-width:460px; margin-inline:auto; } }
 
   /* ============ HOMEPAGE TEXT COLORS (everything below the hero intro) ============ */
   #page-home section:not(.hero) h2,
@@ -590,13 +595,8 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="scrapbook">
-            <div class="torn t1"><img src="images/group-photo.jpg" alt="SCHO members gathered together after a general meeting"></div>
-            <div class="torn t2"><img src="images/team-photo.jpg" alt="SCHO members staffing an outreach information booth"></div>
-            <div class="torn t3"><img src="images/event-photo.jpg" alt="SCHO members tabling with informational flyers about health insurance"></div>
-            <div class="torn t4"><img src="images/club-photo.jpg" alt="SCHO members gathered in a lecture hall in front of the SCHO slide"></div>
-            <svg class="sticker-star" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 7.2L22 11l-6.5 4.3L17 23l-5-4.2L7 23l1.5-7.7L2 11l7.1-2.8z"/></svg>
-            <div class="tape">SCHO &middot; Est. 2019</div>
+          <div class="hero-art">
+            <img src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
           </div>
           <div class="info-card">
             <div>
