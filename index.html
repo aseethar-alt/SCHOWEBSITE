@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SCHO at USC</title>
 <style>
+@font-face { font-family:'Montserrat'; src:url(fonts/Montserrat-Bold.woff2) format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
 @font-face { font-family:'Satoshi'; src:url(fonts/Satoshi-Medium.woff2) format('woff2'); font-weight:500; font-style:normal; font-display:swap; }
 @font-face { font-family:'Satoshi'; src:url(fonts/Satoshi-Black.woff2) format('woff2'); font-weight:900; font-style:normal; font-display:swap; }
 @font-face { font-family:'Satoshi'; src:url(fonts/Satoshi-BlackItalic.woff2) format('woff2'); font-weight:900; font-style:italic; font-display:swap; }
@@ -536,6 +537,17 @@
   .tag-k{ color:var(--ink); }
   .tag-v{ color:var(--gold); }
   @media (max-width: 760px){ .hero-tag{ position:static; transform:rotate(-4deg); display:inline-block; margin-top:10px; } }
+  .hero-name{ font-family:"Montserrat","Pally",sans-serif; font-weight:700; color:var(--cardinal); text-transform:uppercase; line-height:1; letter-spacing:.01em; margin:0 0 clamp(14px, 1.8vw, 24px); font-size:clamp(1.6rem, 3.62vw, 3.55rem); white-space:nowrap; }
+  .hero-name-fit{ display:inline-block; }
+  @media (max-width: 760px){ .hero-name{ white-space:normal; font-size:clamp(1.5rem, 7.4vw, 2.6rem); } .hero-name-fit > span{ display:block; white-space:nowrap; } }
+  .hero-photo{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:16 / 8.5; background:var(--ink); }
+  .hero-photo img{ display:block; width:100%; height:100%; object-fit:cover; object-position:center 60%; }
+  .hero-photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,10,.78) 0%, rgba(20,10,10,.35) 38%, rgba(20,10,10,0) 62%); pointer-events:none; }
+  .hero-photo-text{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(18px, 3vw, 44px); color:#fff; }
+  .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; color:#fff; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
+  .hero-stack .hero-photo h1 em{ color:#FFC93C; }
+  .hero-est{ margin:.5em 0 0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(.95rem, 1.4vw, 1.25rem); color:#fff; }
+  @media (max-width: 760px){ .hero-photo{ aspect-ratio:4 / 5; } .hero-photo img{ object-position:center 55%; } }
   .hero-stack .statband{ margin-top:0; background:transparent; }
   .statband.stat-3 .wrap{ display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(12px, 2vw, 28px); padding-block:6px clamp(36px, 4.5vw, 60px); }
   .statband.stat-3 .stat{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3em; aspect-ratio:1; max-width:210px; width:100%; margin-inline:auto; padding:16px; border:none; border-radius:50%; background:var(--ink); box-shadow:0 18px 32px -20px hsl(var(--shadow) / .55); }
@@ -622,13 +634,14 @@
   <div class="page active" data-route="home" id="page-home">
     <section class="hero hero-stack">
       <div class="hero-panel">
-      <div class="hero-top">
-        <div class="hero-mark-wrap">
-          <img class="hero-mark" src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
-          <p class="hero-tag"><span class="tag-k">Established 2019</span> <span class="tag-v">@ USC</span></p>
+      <p class="hero-name" aria-label="Southern California Healthcare Outreach"><span class="hero-name-fit"><span>Southern California</span> <span>Healthcare Outreach</span></span></p>
+      <div class="hero-photo">
+        <img src="images/hero-group.jpg" alt="SCHO members together at a general meeting" width="2000" height="1225" fetchpriority="high">
+        <div class="hero-photo-text">
+          <h1>Making healthcare <em>accessible</em> for everyone</h1>
+          <p class="hero-est">Established 2019 @ USC</p>
         </div>
       </div>
-      <h1>Making healthcare <em>accessible</em> for everyone</h1>
       </div>
       <div class="who-band bleed">
         <div class="bleed-inner who-grid">
@@ -1535,6 +1548,7 @@
       }
       if (render.ran) { var m = document.getElementById('main'); if (m) m.focus({ preventScroll: true }); }
       render.ran = true;
+      if (typeof fitHeroName === "function") fitHeroName();
     }
 
     window.addEventListener('hashchange', render);
@@ -1721,4 +1735,17 @@
       show('');
     });
   })();
+
+  // Stretch the organization name so it spans the full content width.
+  function fitHeroName() {
+    var el = document.querySelector('.hero-name'), fit = el && el.querySelector('.hero-name-fit');
+    if (!fit) return;
+    el.style.fontSize = '';
+    var base = parseFloat(getComputedStyle(el).fontSize);
+    var w = fit.getBoundingClientRect().width, avail = el.clientWidth;
+    if (w > 0 && avail > 0) el.style.fontSize = (base * avail / w * 0.995) + 'px';
+  }
+  window.addEventListener('resize', fitHeroName);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeroName);
+  fitHeroName();
 </script>
