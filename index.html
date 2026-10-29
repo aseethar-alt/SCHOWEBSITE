@@ -470,7 +470,7 @@
   .members-home{ position:absolute; top:clamp(16px, 2.4vw, 32px); left:clamp(16px, 4vw, 80px); color:#fff; font-weight:700; text-decoration:none; opacity:.85; }
   .members-home:hover{ opacity:1; text-decoration:underline; }
   .members-inner{ width:min(640px, 100%); padding:clamp(40px, 6vw, 80px) 20px; }
-  .members-lock{ width:64px; height:64px; margin:0 auto 22px; border:2px solid #fff; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .members-logo{ display:block; width:clamp(200px, 22vw, 320px); height:auto; margin:0 auto 22px; }
   #page-members .members-hero h2{ color:#fff; font-size:clamp(1.9rem, 3.4vw, 2.8rem); line-height:1.15; }
   .members-hero p{ margin-top:.8em; color:rgba(255,255,255,.9); font-size:clamp(.95rem, 1.1vw, 1.1rem); }
   .members-hero form{ display:flex; flex-direction:column; gap:14px; margin-top:28px; }
@@ -1478,7 +1478,7 @@
       <a class="members-home" href="#home" data-route-link>&larr; Back to home</a>
       <div class="members-inner">
         <div id="membersLocked">
-          <div class="members-lock"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <img class="members-logo" src="images/logo-white.png" alt="Southern California Healthcare Outreach" width="800" height="447">
           <h2>SCHO Members Only Drive</h2>
           <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
           <form id="membersForm">
