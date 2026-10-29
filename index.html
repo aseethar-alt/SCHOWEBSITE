@@ -509,10 +509,6 @@
     .hero-grid{ row-gap:16px; }
     .hero-visual{ display:contents; }
     .hero-grid{ row-gap:28px; }
-    .hero-grid{ grid-template-columns: .95fr 1.05fr; }
-    .hero-copy{ grid-column:2; grid-row:1; align-self:end; }
-    .hero-art{ grid-column:1; grid-row:1 / span 2; align-self:center; }
-    .info-card{ grid-column:2; grid-row:2; align-self:start; }
   }
 
   @media (min-width: 941px) and (max-height: 780px){
@@ -522,6 +518,22 @@
     .hero .lede{ font-size:1rem; margin-top:.8em; }
     .hero .cta-row{ margin-top:1.3em; }
   }
+
+  /* ============ STACKED HERO ============ */
+  .hero-stack{ text-align:center; }
+  .hero-stack .hero-mark{ display:block; margin:0 auto; height:clamp(220px, 32vw, 500px); width:auto; max-width:100%; }
+  .hero-stack h1{ margin-top:clamp(20px, 2.6vw, 36px); font-size:clamp(2rem, 4.2vw, 3.9rem); }
+  @media (min-width: 761px){ .hero-stack h1{ white-space:nowrap; } }
+  .hero-lower{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(28px, 4vw, 56px); align-items:center; margin-top:clamp(36px, 5vw, 64px); text-align:left; }
+  .hero-lower .lede{ margin-top:0; }
+  .hero-lower .info-card{ margin-top:clamp(22px, 2.6vw, 32px); }
+  .hero-stats{ display:grid; grid-template-columns:repeat(2, 1fr); background:var(--cardinal); border-radius:22px; overflow:hidden; box-shadow:0 30px 60px -32px hsl(var(--shadow) / .5); }
+  .hero-stats .stat{ padding:clamp(20px, 2.4vw, 30px) 14px; text-align:center; border-right:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(255,255,255,.16); }
+  .hero-stats .stat:nth-child(2n){ border-right:none; }
+  .hero-stats .stat:last-child{ grid-column:1 / -1; border-right:none; border-bottom:none; }
+  .hero-stats .num{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:clamp(1.6rem, 2.6vw, 2.1rem); color:#FFC93C; }
+  .hero-stats .lbl{ font-size:.76rem; font-weight:500; color:#F4DEE0; margin-top:.4em; text-transform:uppercase; letter-spacing:.05em; }
+  @media (max-width: 940px){ .hero-lower{ grid-template-columns:1fr; } }
 
   /* ============ HERO LOGO ART ============ */
   .hero-art{ display:flex; align-items:center; justify-content:center; width:100%; }
@@ -584,19 +596,15 @@
 
   <!-- ============ PAGE: HOME ============ -->
   <div class="page active" data-route="home" id="page-home">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1>Making healthcare <em>accessible</em> for everyone</h1>
+    <section class="hero hero-stack">
+      <img class="hero-mark" src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
+      <h1>Making healthcare <em>accessible</em> for everyone</h1>
+      <div class="hero-lower">
+        <div class="hero-lower-copy">
           <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
           <div class="cta-row">
             <a href="#about" class="btn" data-route-link>Our Mission</a>
             <a href="#resources" class="btn outline" data-route-link>Learn More</a>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-art">
-            <img src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach logo">
           </div>
           <div class="info-card">
             <div>
@@ -604,6 +612,13 @@
               <p>Our trained members can directly sign people up for Covered California insurance plans!</p>
             </div>
           </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">2019</div><div class="lbl">Year Founded</div></div>
+          <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
+          <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
+          <div class="stat"><div class="num">100%</div><div class="lbl">Student-Run</div></div>
+          <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
         </div>
       </div>
     </section>
