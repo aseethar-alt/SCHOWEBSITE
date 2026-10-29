@@ -115,14 +115,14 @@
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
   .nav-row{ max-width:1540px; margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:90px; height:90px; flex:none; padding-top:4px; }
-  .brand .logo{ height:50px; width:auto; display:block; flex:none; margin-bottom:-3px; }
-  .brand .word{ white-space:nowrap; font-weight:700; font-size:.8rem; line-height:1; color:var(--cardinal); letter-spacing:.12em; }
-  nav.links{ display:flex; align-items:center; gap: clamp(14px, 2vw, 28px); margin-left:clamp(12px, 2vw, 28px); margin-right:auto; }
-  nav.links a{ white-space:nowrap; font-size:1.12rem; font-weight:600; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
+  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:128px; height:128px; flex:none; padding-top:4px; }
+  .brand .logo{ height:76px; width:auto; display:block; flex:none; margin-bottom:-3px; }
+  .brand .word{ white-space:nowrap; font-weight:700; font-size:1.1rem; line-height:1; color:var(--cardinal); letter-spacing:.12em; }
+  nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:clamp(16px, 2.4vw, 40px); margin-right:auto; }
+  nav.links a{ white-space:nowrap; font-size:1.5rem; font-weight:600; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
   .nav-drop{ position:relative; }
-  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:1.12rem; font-weight:600; color:var(--ink); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
+  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:1.5rem; font-weight:600; color:var(--ink); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
   .drop-trigger svg{ transition:transform .2s ease; }
   .drop-trigger:hover, .nav-drop.active .drop-trigger{ color:var(--cardinal); }
   .drop-menu{ position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:none; z-index:70; }
@@ -132,11 +132,14 @@
   .drop-menu a:last-child{ margin-bottom:6px; }
   .nav-drop:hover .drop-menu, .nav-drop.open .drop-menu{ display:block; }
   .nav-drop:hover .drop-trigger svg, .nav-drop.open .drop-trigger svg{ transform:rotate(180deg); }
+  .btn.members-btn{ font-size:1.05rem; padding:.75em 1.4em; border-radius:12px; }
   .nav-actions{ display:flex; align-items:center; gap:16px; white-space:nowrap; margin-left:auto; }
   .menu-toggle{ display:none; background:none; border:1.5px solid var(--border); border-radius:10px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); }
   #mobileNav{ display:none; flex-direction:column; gap:2px; padding-top:16px; }
   #mobileNav a{ padding:.7em .2em; font-weight:500; color:var(--ink); text-decoration:none; border-top:1px solid var(--border); cursor:pointer; }
 
+  @media (max-width: 1180px){ nav.links{ display:none; } .menu-toggle{ display:flex; } #mobileNav.open{ display:flex; } }
+  @media (max-width: 600px){ .brand{ width:90px; height:90px; } .brand .logo{ height:50px; } .brand .word{ font-size:.8rem; } .btn.members-btn{ font-size:.82rem; padding:.6em 1.1em; border-radius:10px; } }
   main{ max-width:1540px; margin-inline:auto; }
 
   /* ============ PAGE ROUTING ============ */
@@ -599,7 +602,7 @@
     <nav class="links" id="tabnav">
       <a href="#home" data-route-link>Home</a>
       <div class="nav-drop" id="aboutDrop">
-        <button type="button" class="drop-trigger" aria-haspopup="true" aria-expanded="false">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button type="button" class="drop-trigger" aria-haspopup="true" aria-expanded="false">About <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="drop-menu">
           <a href="#about" data-route-link>About Us</a>
           <a href="#board" data-route-link>Executive Board</a>
