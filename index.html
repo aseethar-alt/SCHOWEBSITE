@@ -119,11 +119,11 @@
   .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:calc(var(--logo-h) * 1.7); height:calc(var(--logo-h) + 46px); flex:none; padding-top:4px; }
   .brand .logo{ height:var(--logo-h); width:auto; display:block; flex:none; margin-bottom:-3px; }
   .brand .word{ white-space:nowrap; font-weight:700; font-size:clamp(1rem, .95vw, 1.4rem); line-height:1; color:var(--cardinal); letter-spacing:.12em; }
-  nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:clamp(16px, 2.4vw, 40px); margin-right:auto; }
-  nav.links a{ white-space:nowrap; font-size:clamp(1.32rem, 1.85vw, 2.1rem); font-weight:600; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
+  nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:auto; margin-right:clamp(16px, 2.4vw, 40px); }
+  nav.links a{ white-space:nowrap; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:600; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
   .nav-drop{ position:relative; }
-  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:clamp(1.32rem, 1.85vw, 2.1rem); font-weight:600; color:var(--ink); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
+  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:600; color:var(--ink); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
   .drop-trigger svg{ transition:transform .2s ease; }
   .drop-trigger:hover, .nav-drop.active .drop-trigger{ color:var(--cardinal); }
   .drop-menu{ position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:none; z-index:70; }
@@ -139,6 +139,7 @@
   #mobileNav{ display:none; flex-direction:column; gap:2px; padding-top:16px; }
   #mobileNav a{ padding:.7em .2em; font-weight:500; color:var(--ink); text-decoration:none; border-top:1px solid var(--border); cursor:pointer; }
 
+  @media (min-width: 1081px){ .nav-actions{ margin-left:0; } }
   @media (max-width: 1080px){ nav.links{ display:none; } .menu-toggle{ display:flex; } #mobileNav.open{ display:flex; } }
   @media (max-width: 600px){ .brand{ width:90px; height:90px; } .brand .logo{ height:50px; } .brand .word{ font-size:.8rem; } .btn.members-btn{ font-size:.82rem; padding:.6em 1.1em; border-radius:10px; } }
   main{ max-width:1920px; margin-inline:auto; }
@@ -551,10 +552,11 @@
   .hero-photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,10,.78) 0%, rgba(20,10,10,.35) 38%, rgba(20,10,10,0) 62%); pointer-events:none; }
   .hero-photo .hero-name{ position:absolute; top:clamp(6px, .9vw, 14px); left:clamp(18px, 3vw, 44px); right:clamp(18px, 3vw, 44px); z-index:2; margin:0; color:var(--cardinal); text-shadow:none; }
   @media (max-width: 760px){ .hero-photo .hero-name{ position:static; margin:0 0 14px; } .hero-photo{ overflow:visible; background:none; } .hero-photo img, .hero-photo::after{ border-radius:inherit; } }
-  .hero-photo .hero-name-fit > span:first-child{ color:inherit; }
+  .hero-photo .hero-name-fit > span:first-child{ color:#FFC93C; }
   .hero-photo-text{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(18px, 3vw, 44px); color:#fff; }
   .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; color:#fff; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
   .hero-stack .hero-photo h1 em{ color:#FFC93C; }
+  .hero-stack .hero-photo h1 em::after{ background:var(--cardinal); opacity:1; }
   .hero-est{ margin:.5em 0 0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(.95rem, 1.4vw, 1.25rem); color:#fff; }
   @media (max-width: 760px){ .hero-photo{ aspect-ratio:4 / 5; } .hero-photo img{ object-position:center top; } }
   .hero-stack .statband{ margin-top:0; background:transparent; }
