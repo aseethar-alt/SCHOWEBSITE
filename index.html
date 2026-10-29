@@ -463,14 +463,24 @@
   #form-status{ font-size:.85rem; color:var(--ink-soft); min-height:1.2em; }
 
   /* ============ MEMBERS ============ */
-  #page-members .section-head{ margin-inline:auto; text-align:center; }
-  .members-card{ margin-inline:auto; max-width:520px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:clamp(26px,4vw,40px); box-shadow:0 18px 36px -28px hsl(var(--shadow)/.4); }
-  .members-card .icon-badge{ margin-bottom:16px; }
-  .members-card h3{ font-size:1.3rem; }
-  .members-card > p{ margin-top:.5em; color:var(--ink-soft); font-size:.92rem; }
-  .members-card form{ display:flex; flex-direction:column; gap:16px; margin-top:22px; }
-  #login-status{ font-size:.85rem; color:var(--cardinal); min-height:1.2em; }
-  .members-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  body:has(#page-members.active) footer, body:has(#page-members.active) .foot-bottom, body:has(#page-members.active) header.topbar{ display:none; }
+  .members-hero{ padding:0; aspect-ratio:2000 / 1333; position:relative; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(10,6,6,.18), rgba(10,6,6,.18)), url(images/members-bg.jpg) center / cover no-repeat; color:#fff; text-align:center; }
+  @media (max-width: 760px){ .members-hero{ aspect-ratio:auto; min-height:100svh; } }
+  .members-home{ position:absolute; top:clamp(16px, 2.4vw, 32px); left:clamp(16px, 4vw, 80px); color:#fff; font-weight:700; text-decoration:none; opacity:.85; }
+  .members-home:hover{ opacity:1; text-decoration:underline; }
+  .members-inner{ width:min(640px, 100%); padding:clamp(40px, 6vw, 80px) 20px; }
+  .members-lock{ width:64px; height:64px; margin:0 auto 22px; border:2px solid #fff; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  #page-members .members-hero h2{ color:#fff; font-size:clamp(1.9rem, 3.4vw, 2.8rem); line-height:1.15; }
+  .members-hero p{ margin-top:.8em; color:rgba(255,255,255,.9); font-size:clamp(.95rem, 1.1vw, 1.1rem); }
+  .members-hero form{ display:flex; flex-direction:column; gap:14px; margin-top:28px; }
+  .members-hero input{ font-family:"Pally",sans-serif; font-size:1rem; padding:.9em 1.1em; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.85); border-radius:12px; color:#fff; }
+  .members-hero input::placeholder{ color:rgba(255,255,255,.75); }
+  .members-hero input:focus{ outline:none; border-color:#fff; background:rgba(255,255,255,.16); }
+  .members-btn-login{ font-family:"Pally",sans-serif; font-weight:700; font-size:1rem; padding:.9em 1.4em; border-radius:12px; border:1.5px solid #fff; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; text-decoration:none; display:inline-flex; justify-content:center; }
+  .members-btn-login:hover{ background:rgba(255,255,255,.2); }
+  #login-status{ font-size:.9rem; color:#fff; min-height:1.2em; }
+  .members-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:22px; }
 
 
   footer{ max-width:1920px; margin-inline:auto; padding-block:56px 40px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; border-top:1px solid var(--border); margin-top:20px; }
@@ -1464,32 +1474,30 @@
 
   <!-- ============ PAGE: MEMBERS ONLY ============ -->
   <div class="page" data-route="members" id="page-members">
-    <section>
-      <div class="section-head">
-        <h2>The SCHO shared drive</h2>
-        <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
-      </div>
-
-      <div class="members-card" id="membersLocked">
-        <div class="icon-badge c1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-        <h3>Member login</h3>
-        <form id="membersForm">
-          <div class="field"><label for="m-user">Username</label><input id="m-user" name="username" type="text" autocomplete="username" autocapitalize="none" required></div>
-          <div class="field"><label for="m-pass">Password</label><input id="m-pass" name="password" type="password" autocomplete="current-password" required></div>
-          <div style="display:flex; align-items:center; gap:16px; margin-top:4px;">
-            <button type="submit" class="btn">Log In</button>
+    <section class="members-hero bleed">
+      <a class="members-home" href="#home" data-route-link>&larr; Back to home</a>
+      <div class="members-inner">
+        <div id="membersLocked">
+          <div class="members-lock"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <h2>SCHO Members Only Drive</h2>
+          <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
+          <form id="membersForm">
+            <label class="sr-only" for="m-user">Username</label>
+            <input id="m-user" name="username" type="text" placeholder="Username" autocomplete="username" autocapitalize="none" required>
+            <label class="sr-only" for="m-pass">Password</label>
+            <input id="m-pass" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+            <button type="submit" class="members-btn-login">Log In</button>
             <span id="login-status" role="status"></span>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
 
-      <div class="members-card" id="membersUnlocked" hidden>
-        <div class="icon-badge c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <h3>Welcome back!</h3>
-        <p>Meeting slides, flyers, outreach materials and more are all in the shared drive.</p>
-        <div class="members-actions">
-          <a class="btn" id="driveLink" href="#" target="_blank" rel="noopener noreferrer">Open the Shared Drive &nearr;</a>
-          <button type="button" class="btn outline" id="membersLogout">Log Out</button>
+        <div id="membersUnlocked" hidden>
+          <h2>Welcome back!</h2>
+          <p>Meeting slides, flyers, outreach materials and more are all in the shared drive.</p>
+          <div class="members-actions">
+            <a class="members-btn-login" id="driveLink" href="#" target="_blank" rel="noopener noreferrer">Open the Shared Drive &nearr;</a>
+            <button type="button" class="members-btn-login" id="membersLogout">Log Out</button>
+          </div>
         </div>
       </div>
     </section>
