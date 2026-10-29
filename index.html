@@ -544,9 +544,12 @@
   .hero-name-fit{ display:inline-block; }
   .hero-name-fit > span:first-child{ color:#B8860B; }
   @media (max-width: 760px){ .hero-name{ white-space:normal; font-size:clamp(1.5rem, 7.4vw, 2.6rem); } .hero-name-fit > span{ display:block; white-space:nowrap; } }
-  .hero-photo{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:2000 / 885; background:var(--ink); }
+  .hero-photo{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:2000 / 829; background:var(--ink); }
   .hero-photo img{ display:block; width:100%; height:100%; object-fit:cover; object-position:center top; }
   .hero-photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,10,.78) 0%, rgba(20,10,10,.35) 38%, rgba(20,10,10,0) 62%); pointer-events:none; }
+  .hero-photo .hero-name{ position:absolute; top:clamp(6px, .9vw, 14px); left:clamp(18px, 3vw, 44px); right:clamp(18px, 3vw, 44px); z-index:2; margin:0; color:var(--cardinal); text-shadow:none; }
+  @media (max-width: 760px){ .hero-photo .hero-name{ position:static; margin:0 0 14px; } .hero-photo{ overflow:visible; background:none; } .hero-photo img, .hero-photo::after{ border-radius:inherit; } }
+  .hero-photo .hero-name-fit > span:first-child{ color:#FFC93C; }
   .hero-photo-text{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(18px, 3vw, 44px); color:#fff; }
   .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; color:#fff; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
   .hero-stack .hero-photo h1 em{ color:#FFC93C; }
@@ -638,9 +641,9 @@
   <div class="page active" data-route="home" id="page-home">
     <section class="hero hero-stack">
       <div class="hero-panel">
-      <p class="hero-name" aria-label="Southern California Healthcare Outreach"><span class="hero-name-fit"><span>Southern California</span> <span>Healthcare Outreach</span></span></p>
       <div class="hero-photo">
-        <img src="images/hero-group.jpg" alt="SCHO members together at a general meeting" width="2000" height="885" fetchpriority="high">
+        <p class="hero-name" aria-label="Southern California Healthcare Outreach"><span class="hero-name-fit"><span>Southern California</span> <span>Healthcare Outreach</span></span></p>
+        <img src="images/hero-group.jpg" alt="SCHO members together at a general meeting" width="2000" height="829" fetchpriority="high">
         <div class="hero-photo-text">
           <h1>Making healthcare <em>accessible</em> for everyone</h1>
           <p class="hero-est">Established 2019 @ USC</p>
