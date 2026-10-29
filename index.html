@@ -41,7 +41,7 @@
     --ink-soft: #6B615C;
     --ink-faint: #9C9089;
     --cardinal: #9D2235;
-    --cardinal-deep: #7A1A29;
+    --cardinal-deep: #9D2235;
     --cardinal-ink: #FFFFFF;
     --cardinal-tint: #F7E4E7;
     --gold: #E8A400;
@@ -106,13 +106,24 @@
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
   .nav-row{ max-width:1440px; margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand{ display:flex; align-items:center; gap:.6em; text-decoration:none; }
-  .brand .logo{ height:68px; width:auto; display:block; flex:none; }
-  .brand .word{ font-weight:700; font-size:.92rem; color:var(--ink-soft); letter-spacing:.02em; }
-  nav.links{ display:flex; align-items:center; gap: 28px; }
-  nav.links a{ font-size:1.12rem; font-weight:600; color:var(--ink-soft); text-decoration:none; transition:color .15s ease; cursor:pointer; }
+  .brand{ display:flex; flex-direction:column; align-items:center; gap:2px; text-decoration:none; }
+  .brand .logo{ height:58px; width:auto; display:block; flex:none; }
+  .brand .word{ white-space:nowrap; font-weight:700; font-size:.8rem; line-height:1; color:var(--cardinal); letter-spacing:.12em; }
+  nav.links{ display:flex; align-items:center; gap: clamp(14px, 2vw, 28px); }
+  nav.links a{ white-space:nowrap; font-size:1.12rem; font-weight:600; color:var(--ink-soft); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
-  .nav-actions{ display:flex; align-items:center; gap:16px; }
+  .nav-drop{ position:relative; }
+  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:1.12rem; font-weight:600; color:var(--ink-soft); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
+  .drop-trigger svg{ transition:transform .2s ease; }
+  .drop-trigger:hover, .nav-drop.active .drop-trigger{ color:var(--cardinal); }
+  .drop-menu{ position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:none; z-index:70; }
+  .drop-menu::before{ content:""; position:absolute; inset:12px 0 0; background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:0 18px 34px -18px hsl(var(--shadow)/.35); }
+  .drop-menu a{ position:relative; display:block; padding:.65em 1.2em; font-size:1rem !important; }
+  .drop-menu a:first-child{ margin-top:6px; }
+  .drop-menu a:last-child{ margin-bottom:6px; }
+  .nav-drop:hover .drop-menu, .nav-drop.open .drop-menu{ display:block; }
+  .nav-drop:hover .drop-trigger svg, .nav-drop.open .drop-trigger svg{ transform:rotate(180deg); }
+  .nav-actions{ display:flex; align-items:center; gap:16px; white-space:nowrap; }
   .menu-toggle{ display:none; background:none; border:1.5px solid var(--border); border-radius:10px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); }
   #mobileNav{ display:none; flex-direction:column; gap:2px; padding-top:16px; }
   #mobileNav a{ padding:.7em .2em; font-weight:500; color:var(--ink-soft); text-decoration:none; border-top:1px solid var(--border); cursor:pointer; }
@@ -191,7 +202,7 @@
   .info-card p{ font-size:.82rem; color:var(--ink-soft); margin-top:.25em; }
 
   /* ============ STAT BAND ============ */
-  .statband{ background:#852A34; color:#fff; }
+  .statband{ background:var(--cardinal); color:#fff; }
   .statband .wrap{ display:grid; grid-template-columns:repeat(5,1fr); }
   .statband .stat{ padding: 34px 18px; text-align:center; border-left:1px solid rgba(255,255,255,.16); }
   .statband .stat:first-child{ border-left:none; }
@@ -225,15 +236,16 @@
   /* ============ STORY PANEL ============ */
   .story{ display:grid; grid-template-columns: .9fr 1.1fr; gap:clamp(28px,4vw,56px); align-items:center; }
   .story-visual{
-    aspect-ratio:4/3; border-radius:20px; background:linear-gradient(150deg, var(--cardinal), color-mix(in srgb, var(--cardinal) 75%, black));
-    position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding: 30px;
+    aspect-ratio:4/3; border-radius:20px; background:var(--card); border:1px solid var(--border); box-shadow:0 18px 36px -28px hsl(var(--shadow)/.4);
+    position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--ink); padding: 30px;
   }
   .story-visual .grid-overlay{ position:absolute; inset:0; opacity:.18;
     background-image: repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,255,255,.5) 38px, rgba(255,255,255,.5) 39px), repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,.5) 38px, rgba(255,255,255,.5) 39px); }
   .story-visual .content{ position:relative; z-index:1; }
   .story-visual .content svg{ width:56px; height:56px; margin-bottom:14px; }
   .story-visual h4{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.5rem; }
-  .story-visual p{ opacity:.85; margin-top:.3em; font-size:.9rem; }
+  .story-visual p{ margin-top:14px; font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--cardinal); }
+  .story-visual .partner-logo{ display:block; width:auto; height:clamp(150px, 20vw, 230px); margin:0 auto; }
   .story-text h3{ font-size:clamp(1.4rem,2.6vw,1.85rem); line-height:1.3; }
   .story-text p{ margin-top:1em; color:var(--ink-soft); }
   .story-text .btn{ margin-top:1.4em; }
@@ -258,17 +270,21 @@
   .mission-card h2{ font-size:clamp(1.7rem,3vw,2.3rem); }
   .mission-card p{ margin-top:16px; color:var(--ink-soft); font-size:.98rem; line-height:1.75; }
 
-  .board-head{ display:flex; margin-bottom:30px; }
-  .board-pill{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.5rem; background:var(--muted); color:var(--ink); padding:.4em 1em; border-radius:999px; }
+  .board-photo{ position:relative; margin:0 0 30px; border-radius:26px; overflow:hidden; }
+  .board-photo img{ display:block; width:100%; height:clamp(300px, 46vw, 640px); object-fit:cover; object-position:center 82%; }
+  @media (max-width: 560px){ .board-photo img{ height:420px; object-position:58% 85%; } .board-photo figcaption{ font-size:1.5rem; padding:18px; } }
+  .board-photo::after{ content:""; position:absolute; inset:auto 0 0 0; height:45%; background:linear-gradient(180deg, transparent, rgba(10,8,6,.72)); pointer-events:none; }
+  .board-photo figcaption{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(20px,4vw,44px); color:#fff; text-align:center; font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:clamp(1.7rem, 4vw, 3rem); line-height:1.1; text-shadow:0 2px 12px rgba(0,0,0,.35); }
 
   .board-list{ display:flex; flex-direction:column; gap:18px; }
-  .person-row{ display:flex; gap:24px; align-items:flex-start; background:var(--muted); border-radius:18px; padding: clamp(20px,3vw,28px); transition:transform .2s ease, box-shadow .2s ease; }
+  .person-row{ display:flex; gap:44px; align-items:center; background:var(--muted); border-radius:18px; padding: clamp(22px,3vw,34px); transition:transform .2s ease, box-shadow .2s ease; }
   .person-row:hover{ transform:translateY(-2px); box-shadow:0 16px 28px -20px hsl(var(--shadow)/.35); }
-  .avatar{ width:64px; height:64px; border-radius:50%; background:var(--cardinal); color:var(--cardinal-ink); display:flex; align-items:center; justify-content:center; font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.3rem; flex:none; }
-  .person-name{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:1.2rem; }
-  .person-role{ font-size:.84rem; font-weight:700; color:var(--cardinal); margin-top:.15em; }
+  img.avatar{ object-fit:cover; background:var(--muted); }
+  .avatar{ width:240px; height:240px; border-radius:50%; background:var(--cardinal); color:var(--cardinal-ink); display:flex; align-items:center; justify-content:center; font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:3.4rem; flex:none; }
+  .person-name{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:2.2rem; line-height:1.2; }
+  .person-role{ font-size:1.3rem; font-weight:700; color:var(--cardinal); margin-top:.25em; }
   .person-meta{ font-size:.72rem; color:var(--ink-faint); letter-spacing:.03em; margin-top:.5em; }
-  .person-bio, .person-quote{ font-size:.92rem; color:var(--ink-soft); margin-top:.6em; }
+  .person-bio, .person-quote{ font-size:1.15rem; color:var(--ink-soft); margin-top:.6em; }
   .person-quote{ font-family:'Alpino','Pally',sans-serif; font-weight:400; font-style:normal; color:var(--ink); border-left:2px solid var(--gold); padding-left:.8em; }
 
   /* ============ TIMELINE (Events) ============ */
@@ -323,7 +339,9 @@
   .res-card h3{ font-family:"Pally",sans-serif; font-weight:700; font-size:1.02rem; }
   .res-card ul{ list-style:none; margin:.6em 0 0; padding:0; display:flex; flex-direction:column; gap:.4em; }
   .res-card li{ font-size:.87rem; color:var(--ink-soft); padding-left:1em; position:relative; }
-  .res-card li::before{ content:"\2013"; position:absolute; left:0; color:var(--gold); }
+  .res-card li::before{ content:"\2022"; position:absolute; left:0; color:var(--gold); }
+  .res-card li a{ color:var(--cardinal); text-decoration:none; font-weight:500; }
+  .res-card li a:hover{ text-decoration:underline; text-underline-offset:3px; }
   .res-card .note{ font-size:.8rem; color:var(--ink-faint); font-style:italic; margin-top:.6em; }
   .navigator{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; background:linear-gradient(135deg,var(--cardinal),var(--cardinal-deep)); color:#fff; border-radius:20px; padding:clamp(22px,3vw,32px) clamp(24px,3vw,36px); margin-bottom:28px; box-shadow:0 24px 44px -24px hsl(var(--shadow)/.5); }
   .navigator-icon{ width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; flex:none; color:var(--gold); }
@@ -355,6 +373,53 @@
   .privacy-note{ font-size:.82rem; color:var(--ink-faint); font-style:italic; }
   .enroll-cta{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
 
+  /* ============ GUIDE PAGES ============ */
+  .back-link{ display:inline-flex; align-items:center; gap:.4em; font-size:.9rem; font-weight:700; color:var(--cardinal); text-decoration:none; cursor:pointer; }
+  .back-link:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .guide{ max-width:760px; margin-top:28px; }
+  .guide h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); }
+  .guide p{ margin-top:1em; color:var(--ink-soft); font-size:1.02rem; line-height:1.75; }
+  .guide strong{ color:var(--ink); }
+  .guide h3{ font-family:"Pally",sans-serif; font-weight:700; font-size:1.1rem; margin-top:2em; }
+  .guide-points{ list-style:none; margin:1em 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
+  .guide-points li{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px 24px; }
+  .guide-points li > strong{ font-size:1.05rem; }
+  .guide-points li p{ margin-top:.4em; }
+  .guide a{ color:var(--cardinal); font-weight:700; }
+  .guide .soon{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 26px; margin-top:24px; }
+  .guide .soon p{ margin-top:0; }
+
+  .guide-list{ margin:.8em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
+  .guide-list li::marker{ color:var(--gold); }
+  .guide-list .guide-list{ margin-top:.4em; list-style:circle; }
+  .guide-links{ list-style:none; margin:1.4em 0 0; padding:0; display:flex; flex-direction:column; gap:.5em; }
+  .guide-next{ margin-top:2.2em; padding-top:1.4em; border-top:1px solid var(--border); }
+  .guide-next h3{ margin-top:1em; }
+  .guide-next h3:first-child{ margin-top:0; }
+  .guide-next ul{ margin:.6em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
+  .guide-next li::marker{ color:var(--gold); }
+  .guide .guide-btn{ margin-top:1.2em; color:var(--cardinal-ink); }
+  .plan-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:1em; }
+  .plan-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; flex-direction:column; align-items:flex-start; gap:.4em; }
+  .plan-card b{ font-family:'Alpino','Pally',sans-serif; font-size:1.15rem; color:var(--ink); }
+  .guide .plan-card p{ margin:0; font-size:.88rem; line-height:1.55; flex:1; }
+  .guide .plan-card .btn{ margin-top:.8em; color:var(--cardinal-ink); }
+  .plan-soon{ margin-top:.8em; font-size:.8rem; font-weight:700; color:var(--ink-faint); padding:.6em 0; }
+  @media (max-width: 760px){ .plan-cards{ grid-template-columns:1fr; } }
+  .gloss{ list-style:none; counter-reset:g; margin:1.6em 0 0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  .gloss li.flash{ border-color:var(--cardinal); box-shadow:0 0 0 3px var(--cardinal-tint); }
+  .gloss li{ counter-increment:g; scroll-margin-top:130px; transition:border-color .3s ease, box-shadow .3s ease; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px 22px; }
+  .gloss li b{ display:flex; align-items:baseline; gap:.6em; font-size:1.05rem; color:var(--ink); }
+  .gloss li b::before{ content:counter(g); font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:.9rem; color:var(--cardinal); min-width:1.4em; }
+  .guide .gloss li p{ margin-top:.45em; font-size:.95rem; line-height:1.65; padding-left:calc(1.4em + .6em); }
+  @media (max-width: 560px){ .guide .gloss li p{ padding-left:0; } }
+  .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:1em; }
+  .part{ background:var(--card); border:1px solid var(--border); border-top:4px solid var(--cardinal); border-radius:14px; padding:18px; }
+  .part b{ display:block; font-family:'Alpino','Pally',sans-serif; font-size:1.2rem; color:var(--cardinal); }
+  .part span{ display:block; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-top:.1em; }
+  .guide .part p{ font-size:.88rem; line-height:1.6; margin-top:.7em; }
+  @media (max-width: 560px){ .parts{ grid-template-columns:1fr; } }
+
   /* ============ JOIN US ============ */
   .join-box{ display:grid; grid-template-columns:1.15fr .85fr; gap:0; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
   .join-left{ background:linear-gradient(150deg,var(--cardinal),var(--cardinal-deep)); color:#fff; padding:clamp(30px,4vw,48px); }
@@ -384,13 +449,16 @@
   .social-row a:hover{ border-color:var(--cardinal); color:var(--cardinal); background:var(--cardinal-tint); }
   #form-status{ font-size:.85rem; color:var(--ink-soft); min-height:1.2em; }
 
-  /* ============ NEWSLETTER ============ */
-  .newsletter{ background:var(--dark-band); color:#F3E9E1; border-radius:24px; padding: clamp(30px,4vw,48px); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
-  .newsletter h3{ color:#fff; font-size:clamp(1.3rem,2.4vw,1.7rem); }
-  .newsletter p{ color:#C9BAB0; margin-top:.5em; font-size:.9rem; max-width:40ch; }
-  .newsletter-form{ display:flex; gap:10px; flex-wrap:wrap; }
-  .newsletter-form input{ font-family:"Pally",sans-serif; padding:.85em 1.1em; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06); color:#fff; min-width:220px; }
-  .newsletter-form input::placeholder{ color:#B7A89E; }
+  /* ============ MEMBERS ============ */
+  #page-members .section-head{ margin-inline:auto; text-align:center; }
+  .members-card{ margin-inline:auto; max-width:520px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:clamp(26px,4vw,40px); box-shadow:0 18px 36px -28px hsl(var(--shadow)/.4); }
+  .members-card .icon-badge{ margin-bottom:16px; }
+  .members-card h3{ font-size:1.3rem; }
+  .members-card > p{ margin-top:.5em; color:var(--ink-soft); font-size:.92rem; }
+  .members-card form{ display:flex; flex-direction:column; gap:16px; margin-top:22px; }
+  #login-status{ font-size:.85rem; color:var(--cardinal); min-height:1.2em; }
+  .members-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+
 
   footer{ max-width:1440px; margin-inline:auto; padding-block:56px 40px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; border-top:1px solid var(--border); margin-top:20px; }
   footer .fbrand{ display:flex; align-items:center; gap:.6em; margin-bottom:10px; text-decoration:none; }
@@ -422,12 +490,14 @@
     .statband .stat:nth-child(3){ border-left:none; }
   }
   @media (max-width: 560px){
+    .members-btn{ display:none; }
     .ag-row{ grid-template-columns:72px 1fr; }
     .ag-time{ grid-column:2; margin-top:-8px; }
     .explore-grid{ grid-template-columns:1fr; }
     .checklist{ grid-template-columns:1fr; }
     .statband .wrap{ grid-template-columns:1fr 1fr; }
-    .person-row{ flex-direction:column; align-items:flex-start; }
+    .person-row{ flex-direction:column; align-items:center; text-align:center; gap:18px; }
+    .avatar{ width:240px; height:240px; }
   }
   @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
 
@@ -458,19 +528,24 @@
   <div class="nav-row">
     <a href="#home" class="brand" data-route-link>
       <img class="logo" src="images/logo-mark.png" alt="SCHO logo">
-      <span class="word">· USC</span>
+      <span class="word">USC</span>
     </a>
     <nav class="links" id="tabnav">
       <a href="#home" data-route-link>Home</a>
-      <a href="#about" data-route-link>About</a>
+      <div class="nav-drop" id="aboutDrop">
+        <button type="button" class="drop-trigger" aria-haspopup="true" aria-expanded="false">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="drop-menu">
+          <a href="#about" data-route-link>About Us</a>
+          <a href="#board" data-route-link>Executive Board</a>
+        </div>
+      </div>
       <a href="#events" data-route-link>Events</a>
       <a href="#resources" data-route-link>Resources</a>
-      <a href="#updates" data-route-link>Updates</a>
-      <a href="#get-enrolled" data-route-link>Get Enrolled</a>
       <a href="#contact" data-route-link>Contact</a>
     </nav>
     <div class="nav-actions">
       <a href="#join" class="btn sm" data-route-link>Join Us</a>
+      <a href="#members" class="btn sm members-btn" data-route-link>Members Only</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -478,13 +553,13 @@
   </div>
   <nav id="mobileNav" class="wrap">
     <a href="#home" data-route-link>Home</a>
-    <a href="#about" data-route-link>About</a>
+    <a href="#about" data-route-link>About Us</a>
+    <a href="#board" data-route-link>Executive Board</a>
     <a href="#events" data-route-link>Events</a>
     <a href="#resources" data-route-link>Resources</a>
-    <a href="#updates" data-route-link>Updates</a>
-    <a href="#get-enrolled" data-route-link>Get Enrolled</a>
     <a href="#join" data-route-link>Join Us</a>
     <a href="#contact" data-route-link>Contact</a>
+    <a href="#members" data-route-link>Members Only</a>
   </nav>
 </header>
 
@@ -499,7 +574,8 @@
           <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
           <div class="cta-row">
             <a href="#join" class="btn" data-route-link>Get Involved</a>
-            <a href="#about" class="btn outline" data-route-link>Learn More</a>
+            <a href="#about" class="btn outline" data-route-link>Learn Our Mission</a>
+            <a href="#resources" class="btn outline" data-route-link>Learn More</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -548,7 +624,7 @@
         <div class="pillar">
           <div class="icon-badge c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>Resources &amp; Education</h3>
-          <p>We create informative flyers, infographics, and videos on Medicare, Medi-Cal, and Covered California &mdash; all available in English and Spanish to ensure accessibility for all.</p>
+          <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
         </div>
         <div class="pillar">
           <div class="icon-badge c3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
@@ -563,18 +639,14 @@
       <div class="bleed-inner">
       <div class="story reveal">
         <div class="story-visual">
-          <div class="grid-overlay"></div>
           <div class="content">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
-            <h4>Covered California</h4>
+            <img class="partner-logo" src="images/covered-california-logo.png" alt="Covered California">
             <p>Certified Enrollment Partner</p>
           </div>
         </div>
         <div class="story-text">
-          <span class="eyebrow"><span class="bar"></span>Recently</span>
-          <h3 style="margin-top:.6em;">Partnering with Covered California &amp; the Riverside Black Chamber of Commerce</h3>
-          <p>This past semester, we partnered with the Riverside Black Chamber of Commerce and Covered California to hold an information booth about healthcare at USC. The Chamber also sponsored our members in becoming Certified Enrollment Counselors, letting us sign people up for their desired health insurance plan directly on the spot.</p>
-          <a class="btn outline" href="https://www.instagram.com/schealthcareoutreach/" target="_blank" rel="noopener">See more on Instagram</a>
+          <h3>Partnering with Covered California &amp; the Riverside Black Chamber of Commerce</h3>
+          <p>In 2024, we partnered with the Riverside Black Chamber of Commerce and Covered California to hold an information booth about healthcare at USC. The Chamber also sponsored our members in becoming Certified Enrollment Counselors, letting us sign people up for their desired health insurance plan directly on the spot.</p>
         </div>
       </div>
       </div>
@@ -583,7 +655,6 @@
     <section class="sec-pink bleed">
       <div class="bleed-inner">
       <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Get Involved</span>
         <h2>There are many ways to connect</h2>
       </div>
       <div class="explore-grid reveal">
@@ -596,7 +667,7 @@
         <a class="explore-card" href="#resources" data-route-link>
           <div class="icon-badge c2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>Resources</h3>
-          <p>Health insurance, demystified &mdash; browse our guides in plain English and Spanish.</p>
+          <p>Health insurance, demystified. Browse our guides in plain English and Spanish.</p>
           <span class="go">Browse resources &rarr;</span>
         </a>
         <a class="explore-card" href="#join" data-route-link>
@@ -623,14 +694,22 @@
         <img src="images/usc-village.jpg" alt="USC campus">
         <div class="mission-card">
           <h2>Our Mission</h2>
-          <p>At SCHO, we believe health insurance information should be understandable and readily accessible to all. By providing free-of-cost educational materials and informational sessions to underinsured populations, we aim to demystify the enrollment process, help individuals and families navigate the healthcare system, and expand coverage in Los Angeles and beyond.</p>
+          <p>At SCHO, we believe health insurance information should be understandable and readily accessible to all. By providing free-of-cost educational materials and informational sessions to underinsured populations, we aim to simplify the enrollment process, help individuals and families navigate the healthcare system, and expand coverage in Los Angeles and beyond.</p>
         </div>
       </div>
+    </section>
+  </div>
 
-      <div class="board-head"><span class="board-pill">Executive Board</span></div>
+  <!-- ============ PAGE: EXECUTIVE BOARD ============ -->
+  <div class="page" data-route="board" id="page-board">
+    <section>
+      <figure class="board-photo">
+        <img src="images/board/executive-board.jpg" alt="The SCHO executive board standing together in a USC colonnade">
+        <figcaption>Meet the Executive Board</figcaption>
+      </figure>
       <div class="board-list reveal">
         <div class="person-row">
-          <div class="avatar">AF</div>
+          <img class="avatar" src="images/board/amae-fu.jpg" alt="Amae Fu">
           <div>
             <div class="person-name">Amae Fu</div>
             <div class="person-role">President</div>
@@ -638,7 +717,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">AT</div>
+          <img class="avatar" src="images/board/aran-tripathi.jpg" alt="Aran Tripathi">
           <div>
             <div class="person-name">Aran Tripathi</div>
             <div class="person-role">Vice President</div>
@@ -646,7 +725,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">AS</div>
+          <img class="avatar" src="images/board/aditya-seetharaman.jpg" alt="Aditya Seetharaman">
           <div>
             <div class="person-name">Aditya Seetharaman</div>
             <div class="person-role">Secretary</div>
@@ -654,7 +733,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">ES</div>
+          <img class="avatar" src="images/board/ella-shin.jpg" alt="Ella Shin">
           <div>
             <div class="person-name">Ella Shin</div>
             <div class="person-role">Events Director</div>
@@ -662,7 +741,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">SP</div>
+          <img class="avatar" src="images/board/sid-pillai.jpg" alt="Sid Pillai">
           <div>
             <div class="person-name">Sid Pillai</div>
             <div class="person-role">Projects Director</div>
@@ -670,7 +749,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">AB</div>
+          <img class="avatar" src="images/board/aanya-bansal.jpg" alt="Aanya Bansal">
           <div>
             <div class="person-name">Aanya Bansal</div>
             <div class="person-role">Projects Director</div>
@@ -678,7 +757,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">SO</div>
+          <img class="avatar" src="images/board/sophia-olivares.jpg" alt="Sophia Olivares">
           <div>
             <div class="person-name">Sophia Olivares</div>
             <div class="person-role">Social Director</div>
@@ -686,7 +765,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">LK</div>
+          <img class="avatar" src="images/board/lori-khatchaturian.jpg" alt="Lori Khatchaturian">
           <div>
             <div class="person-name">Lori Khatchaturian</div>
             <div class="person-role">Recruitment Director</div>
@@ -694,7 +773,7 @@
           </div>
         </div>
         <div class="person-row">
-          <div class="avatar">GS</div>
+          <img class="avatar" src="images/board/gabriela-sarabosing.jpg" alt="Gabriela Sarabosing">
           <div>
             <div class="person-name">Gabriela Sarabosing</div>
             <div class="person-role">Recruitment Director</div>
@@ -709,7 +788,6 @@
   <div class="page" data-route="events" id="page-events">
     <section>
       <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Events</span>
         <h2>Where you'll find us in LA</h2>
         <p>Our outreach schedule for the month. Stop by a table to ask about health coverage or set up an enrollment appointment.</p>
       </div>
@@ -742,9 +820,8 @@
   <div class="page" data-route="resources" id="page-resources">
     <section>
       <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Resources</span>
         <h2>Health insurance, demystified</h2>
-        <p>Whether you're signing up for the first time or comparing plans, we break down what you need to know &mdash; in plain language, in English and Spanish.</p>
+        <p>Whether you're signing up for the first time or comparing plans, we break down what you need to know in plain language, in English and Spanish.</p>
       </div>
 
       <div class="navigator">
@@ -762,11 +839,11 @@
           <div>
             <h3>Start Here</h3>
             <ul>
-              <li>Why should I get health insurance?</li>
-              <li>I want insurance &mdash; how do I get started?</li>
-              <li>When can I enroll? (Open Enrollment Period)</li>
-              <li>Staying insured while recently unemployed</li>
-              <li>I'm undocumented &mdash; what are my options? <em>(in progress)</em></li>
+              <li><a href="#why-insurance" data-route-link>Why should I get health insurance?</a></li>
+              <li><a href="#get-started" data-route-link>I want insurance. How do I get started?</a></li>
+              <li><a href="https://www.healthcare.gov/coverage-outside-open-enrollment/your-options/" target="_blank" rel="noopener noreferrer">When can I enroll?</a></li>
+              <li><a href="#unemployed" data-route-link>Staying insured while recently unemployed</a></li>
+              <li><a href="#undocumented" data-route-link>I'm undocumented. What are my options?</a></li>
             </ul>
           </div>
         </div>
@@ -775,8 +852,8 @@
           <div>
             <h3>Specific Programs</h3>
             <ul>
-              <li>What is Medi-Cal / Medicaid?</li>
-              <li>Insurance for children &amp; pregnant women (CHIP)</li>
+              <li><a href="#medicaid" data-route-link>What is Medi-Cal / Medicaid?</a></li>
+              <li><a href="#chip" data-route-link>Insurance for children &amp; pregnant women (CHIP)</a></li>
             </ul>
           </div>
         </div>
@@ -785,9 +862,9 @@
           <div>
             <h3>Reducing the Cost of Coverage</h3>
             <ul>
-              <li>Cost Sharing Reductions</li>
-              <li>Premium Tax Credits</li>
-              <li>Income-related subsidies</li>
+              <li><a href="#csr" data-route-link>Cost Sharing Reductions</a></li>
+              <li><a href="#ptc-qualify" data-route-link>Premium Tax Credits</a></li>
+              <li><a href="#ptc-use" data-route-link>Income-related subsidies</a></li>
             </ul>
           </div>
         </div>
@@ -796,104 +873,458 @@
           <div>
             <h3>Facing Job Loss or Loss of Coverage</h3>
             <ul>
-              <li>What happens if I lose my job or insurance?</li>
-              <li>COBRA (health insurance after job loss)</li>
-              <li>Special Enrollment Periods</li>
+              <li><a href="#lose-job" data-route-link>What happens if I lose my job or insurance?</a></li>
+              <li><a href="#unemployed" data-route-link>COBRA (health insurance after job loss)</a></li>
+              <li><a href="#special-enrollment" data-route-link>Special Enrollment Periods</a></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="feeling-lost reveal">
-        <div>
-          <h3>Feeling lost?</h3>
-          <p>Email us to ask a question or set up an appointment to talk it through.</p>
-        </div>
-        <a class="btn gold" href="mailto:schealthcareoutreach@gmail.com?subject=Question%20about%20health%20insurance">Email SCHO</a>
-      </div>
     </section>
   </div>
 
-  <!-- ============ PAGE: UPDATES ============ -->
-  <div class="page" data-route="updates" id="page-updates">
+  <!-- ============ GUIDE PAGES (Resources > Start Here) ============ -->
+  <div class="page" data-route="why-insurance" data-nav="resources" id="page-why-insurance">
     <section>
-      <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Updates</span>
-        <h2>What is SCHO up to?</h2>
-        <p>Member-made videos and write-ups covering insurance programs, policy changes, and life inside the club.</p>
-      </div>
-      <div class="updates-groups reveal">
-        <div class="update-group">
-          <div class="term-label"><b>Spring 2026</b><span class="line"></span></div>
-          <div class="update-list">
-            <div class="update-item"><span class="who">Riya &amp; Isie</span> break down the fundamentals of the marketplace &mdash; the Open Enrollment Period and available health plans.</div>
-            <div class="update-item"><span class="who">Sid</span> gives an overview of the Children's Health Insurance Program (CHIP) and its benefits.</div>
-            <div class="update-item"><span class="who">Sam</span> covers COBRA and how it relates to qualifying life events.</div>
-            <div class="update-item"><span class="who">Ben</span> dives into COBRA specifics, including the costs involved.</div>
-            <div class="update-item"><span class="who">Amae</span> explains changes to Medicare under the One Big Beautiful Bill Act (OBBBA).</div>
-            <div class="update-item"><span class="who">Krish</span> covers 2027 changes to the ACA's Medicaid expansion group.</div>
-            <div class="update-item">Members interviewed USC students on the <span class="who">10 Essential Health Benefits</span> the ACA requires insurance to cover.</div>
-          </div>
-        </div>
-        <div class="update-group">
-          <div class="term-label"><b>Fall 2024</b><span class="line"></span></div>
-          <div class="update-list">
-            <div class="update-item"><span class="who">Zainab, Darena, Posi, Deshan &amp; Ben</span> produced an updated CHIP video covering eligibility, enrollment, coverage, and services.</div>
-            <div class="update-item"><span class="who">Nicholas Kim &amp; Avi Pandit</span> discuss upcoming events, partnerships, and what the club's been building.</div>
-            <div class="update-item"><span class="who">Anjali, Jade, Tkaya, Noah &amp; Aditya</span> made &ldquo;Formulary Showdown,&rdquo; a game-show-style video on getting the most from your prescription coverage.</div>
-            <div class="update-item"><span class="who">Darena Nguyen</span> shares her favorite parts of SCHO and her goals for spreading health insurance literacy.</div>
-            <div class="update-item"><span class="who">Kailin Liu</span> on why she joined SCHO and what the club's branches offer new members.</div>
-            <div class="update-item"><span class="who">Meghan Wong</span> designed a brochure on emergency medical services and insurance enrollment for outreach events.</div>
-          </div>
-        </div>
-        <div class="update-group">
-          <div class="term-label"><b>Summer 2024</b><span class="line"></span></div>
-          <div class="update-list">
-            <div class="update-item">SCHO established a partnership with the <span class="who">Center for Healthcare Rights</span>, an LA nonprofit offering free healthcare counseling and Medicare navigation for older adults.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ============ PAGE: GET ENROLLED ============ -->
-  <div class="page" data-route="get-enrolled" id="page-get-enrolled">
-    <section>
-      <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Get Enrolled</span>
-        <h2>Three easy steps to coverage</h2>
-        <p>SCHO's Certified Enrollment Counselors offer free appointments &mdash; by phone or Zoom &mdash; to help you enroll directly through Covered California.</p>
-      </div>
-
-      <div class="steps reveal">
-        <div class="step">
-          <div class="stepnum">1</div>
-          <h3>Sign up for a time</h3>
-          <p>Request an appointment below and we'll find a time that works for you.</p>
-        </div>
-        <div class="step">
-          <div class="stepnum">2</div>
-          <h3>Gather your documents</h3>
-          <p>Have the items below ready. Everything is kept private by law &mdash; applying has no effect on immigration status or citizenship.</p>
-          <ul class="checklist">
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Social Security Number</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Proof of identity</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Citizenship status</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Proof of income</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Coverage info</li>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Health Insurance?</h2>
+        <p><strong>Health insurance</strong> is a specific type of insurance coverage that provides individuals with coverage for a variety of healthcare-related expenses, primarily: medical, surgical, and prescription-drug coverage. With some plans, dental coverage is included as well. Health insurance can help reimburse individuals for the cost of care for illness and injury or in many cases, pay the healthcare provider directly.</p>
+        <h3>There are a few reasons why you should get insurance:</h3>
+        <ul class="guide-points">
+          <li><strong>Save money</strong><p>When you opt to have insurance, you will pay significantly less for office visits than you would without insurance, assuming the health care providers you see are within your <strong>network</strong> (meaning that this provider takes your insurance).</p></li>
+          <li><strong>Stay healthy</strong><p>Having insurance means you have access to preventative care like annual check-ups and immunizations. Chronic disease management is also covered, and other health screenings are free, such as those for blood pressure, diabetes, cancer and depression. Having health insurance makes it easier to <em>catch and treat a health issue before it causes longer-term damage</em>. And even if you eat right, exercise and are currently healthy, the <em>risk of accident or illness is always present</em>.</p></li>
+          <li><strong>You may qualify for financial aid</strong><p>Financial help can reduce costs of health insurance for more people than ever before. To see if you qualify, check out Covered California&rsquo;s <a href="https://www.coveredca.com/#quick-calculator" target="_blank" rel="noopener noreferrer">interactive calculator</a>.</p></li>
+        </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
           </ul>
         </div>
-        <div class="step">
-          <div class="stepnum">3</div>
-          <h3>Get enrolled</h3>
-          <p>We'll reach out by phone (or Zoom, on request) at your scheduled appointment time to complete enrollment together.</p>
-        </div>
-      </div>
+      </article>
+    </section>
+  </div>
 
-      <div class="enroll-cta reveal">
-        <a class="btn" href="mailto:schealthcareoutreach@gmail.com?subject=Enrollment%20Appointment%20Request&body=Hi%20SCHO%2C%0A%0AI'd%20like%20to%20schedule%20an%20enrollment%20appointment.%20Here's%20a%20good%20time%20for%20me%3A">Make an Appointment</a>
-        <span class="privacy-note">Opens an email to schealthcareoutreach@gmail.com</span>
-      </div>
+  <div class="page" data-route="get-started" data-nav="resources" id="page-get-started">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Signing Up for Insurance</h2>
+        <p>Signing up for insurance is stressful! This page will help get you started on finding what's right for you and how to sign up. Keep scrolling to learn more about insurance options you may already be eligible for.</p>
+
+        <h3>Which Insurance Option Should I Choose?</h3>
+        <p>Everyone has different needs and different eligibilities for certain programs. With our newly Certified Enrollment Counselors, we can now help provide you with the necessary insurance information so you can make the best choice for your health plan!</p>
+        <a class="btn guide-btn" href="mailto:schealthcareoutreach@gmail.com?subject=Enrollment%20Appointment%20Request&body=Hi%20SCHO%2C%0A%0AI'd%20like%20help%20getting%20insured.%20Here's%20a%20good%20time%20for%20me%3A">Get Insured Now!</a>
+
+        <h3>Learn More About Your Insurance</h3>
+        <div class="plan-cards">
+          <div class="plan-card"><b>MediCal</b><p>California's version of Medicaid.</p><a class="btn sm" href="#medicaid" data-route-link>MediCal</a></div>
+          <div class="plan-card"><b>Medicare</b><p>Insurance for those over 65, or with disabilities/end stage renal disease</p><a class="btn sm" href="#medicare" data-route-link>Medicare</a></div>
+          <div class="plan-card"><b>CHIP</b><p>A low cost insurance option for children</p><a class="btn sm" href="#chip" data-route-link>CHIP</a></div>
+        </div>
+
+        <h3>What Does Everything Mean?</h3>
+        <p>There are so many terms to learn when navigating the complicated world of health insurance. Check this link out to see a comprehensive list of common vocabulary and their definitions you might come across as you go through the application process!</p>
+        <a class="btn guide-btn" href="#glossary" data-route-link>Glossary</a>
+
+        <h3>Feeling Lost?</h3>
+        <p>Email <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> to ask us a question or set up an appointment to talk about it!</p>
+
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="unemployed" data-nav="resources" id="page-unemployed">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is COBRA?</h2>
+        <p>There are a few ways to navigate the loss of job-based health insurance. If you get fired or quit and were enrolled in health insurance through your employer, there are various options for you to acquire new health insurance.</p>
+        <p>The <strong>Consolidated Omnibus Budget Reconciliation Act (COBRA)</strong> allows individuals the option to continue to be covered by their previous employer&rsquo;s health insurance plan at a higher premium if they lose employment or have their hours reduced. This means that you are able to keep the same health coverage you had while you were still employed. However, you would not qualify is if you lost your job due to misconduct. In addition, if your employer closes or stops offering health insurance to its employees, you will not be able to apply for COBRA. You may also be eligible for COBRA if you separate or get divorced from a partner or they pass away and you were being covered under their employment-based insurance.</p>
+        <p>It is important to note that you must enroll in COBRA within 60 days of the <strong>qualifying event</strong>. If you enroll in COBRA and later become eligible for <a href="#medicaid" data-route-link>Medicaid</a>, you will not be able to continue with COBRA coverage and must instead enroll in Medicaid. However, if you were eligible for Medicaid at the time when you experienced the qualifying event, you are able to stay on COBRA for the full-time period and switch to Medicaid at any time.</p>
+        <p>Coverage through COBRA is considered <strong>minimum essential coverage</strong>. There is also <strong>unemployment insurance</strong>, which is separate from health insurance. It is important to note that unemployment insurance is <u>not</u> health insurance. You will receive $40-$450 per week to help cover any of your basic needs. You can use this to pay for health care services but you will have to pay the full cost yourself. As such, you should still enroll in a health insurance plan.</p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <!-- TODO: link these to their own guide pages once the writing is ready (see TODO.md) -->
+          <ul>
+            <li>What is minimum essential coverage?</li>
+            <li>What is unemployment insurance?</li>
+            <li>What is a qualifying event?</li>
+            <li>How do I initiate COBRA coverage?</li>
+          </ul>
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li><a href="#special-enrollment" data-route-link>Special Enrollment</a></li>
+            <li><a href="#cal-cobra" data-route-link>Cal-COBRA</a></li>
+            <li><a href="#eligibility" data-route-link>Providing Information of Eligibility</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="undocumented" data-nav="resources" id="page-undocumented">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>I'm undocumented. What are my options?</h2>
+        <div class="soon"><p>We're working on this guide. In the meantime, email us at <a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a> and we'll help you through it.</p></div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="medicare" data-nav="resources" id="page-medicare">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Medicare?</h2>
+        <p><strong>Medicare</strong> is a federally run program that aims to provide subsidized and accessible health insurance to a specific population within the United States. You may qualify for Medicare if you are:</p>
+        <ul class="guide-list">
+          <li>65 years of age and over</li>
+          <li>Under age 65 and have a disability</li>
+          <li>Under age 65 and have End Stage Renal Disease (ESRD)</li>
+        </ul>
+        <p>Medicaid enrollment is NOT a barrier to Medicare enrollment. You can dual enroll in Medicare and <a href="#medicaid" data-route-link>Medicaid</a>!</p>
+        <p>There are four parts to Medicare:</p>
+        <ul class="guide-list">
+          <li><strong>Part A &amp; B,</strong> which cover all hospital and preventative care necessities</li>
+          <li><strong>Parts C &amp; D</strong>, which include the <strong>Medicare Advantage Plan</strong> and <strong>prescription drug coverage</strong> respectively.</li>
+        </ul>
+        <p>Standard Medicare includes parts A &amp; B with the addition of Part D if consistent prescription drug coverage is also needed. Part C, or the Medicare Advantage Plan can be acquired through a private insurance provider and includes coverage that matches parts A &amp; B plus additional aspects.</p>
+        <h3>Know your Medicare basics</h3>
+        <div class="parts">
+          <div class="part"><b>Part A</b><span>Hospital</span><p>Medicare Part A is Hospital insurance and helps cover cost if you are staying in a hospital, skilled nursing facility or hospice care.</p></div>
+          <div class="part"><b>Part B</b><span>Medical</span><p>Medicare Part B is Medical insurance and helps cover cost for doctor services, outpatient care, durable medical equipment and other medical services. If you enroll in a Medicare Advantage Plan you must continue to pay your Part B premium.</p></div>
+          <div class="part"><b>Part D</b><span>Prescriptions</span><p>Medicare Part D is Prescription Drug coverage, and helps cover the cost of many outpatient prescription drugs. If you enroll in a Medicare Advantage Plan this drug coverage is usually included into the plan, otherwise it is offered through insurance companies as a separate plan.</p></div>
+          <div class="part"><b>Part C</b><span>Medicare Advantage</span><p>Part C, also known as Medicare Advantage, includes Part A, Part B, and sometimes Part D. It is all in one plan.</p></div>
+        </div>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="medicaid" data-nav="resources" id="page-medicaid">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is Medicaid?</h2>
+        <p><strong>Medicaid</strong> is a jointly-funded federal and state health insurance program dedicated to providing healthcare for eligible low-income families or individuals, pregnant women, parents, seniors, and individuals with disabilities.</p>
+        <p>Medicaid is the single largest source of health insurance for residents of the United States. The <a href="#aca" data-route-link>ACA</a> (also known as <strong>Obamacare</strong>) gave states the opportunity to expand Medicaid coverage to cover the majority of low income Americans under the age of 65. Eligibility for children was extended to 133% of the federal poverty line (FPL) and states were given the option to extend eligibility to adults with income at or below 133% of the FPL. Most states have chosen to expand coverage to adults, and those that have not yet expanded may choose to do so at any time. Medicaid in California is called Medi-Cal.</p>
+        <p>Additionally, &ldquo;medically needy&rdquo; Americans who wouldn&rsquo;t otherwise qualify for subsidized healthcare due to their income level exceeding the standard income ceiling may still qualify for Medicaid coverage if their expenses meet or exceed a certain threshold.</p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+            <li><a href="#resources" data-route-link>View Our Medicaid Resources Here</a></li>
+          </ul>
+          <h3>Related Topics:</h3>
+          <ul>
+            <li><a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="_blank" rel="noopener noreferrer">Federal Poverty Line (FPL) Guidelines</a></li>
+            <li>What is Medi-Cal?</li>
+            <li><a href="#chip" data-route-link>What is CHIP (Children's Health Insurance Program)?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="aca" data-nav="resources" id="page-aca">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What is the Affordable Care Act?</h2>
+        <p><strong>The Affordable Care Act (ACA)</strong>, commonly known as <strong>Obamacare</strong>, was signed into law in 2010. The main goals of the ACA were to provide accessible healthcare to all Americans (via expanding <a href="#medicaid" data-route-link>Medicaid</a> eligibility, and expanding financial assistance), to protect those with preexisting conditions, and to innovate within healthcare delivery. So far, millions of Americans with and without pre-existing conditions have benefited from the ACA.</p>
+        <p>Additionally, under the ACA&rsquo;s <strong>individual mandate</strong>, uninsured individuals were required to pay an annual fee, further encouraging people to acquire healthcare. However, under the Trump administration, this individual mandate was repealed and has not been since reinstated.</p>
+        <ul class="guide-links">
+          <li><a href="https://www.healthcare.gov/health-care-law-protections/" target="_blank" rel="noopener noreferrer">Your rights and protections under the ACA</a></li>
+          <li><a href="https://www.congress.gov/bill/111th-congress/house-bill/3590/text" target="_blank" rel="noopener noreferrer">Read the full text of the ACA</a></li>
+        </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="glossary" data-nav="resources" id="page-glossary">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Glossary</h2>
+        <p>This is a list of commonly used terms in reference to health insurance that can be referenced whenever needed.</p>
+        <ol class="gloss">
+          <li><b>Actuarial Value</b><p>The percentage of total average costs for covered benefits that a plan will cover. For example, with a plan with an actuarial value of 70% you would be responsible for about 30% of your healthcare costs.</p></li>
+          <li><b>Affordable</b><p>A healthcare plan is considered affordable if the cost does not exceed 9.5% of your annual household income. This percentage is adjusted slightly every year - in 2020, the cutoff was 9.78% of your household income.</p></li>
+          <li><b>Co-Insurance</b><p>The percentage of the cost for a health care service that you pay after you've paid your deductible. The percentage is specified by your insurance plan. For example, if your co-insurance is 20% and the cost of an office visit to your primary care doctor is $100, you will pay 20% of $100 which is $20 for the visit yourself and the insurance provider will cover the rest.</p></li>
+          <li><b>Co-Payment</b><p>A fixed amount (ex. $15) you pay to health care providers for a covered health care service, usually at the time of service. Co-payments usually don't apply until you've met your deductible.</p></li>
+          <li><b>Cost Sharing Reductions</b><p>A discount that lowers the amount you have to pay for deductibles, copayments, and coinsurance. In the Health Insurance Marketplace®, cost-sharing reductions are often called “extra savings.” If you qualify, you must enroll in a plan in the Silver category to get the extra savings.</p></li>
+          <li><b>Deductible</b><p>The amount you owe for health care services before their health insurance plans begins to pay. For example, if the deductible for your plan is $1,000, you pay for care out-of-pocket up to $1,000 at which point your insurance starts to pay. After, the deductible has been met, you typically only pay a co-payment or coinsurance for covered services. Many plans will also cover some services like check-ups before you've reached the deductible. All marketplace plans require the insurance provider to pay the full cost of certain preventative services before the deductible is met as well.</p></li>
+          <li id="term-fpl"><b>Federal Poverty Line (FPL)</b><p>A measure of income issued every year by the Department of Health and Human Services. This measure is used to determine individuals' eligibility for certain health care programs and benefits, including savings on Marketplace health insurance, Medicaid, and CHIP coverage. The federal poverty line is different for different household sizes.</p></li>
+          <li><b>Household income</b><p>Your MAGI (Modified Adjusted Gross Income) plus that of every other member of your family that files a federal income tax return.</p></li>
+          <li><b>Household size</b><p>The household size generally includes the tax filer, their spouse (if legally married), and their dependents (such as children and other family members or people that are supported financially by the tax filer). The household size is used to determine the income limits to qualify for the various federal and state health insurance and financial assistance programs.</p></li>
+          <li><b>Medi-Cal</b><p>The California-specific version of Medicaid.</p></li>
+          <li><b>Minimum Value</b><p>Minimum value health coverage applies to job-based health plans. If your employer's plan meets this standard and is considered “affordable” you are not eligible for premium tax credits if you try to purchase a private plan through the marketplace instead. A coverage plan meets the minimum value standard if it has a 60% actuarial value (it is designed to pay 60% of your health care costs) and its benefits include substantial coverage of physician and inpatient hospital services.</p></li>
+          <li><b>Open Enrollment Period</b><p>The open enrollment period is the time frame in which you can enroll in a health insurance plan through Covered California or another state/federal marketplace. If you register for a plan outside of this window, you will most likely have to pay extra fees unless you experience a qualifying life event. Normally, the open enrollment period is from November 1st - January 31st; however, for 2020-2021 the open enrollment period was extended due to the COVID-19 pandemic. This special enrollment period will last until August 15th 2021.</p></li>
+          <li><b>Out-of-Pocket Maximum</b><p>The maximum amount you will be required to pay per year for health care services including deductibles, co-payments, and co-insurance. Once you reach the out-of-pocket maximum, your health insurance provider is responsible for 100% of the costs of covered services.</p></li>
+          <li id="term-premium"><b>Premium</b><p>A fixed amount you pay monthly to have a health insurance plan.</p></li>
+          <li><b>Premium Tax Credit (PTC)</b><p>A tax credit you can use to lower your monthly insurance payment (premium) when you enroll in a plan through a health insurance marketplace. If your income is between 100%-400% of the FPL you are eligible for a PTC in all states. In 2021 you may also qualify if you make above 400% of the FPL.</p></li>
+          <li><b>Qualified Health Plan (QHP)</b><p>The types of insurance offered in the Market places in which qualified consumers can enroll during the Open Enrollment Period (OEP). QHPs must cover essential health benefits, often at no additional cost to the consumer, including annual check-ups, vaccinations, emergency care, maternity care, and some preventative care. QHPs also must follow established guidelines that set maximums for deductibles, co-payments, and out-of-pocket maximums.</p></li>
+          <li><b>Qualifying Life Event (QLE)</b><p>QLEs are things that may happen in your life that allow you to enroll in a different health insurance plan outside of the open enrollment period without additional fees. Examples of QLEs are losing your job, getting married, getting divorced, turning 26 (no longer eligible to be covered by parent's insurance plan), having a child, or otherwise losing health coverage.</p></li>
+        </ol>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#get-started" data-route-link>Signing Up for Insurance</a></li>
+            <li><a href="#why-insurance" data-route-link>What is Health Insurance?</a></li>
+            <li><a href="#medicare" data-route-link>What is Medicare?</a></li>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (ACA), also known as Obamacare?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="special-enrollment" data-nav="resources" id="page-special-enrollment">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Special Enrollment</h2>
+        <p>Following the loss of a job, there is a special enrollment period, typically lasting 60 days, allowing the individual to enroll in a healthcare plan through the marketplace. This enrollment coverage lasts 18 months. However, if another life-qualifying event occurs, coverage is expanded for another 18 months. This is different from the <strong>open enrollment period</strong>, because the special enrollment period for each individual can happen during any time of the year based on the qualified life event that triggers the special enrollment period.</p>
+        <div class="guide-next">
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li><a href="#unemployed" data-route-link>What is COBRA?</a></li>
+            <li><a href="#cal-cobra" data-route-link>Cal-COBRA</a></li>
+            <li><a href="#eligibility" data-route-link>Providing Information of Eligibility</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="eligibility" data-nav="resources" id="page-eligibility">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Providing Information of Eligibility</h2>
+        <p>You must have a W-2 and any of the following: Fully or partially unemployed, employment status affected by COVID-19, you or your family is affected by school closures of a child, or your previous unemployment claim has expired.</p>
+        <div class="guide-next">
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li><a href="#unemployed" data-route-link>What is COBRA?</a></li>
+            <li><a href="#special-enrollment" data-route-link>Special Enrollment</a></li>
+            <li><a href="#cal-cobra" data-route-link>Cal-COBRA</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="cal-cobra" data-nav="resources" id="page-cal-cobra">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Cal-COBRA</h2>
+        <p>California offers their own version of <a href="#unemployed" data-route-link>COBRA</a>, <strong>Cal-COBRA</strong>, in addition to the federal-level COBRA. At the federal level, COBRA coverage is available for 18 or 36 months depending on your circumstances. 18 months is the usual duration, but if you have a disabled dependent or experience another qualifying event during the 18 month period, you may be able to extend coverage for an additional 18 months. Under Cal-COBRA, people who received 18 months of coverage under federal COBRA are eligible for an additional 18 months under Cal-COBRA.</p>
+        <h3>Eligibility Guidelines</h3>
+        <p>You must have a <a href="https://www.irs.gov/forms-pubs/about-form-w-2" target="_blank" rel="noopener noreferrer">W-2</a> and any of the following:</p>
+        <ul class="guide-list">
+          <li>You have fully or partially unemployed employment status, affected by COVID-19</li>
+          <li>You or your family is affected by school closures of a child</li>
+          <li>Your previous unemployment claim has expired</li>
+        </ul>
+        <div class="guide-next">
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li><a href="#unemployed" data-route-link>What is COBRA?</a></li>
+            <li><a href="#special-enrollment" data-route-link>Special Enrollment</a></li>
+            <li><a href="#eligibility" data-route-link>Providing Information of Eligibility</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="ptc-qualify" data-nav="resources" id="page-ptc-qualify">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>How can I Qualify for Premium Tax Credits?</h2>
+        <h3>A person can qualify for PTC if:</h3>
+        <ul class="guide-list">
+          <li>They have a household income within 100%-400% of the <strong>FPL (Federal Poverty Line)</strong></li>
+          <li>Do not file a &ldquo;Married Filing Separately&rdquo; tax return. (There are exceptions for victims of domestic violence or spousal abandonment)</li>
+          <li>In the same month you or a family member:
+            <ul class="guide-list">
+              <li>Do not qualify for coverage through a government program (<a href="#medicare" data-route-link>Medicare</a>, <a href="#medicaid" data-route-link>Medicaid</a>, TRICARE, <a href="#chip" data-route-link>CHIP</a>, etc)</li>
+              <li>Enrolled in coverage under a plan (excluding &ldquo;catastrophic&rdquo; plans from the Marketplace)</li>
+              <li>Am unable to get or qualify for an employer-sponsored plan that provides <strong>minimum value, affordable coverage.</strong></li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Some Definitions:</h3>
+        <ul class="guide-list">
+          <li><strong>Affordable coverage</strong> is defined by: The plan does not exceed 9.5% of your annual household income. This percentage is adjusted slightly every year - in 2020, the cutoff was 9.78% of your household income.</li>
+          <li>A <strong>minimum value</strong> coverage plan has 60% actuarial value. This is equivalent to a <strong>bronze</strong> metal plan on the <strong>Marketplace</strong>.</li>
+        </ul>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#ptc-use" data-route-link>How can I use Premium Tax Credits?</a></li>
+          </ul>
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li>What are Premium Tax Credits?</li>
+            <li>Metal Plans on the Marketplace</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="ptc-use" data-nav="resources" id="page-ptc-use">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>How Can I Use Advance Premium Tax Credits?</h2>
+        <p><strong>Premium tax credits</strong> can be used to cover insurance <strong>premiums</strong> by making direct payments to your insurance company. In this case, the awarded amount would be used to pay for your premiums in your name. This would be known as <strong>Advance Premium Tax Credits (APTC)</strong>.</p>
+        <p>Alternatively, you could pay your insurance premiums as usual and not use APTC over the course of the year. In this case, you would be able to claim the full amount of the PTC as a <strong>tax refund</strong>. If the full amount of awarded PTC is not completely finished when utilizing APTC (in the case the PTC funds are paid directly to your insurance company), then the remaining amount may be claimed as a tax refund while filing your <strong>tax return</strong>.</p>
+        <p><strong>NOTE:</strong> <em>Whatever method you decide to use when making use of your PTC, the claimant is required to file <strong>Form 8962</strong> (Premium Tax Credit) on their tax return.</em></p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <ul>
+            <li><a href="#csr" data-route-link>Cost-Sharing Reductions</a></li>
+          </ul>
+          <h3>Previously, and Related Topics:</h3>
+          <ul>
+            <li>What are Premium Tax Credits?</li>
+            <li><a href="#ptc-qualify" data-route-link>How can I qualify for Premium Tax Credits?</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="csr" data-nav="resources" id="page-csr">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Cost-Sharing Reductions</h2>
+        <p><strong>Cost sharing reductions</strong> (CSR) are discounts on deductibles, copayments, and coinsurance that make having insurance more affordable. CSRs also lower your <strong>out-of-pocket maximum,</strong> which is the maximum amount you are required to pay for health care services per year. Once you reach the out-of-pocket maximum, the insurance plan must pay for 100% of the costs of covered services. If you qualify for CSRs, you must enroll in a <strong>silver plan</strong> to receive the benefits.</p>
+        <div class="guide-next">
+          <h3>Related Topics:</h3>
+          <ul>
+            <li>Who is eligible for Cost Sharing Reductions?</li>
+            <li>The Three Tiers of CSRs</li>
+            <li><a href="#ptc-use" data-route-link>Advanced Premium Tax Credits</a></li>
+            <li><a href="#ptc-qualify" data-route-link>How Can I Qualify for Premium Tax Credits?</a></li>
+            <li><a href="#ptc-use" data-route-link>How Can I Use Premium Tax Credits?</a></li>
+            <li>What are Metal Plans?</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="lose-job" data-nav="resources" id="page-lose-job">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>What Happens If You Lose Your Insurance Or Your Job?</h2>
+        <p>In this situation there are two options to look into: <strong><a href="#unemployed" data-route-link>COBRA</a></strong> (The Consolidated Omnibus Budget Reconciliation Act) and <strong><a href="#special-enrollment" data-route-link>Special Enrollment</a></strong>.</p>
+        <p><strong>COBRA</strong> allows individuals to continue to be covered under their previous employer's health insurance plan within 60 days of the qualifying event. COBRA serves as a continuation plan, mandated by federal law, that allows the individual to pay the full premium and an administrative fee to remain under the previous employee health insurance plan, typically for 18 months.</p>
+        <p>If the individual does not or chooses not to enroll under COBRA for any reason following the loss of employment, there is a <strong>special enrollment</strong> period, typically lasting 60 days following the <strong>qualifying event</strong>, allowing the individual to enroll in a healthcare plan through the <strong>Marketplace</strong>. This enrollment coverage lasts 18 months. In the case that another life-qualifying event occurs during this period, coverage will be expanded for another 18 months.</p>
+        <p><strong>NOTE:</strong> <em>You may also be eligible for COBRA if you separate or get divorced from a partner or they pass away and you were being covered under their employment-based insurance. It is important to note that you must enroll in COBRA within 60 days of the qualifying event.</em></p>
+        <div class="guide-next">
+          <h3>Next:</h3>
+          <!-- TODO: link once the "What is a qualifying event?" page exists (see TODO.md) -->
+          <ul>
+            <li>What is a qualifying event?</li>
+          </ul>
+          <h3>Related Topics:</h3>
+          <ul>
+            <li><a href="#unemployed" data-route-link>What is COBRA?</a></li>
+            <li><a href="#special-enrollment" data-route-link>Special Enrollment</a></li>
+            <li><a href="#cal-cobra" data-route-link>Cal-COBRA</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="page" data-route="chip" data-nav="resources" id="page-chip">
+    <section>
+      <a href="#resources" class="back-link" data-route-link>&larr; Back to Resources</a>
+      <article class="guide">
+        <h2>Children's Health Insurance Program (CHIP)</h2>
+        <h3>What is CHIP?</h3>
+        <p>CHIP is a federal and state program that provides health coverage to <strong>uninsured children</strong> in families with incomes too high to qualify for <a href="#medicaid" data-route-link>Medicaid</a>, but too low to afford private coverage. CHIP also offers coverage to <strong>pregnant women</strong>.</p>
+        <h3>What does CHIP offer?</h3>
+        <p>Your child will receive medical care, vision exams, dental care, substance abuse treatment, and mental health services that are available under <strong>Medi-Cal</strong>.</p>
+        <h3>Who is eligible?</h3>
+        <ul class="guide-list">
+          <li><strong>Children:</strong>
+            <ul class="guide-list">
+              <li>under 19, regardless of immigration status</li>
+              <li>With a household income of under 266% of the <a href="#glossary/fpl" data-route-link>FPL</a> (Federal Poverty Level)</li>
+            </ul>
+          </li>
+          <li><strong>Pregnant women</strong> who do not have Medi-Cal between 214-322% of the <strong>FPL</strong> regardless of immigration status
+            <ul class="guide-list"><li>This program is known as <strong>MCAP (Medi-Cal Access Program)</strong></li></ul>
+          </li>
+          <li><strong>Infants</strong> aged up to two years old whose mothers are between 261-317% of the <strong>FPL</strong>
+            <ul class="guide-list"><li>This program is known as <strong>MCAIP (Medi-Cal Access Infant Program)</strong></li></ul>
+          </li>
+        </ul>
+        <p><strong>NOTE:</strong> Your unborn child is also counted as a person when determining household size.</p>
+        <p>Check what your FPL is <a href="docs/FPL-chart.pdf" target="_blank" rel="noopener">here</a>!</p>
+        <h3>How much does CHIP cost in California?</h3>
+        <p><strong>Medi-Cal for Children (CHIP)</strong> has a <a href="#glossary/premium" data-route-link>premium</a> of $13/child per month, and a maximum of $39 a month per family. So if you have 4 children, it will still cost $39/month.</p>
+        <p>If your family is under 160% of the FPL, it is free.</p>
+        <h3>Can I get discounts on monthly premiums?</h3>
+        <p><strong>Yes! There are 3 ways to get a discount:</strong></p>
+        <ul class="guide-list">
+          <li>If you pay three months in advance, you will receive the fourth month free.</li>
+          <li>If you set up monthly automatic payments online, you will get a 25 percent discount on your premiums.</li>
+          <li>If you pay by Electronic Fund Transfer (EFT), you will automatically receive a 25 percent discount on your monthly premium.</li>
+        </ul>
+        <div class="guide-next">
+          <h3>Related Topics:</h3>
+          <ul>
+            <li><a href="#medicaid" data-route-link>What is Medicaid?</a></li>
+            <li><a href="#get-started" data-route-link>Signing Up for Insurance</a></li>
+            <li><a href="#glossary" data-route-link>Glossary</a></li>
+          </ul>
+        </div>
+      </article>
     </section>
   </div>
 
@@ -901,7 +1332,6 @@
   <div class="page" data-route="join" id="page-join">
     <section>
       <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Join Us</span>
         <h2>There are many ways to connect</h2>
       </div>
       <div class="join-box reveal">
@@ -925,7 +1355,6 @@
   <div class="page" data-route="contact" id="page-contact">
     <section>
       <div class="section-head">
-        <span class="eyebrow"><span class="bar"></span>Contact Us</span>
         <h2>Have questions? Reach out.</h2>
         <p>We're always happy to help you navigate the process or set up a one-on-one appointment.</p>
       </div>
@@ -966,16 +1395,37 @@
       </div>
     </section>
 
-    <section style="padding-top:0;">
-      <div class="newsletter reveal">
-        <div>
-          <h3>Stay in the loop</h3>
-          <p>Subscribe for event updates, new resources, and healthcare policy news.</p>
-        </div>
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" id="nl-email" placeholder="you@usc.edu" required>
-          <button type="submit" class="btn gold">Subscribe</button>
+  </div>
+
+  <!-- ============ PAGE: MEMBERS ONLY ============ -->
+  <div class="page" data-route="members" id="page-members">
+    <section>
+      <div class="section-head">
+        <h2>The SCHO shared drive</h2>
+        <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
+      </div>
+
+      <div class="members-card" id="membersLocked">
+        <div class="icon-badge c1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Member login</h3>
+        <form id="membersForm">
+          <div class="field"><label for="m-user">Username</label><input id="m-user" name="username" type="text" autocomplete="username" autocapitalize="none" required></div>
+          <div class="field"><label for="m-pass">Password</label><input id="m-pass" name="password" type="password" autocomplete="current-password" required></div>
+          <div style="display:flex; align-items:center; gap:16px; margin-top:4px;">
+            <button type="submit" class="btn">Log In</button>
+            <span id="login-status" role="status"></span>
+          </div>
         </form>
+      </div>
+
+      <div class="members-card" id="membersUnlocked" hidden>
+        <div class="icon-badge c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Welcome back!</h3>
+        <p>Meeting slides, flyers, outreach materials and more are all in the shared drive.</p>
+        <div class="members-actions">
+          <a class="btn" id="driveLink" href="#" target="_blank" rel="noopener noreferrer">Open the Shared Drive &nearr;</a>
+          <button type="button" class="btn outline" id="membersLogout">Log Out</button>
+        </div>
       </div>
     </section>
   </div>
@@ -991,7 +1441,6 @@
     <a href="#about" data-route-link>About</a>
     <a href="#events" data-route-link>Events</a>
     <a href="#resources" data-route-link>Resources</a>
-    <a href="#join" data-route-link>Join Us</a>
     <a href="#contact" data-route-link>Contact</a>
   </nav>
 </footer>
@@ -1007,18 +1456,35 @@
     var routes = pages.map(function(p){ return p.getAttribute('data-route'); });
 
     function routeFromHash(){
-      var h = (window.location.hash || '').replace('#','');
+      var h = (window.location.hash || '').replace('#','').split('/')[0];
       return routes.indexOf(h) !== -1 ? h : 'home';
     }
 
     function render(){
       var route = routeFromHash();
-      pages.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-route') === route); });
+      var navRoute = route;
+      pages.forEach(function(p){
+        var on = p.getAttribute('data-route') === route;
+        p.classList.toggle('active', on);
+        if (on && p.getAttribute('data-nav')) navRoute = p.getAttribute('data-nav');
+      });
+      var drop = document.getElementById('aboutDrop');
+      drop.classList.toggle('active', navRoute === 'about' || navRoute === 'board');
+      drop.classList.remove('open');
+      drop.querySelector('.drop-trigger').setAttribute('aria-expanded', 'false');
       navLinks.forEach(function(a){
         var target = (a.getAttribute('href') || '').replace('#','');
-        a.classList.toggle('active', target === route);
+        a.classList.toggle('active', target === navRoute);
       });
-      window.scrollTo(0, 0);
+      var term = (window.location.hash || '').split('/')[1];
+      var target = term && document.getElementById('term-' + term);
+      if (target) {
+        target.scrollIntoView({ block: 'start' });
+        target.classList.add('flash');
+        setTimeout(function(){ target.classList.remove('flash'); }, 1600);
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
 
     window.addEventListener('hashchange', render);
@@ -1032,6 +1498,18 @@
         btn.setAttribute('aria-expanded', 'false');
       });
     });
+  })();
+
+  (function(){
+    var drop = document.getElementById('aboutDrop');
+    var trigger = drop.querySelector('.drop-trigger');
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = drop.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(){ drop.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { drop.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); } });
   })();
 
   (function(){
@@ -1060,16 +1538,6 @@
     });
   })();
 
-  (function(){
-    var form = document.getElementById('newsletterForm');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var email = document.getElementById('nl-email').value;
-      window.location.href = 'mailto:schealthcareoutreach@gmail.com'
-        + '?subject=' + encodeURIComponent('Newsletter signup')
-        + '&body=' + encodeURIComponent('Please add ' + email + ' to the SCHO newsletter list.');
-    });
-  })();
 
   (function(){
     var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
@@ -1165,5 +1633,42 @@
     var sheet=document.getElementById('sheetLink');
     if (SHEET_URL){ sheet.href=SHEET_URL; sheet.hidden=false; }
     render();
+  })();
+  (function(){
+    // The Drive link is stored encrypted with the members' username + password, so it isn't readable in the page source.
+    var VAULT={salt:'SYejQlgDnAyk0/vSKESS+w==', iv:'IZVBksiu83x17g0c', ct:'uM4ZRk91DHOSbLCuf0YC9oLHbOfMXsG/MBVySqeRwVGyNcRhrvv4h+EWBxjus93H7Y54KuVPEOtjwBoO4nkmAR8EgE/xjZdxxjM8JSeMfAFwNaTJrEURgg=='};
+    var form=document.getElementById('membersForm');
+    var status=document.getElementById('login-status');
+    var locked=document.getElementById('membersLocked');
+    var unlocked=document.getElementById('membersUnlocked');
+    var driveLink=document.getElementById('driveLink');
+    function bytes(b64){ return Uint8Array.from(atob(b64), function(c){ return c.charCodeAt(0); }); }
+    function unlock(user, pass){
+      var enc=new TextEncoder();
+      return crypto.subtle.importKey('raw', enc.encode(user.trim().toLowerCase()+':'+pass), 'PBKDF2', false, ['deriveKey'])
+        .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2', salt:bytes(VAULT.salt), iterations:250000, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']); })
+        .then(function(key){ return crypto.subtle.decrypt({name:'AES-GCM', iv:bytes(VAULT.iv)}, key, bytes(VAULT.ct)); })
+        .then(function(buf){ return new TextDecoder().decode(buf); });
+    }
+    function show(url){
+      driveLink.href=url;
+      locked.hidden=!!url; unlocked.hidden=!url;
+    }
+    try{ var saved=sessionStorage.getItem('scho-drive'); if(saved) show(saved); }catch(e){}
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent='Checking…';
+      unlock(document.getElementById('m-user').value, document.getElementById('m-pass').value).then(function(url){
+        try{ sessionStorage.setItem('scho-drive', url); }catch(e){}
+        form.reset(); status.textContent='';
+        show(url);
+      }).catch(function(){
+        status.textContent='That username or password isn\'t right.';
+      });
+    });
+    document.getElementById('membersLogout').addEventListener('click', function(){
+      try{ sessionStorage.removeItem('scho-drive'); }catch(e){}
+      show('');
+    });
   })();
 </script>
