@@ -523,15 +523,6 @@
     .hero .cta-row{ margin-top:1.3em; }
   }
 
-  /* ============ LOGO HERO ============ */
-  .hero-logo{ text-align:center; }
-  .hero-mark{ display:block; margin:0 auto; height:clamp(180px, 27vw, 415px); width:auto; max-width:100%; }
-  .hero-logo h1{ margin-top:clamp(18px, 2.4vw, 32px); font-size:clamp(1.6rem, 3.5vw, 3.2rem); }
-  @media (min-width: 761px){ .hero-logo h1{ white-space:nowrap; } }
-  .hero-logo .lede{ max-width:60ch; margin-inline:auto; text-wrap:balance; }
-  .hero-logo .cta-row{ justify-content:center; }
-  .hero-logo .info-card{ max-width:640px; margin:clamp(28px, 3.5vw, 44px) auto 0; justify-content:center; text-align:center; border-color:var(--cardinal-tint); border-top:3px solid var(--cardinal); }
-
   /* ============ HOMEPAGE TEXT COLORS (everything below the hero intro) ============ */
   #page-home section:not(.hero) h2,
   #page-home section:not(.hero) h3,
@@ -588,18 +579,31 @@
 
   <!-- ============ PAGE: HOME ============ -->
   <div class="page active" data-route="home" id="page-home">
-    <section class="hero hero-logo">
-      <img class="hero-mark" src="images/scho-logo-full.png" alt="Southern California Healthcare Outreach">
-      <h1>Making healthcare <em>accessible</em> for everyone</h1>
-      <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
-      <div class="cta-row">
-        <a href="#about" class="btn" data-route-link>Our Mission</a>
-        <a href="#resources" class="btn outline" data-route-link>Learn More</a>
-      </div>
-      <div class="info-card">
-        <div>
-          <h4>Certified Enrollment Counselors</h4>
-          <p>Our trained members can directly sign people up for Covered California insurance plans!</p>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Making healthcare <em>accessible</em> for everyone</h1>
+          <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
+          <div class="cta-row">
+            <a href="#about" class="btn" data-route-link>Our Mission</a>
+            <a href="#resources" class="btn outline" data-route-link>Learn More</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="scrapbook">
+            <div class="torn t1"><img src="images/group-photo.jpg" alt="SCHO members gathered together after a general meeting"></div>
+            <div class="torn t2"><img src="images/team-photo.jpg" alt="SCHO members staffing an outreach information booth"></div>
+            <div class="torn t3"><img src="images/event-photo.jpg" alt="SCHO members tabling with informational flyers about health insurance"></div>
+            <div class="torn t4"><img src="images/club-photo.jpg" alt="SCHO members gathered in a lecture hall in front of the SCHO slide"></div>
+            <svg class="sticker-star" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 7.2L22 11l-6.5 4.3L17 23l-5-4.2L7 23l1.5-7.7L2 11l7.1-2.8z"/></svg>
+            <div class="tape">SCHO &middot; Est. 2019</div>
+          </div>
+          <div class="info-card">
+            <div>
+              <h4>Certified Enrollment Counselors</h4>
+              <p>Our trained members can directly sign people up for Covered California insurance plans!</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
