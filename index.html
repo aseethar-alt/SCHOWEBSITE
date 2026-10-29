@@ -534,8 +534,15 @@
   .hero-stack .statband{ margin-top:clamp(28px, 3.5vw, 48px); }
   .statband.stat-3 .wrap{ grid-template-columns:repeat(3, 1fr); }
   .statband.stat-3 .stat:nth-child(3){ border-left:1px solid rgba(255,255,255,.16); }
+  .statband.stat-3 .stat{ display:flex; align-items:baseline; justify-content:center; gap:.7em; padding:16px 14px; }
+  .statband.stat-3 .num{ font-family:"Pally",sans-serif; font-size:clamp(1.25rem, 1.9vw, 1.6rem); }
+  .statband.stat-3 .lbl{ margin-top:0; }
+  .who-title{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); margin-bottom:.45em; }
+  #page-home .sec-blue{ padding-top:clamp(24px, 3vw, 36px); }
+  #page-home .sec-blue .section-head h2{ margin-top:0; }
   .hero-lower .scrapbook{ align-self:stretch; aspect-ratio:auto; min-height:420px; }
-  @media (max-width: 560px){ .statband.stat-3 .stat{ padding:24px 8px; } .hero-lower .scrapbook{ aspect-ratio:4/4.4; min-height:0; } }
+  @media (max-width: 760px){ .statband.stat-3 .stat{ flex-direction:column; align-items:center; gap:.25em; padding:14px 6px; } }
+  @media (max-width: 560px){ .hero-lower .scrapbook{ aspect-ratio:4/4.4; min-height:0; } }
 
   /* ============ HERO LOGO ART ============ */
   .hero-art{ display:flex; align-items:center; justify-content:center; width:100%; }
@@ -614,6 +621,7 @@
       </div>
       <div class="hero-lower">
         <div class="hero-lower-copy">
+          <h2 class="who-title">Who we are</h2>
           <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
           <div class="cta-row">
             <a href="#about" class="btn" data-route-link>Our Mission</a>
