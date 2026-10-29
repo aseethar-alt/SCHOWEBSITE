@@ -568,9 +568,7 @@
   .who-band{ margin-top:0; padding-block:clamp(20px, 2.4vw, 36px) clamp(24px, 3vw, 40px); text-align:left; }
   .who-grid{ display:grid; grid-template-columns:1fr; gap:clamp(28px, 4vw, 64px); align-items:center; }
   .who-copy .lede{ margin-top:0; max-width:none; font-size:clamp(19px, 1.7vw, 32px); line-height:1.5; }
-  .who-top{ display:grid; grid-template-columns:1fr auto; gap:clamp(24px, 4vw, 72px); align-items:center; }
-  .who-mark{ display:block; height:clamp(150px, 14vw, 280px); width:auto; }
-  @media (max-width: 760px){ .who-top{ grid-template-columns:1fr; } .who-mark{ order:-1; height:130px; justify-self:center; } }
+  .who-mark{ display:inline-block; height:1.5em; width:auto; vertical-align:-.3em; margin-left:.15em; }
   #page-home .section-head{ max-width:none; }
   #page-home .section-head p, #page-home .story-text p, #page-home .explore-card p{ font-size:clamp(19px, 1.7vw, 32px); line-height:1.5; }
   .learn-bar{ display:flex; justify-content:center; width:100%; box-sizing:border-box; margin-top:clamp(20px, 2.4vw, 30px); padding-block:1.1em; border-radius:999px; font-size:clamp(.92rem, 1.1vw, 1.2rem); }
@@ -662,13 +660,8 @@
       <div class="who-band bleed">
         <div class="bleed-inner who-grid">
           <div class="who-copy">
-            <div class="who-top">
-              <div>
-                <h2 class="who-title">Who we are</h2>
-                <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
-              </div>
-              <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800">
-            </div>
+            <h2 class="who-title">Who we are <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800"></h2>
+            <p class="lede">Southern California Healthcare Outreach is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance &mdash; in English and Spanish.</p>
             <a href="#about" class="btn outline learn-bar" data-route-link>Learn about our mission</a>
           </div>
         </div>
@@ -681,6 +674,7 @@
       <div class="section-head">
         <h2>Resources &amp; education</h2>
         <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
+        <a href="#resources" class="btn outline learn-bar" data-route-link>Explore health insurance guides</a>
       </div>
       </div>
     </section>
@@ -696,17 +690,10 @@
 
     <section class="sec-gold bleed">
       <div class="bleed-inner">
-      <div class="story reveal">
-        <div class="story-visual">
-          <div class="content">
-            <img class="partner-logo" src="images/covered-california-logo.png" alt="Covered California">
-            <p>Certified Enrollment Partner</p>
-          </div>
-        </div>
-        <div class="story-text">
-          <h3>Partnering with Covered California &amp; the Riverside Black Chamber of Commerce</h3>
-          <p>In 2024, we partnered with the Riverside Black Chamber of Commerce and Covered California to hold an information booth about healthcare at USC. The Chamber also sponsored our members in becoming Certified Enrollment Counselors, letting us sign people up for their desired health insurance plan directly on the spot.</p>
-        </div>
+      <div class="section-head">
+        <h2>Covered California Certified Enrollment Counselors</h2>
+        <p>In 2024, we partnered with the Riverside Black Chamber of Commerce and Covered California, who sponsored our members in becoming Certified Enrollment Counselors (CEC). As CECs, SCHO members can sign people up for their desired health insurance plan directly on the spot, or over an online meeting.</p>
+        <a href="#contact" class="btn outline learn-bar" data-route-link>Schedule a meeting now</a>
       </div>
       </div>
     </section>

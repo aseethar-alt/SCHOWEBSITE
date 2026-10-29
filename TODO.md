@@ -41,3 +41,6 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - 500+: Residents Helped
 - 10+: Community Partners
 - 100%: USC Student Run
+
+**Removed from the home page Covered California section (saved to reuse later):**
+- White card with the Covered California logo (`images/covered-california-logo.png`) captioned "Certified Enrollment Partner".
