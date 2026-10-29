@@ -571,13 +571,14 @@
   .hero-stack .hero-name{ font-family:"Satoshi","Pally",sans-serif; font-weight:900; text-transform:none; letter-spacing:-.01em; }
   .hero-photo .hero-name-fit > span{ display:inline-block; }
   .hero-photo .hero-name-fit > span:first-child{ color:#fff; }
+  .hero-photo .hero-name-fit > span:last-child{ color:#FFC93C; }
   @media (max-width: 760px){ .hero-photo .hero-name, .hero-photo .hero-name-fit > span:first-child{ color:var(--ink); } }
   .hero-photo-text{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(18px, 3vw, 44px); color:#fff; }
-  .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; color:#FFC93C; font-weight:700; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
-  .hero-stack .hero-photo h1 em{ color:#FFC93C; }
-  .hero-stack .hero-photo h1 em::after{ content:none; }
-  .hero-stack .hero-photo h1 em{ text-decoration:underline var(--cardinal); text-decoration-thickness:.14em; text-underline-offset:.1em; text-decoration-skip-ink:none; }
-  .hero-stack .hero-photo h1 .h1-dot{ color:#FFC93C; }
+  .hero-stack .hero-photo h1{ font-size:clamp(1.9rem, 3.5vw, 3.6rem); white-space:normal; text-transform:none; color:#fff; font-weight:700; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.35); }
+  .hero-stack .hero-photo h1 em{ color:#FFC93C; font-style:italic; font-weight:900; position:relative; display:inline-block; transform:skewX(-12deg); }
+  .hero-stack .hero-photo h1 em::after{ content:""; position:absolute; left:0; right:0; top:calc(100% - 8px); height:6px; background:var(--cardinal); }
+  .hero-stack .hero-photo h1 em{ text-decoration:none; text-decoration-skip-ink:none; }
+  .hero-stack .hero-photo h1 .h1-dot{ color:#fff; }
   .hero-est{ margin:.5em 0 0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(.95rem, 1.4vw, 1.25rem); color:#fff; }
   @media (max-width: 760px){ .hero-photo{ aspect-ratio:4 / 5; } .hero-photo img{ object-position:center top; } }
   .hero-stack .statband{ margin-top:0; background:transparent; }
@@ -699,7 +700,7 @@
         <p class="hero-name" aria-label="Southern California Healthcare Outreach"><span class="hero-name-fit"><span>Southern California</span> <span>Healthcare Outreach</span></span></p>
         <img src="images/hero-group.jpg" alt="SCHO members together at a general meeting" width="2000" height="829" fetchpriority="high">
         <div class="hero-photo-text">
-          <h1>Making healthcare <em>accessible for everyone</em><span class="h1-dot">.</span></h1>
+          <h1>Making healthcare <em>accessible</em> <span>for everyone</span><span class="h1-dot">.</span></h1>
         </div>
       </div>
       </div>
