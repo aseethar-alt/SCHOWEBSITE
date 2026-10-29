@@ -214,9 +214,7 @@
   .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-top:.4em; }
   .section-head p{ margin-top:.9em; color:var(--ink-soft); font-size:1.02rem; }
   .section-alt{ background:var(--bg-alt); }
-  .sec-blue{ background:var(--blue-tint); }
-  .sec-gold{ background:var(--gold-tint); }
-  .sec-pink{ background:var(--cardinal-tint); }
+  .sec-blue, .sec-gold, .sec-pink{ background:var(--bg); }
   .bleed{ width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; }
   .bleed-inner{ max-width:1440px; margin-inline:auto; padding-inline:clamp(16px,5vw,64px); }
 
@@ -519,21 +517,21 @@
   /* ============ STACKED HERO ============ */
   .hero-stack{ text-align:center; }
   .hero-stack .hero-mark{ display:block; margin:0 auto; height:clamp(220px, 32vw, 500px); width:auto; max-width:100%; }
-  .hero-stack h1{ margin-top:clamp(20px, 2.6vw, 36px); font-size:clamp(2rem, 4.2vw, 3.9rem); }
+  .hero-stack h1{ display:table; isolation:isolate; margin-inline:auto; background:#fff; border-radius:999px; padding:.22em .8em .32em; box-shadow:0 18px 36px -24px hsl(var(--shadow) / .35); margin-top:clamp(12px, 1.8vw, 26px); font-size:clamp(2rem, 4.2vw, 3.9rem); }
   @media (min-width: 761px){ .hero-stack h1{ white-space:nowrap; } }
   .hero-stack{ padding-bottom:0; }
   .hero-mark-wrap{ position:relative; display:inline-block; }
-  .hero-tag{ position:absolute; top:24%; right:calc(100% - 4%); margin:0; white-space:nowrap; transform:rotate(-24deg); transform-origin:right center; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(1rem, 1.6vw, 1.45rem); }
+  .hero-tag{ position:absolute; top:24%; right:calc(100% - 4%); margin:0; white-space:nowrap; transform:rotate(-24deg); transform-origin:right center; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(1rem, 1.6vw, 1.45rem); background:#fff; padding:.55em 1em; clip-path:polygon(0% 10%,6% 0%,14% 8%,24% 1%,34% 9%,45% 0%,56% 8%,67% 1%,78% 9%,88% 0%,100% 8%,98% 50%,100% 92%,90% 100%,79% 92%,68% 100%,57% 92%,46% 100%,35% 92%,24% 100%,13% 92%,4% 100%,0% 90%,2% 50%); }
   .tag-k{ color:var(--ink); }
   .tag-v{ color:var(--gold); }
   @media (max-width: 760px){ .hero-tag{ position:static; transform:rotate(-4deg); display:inline-block; margin-top:10px; } }
-  .hero-stack .statband{ margin-top:clamp(28px, 3.5vw, 48px); background:transparent; }
+  .hero-stack .statband{ margin-top:0; background:transparent; }
   .statband.stat-3 .wrap{ display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(12px, 2vw, 28px); padding-block:6px clamp(36px, 4.5vw, 60px); }
-  .statband.stat-3 .stat{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3em; aspect-ratio:1; max-width:210px; width:100%; margin-inline:auto; padding:16px; border:none; border-radius:50%; background:var(--cardinal); box-shadow:0 18px 32px -20px hsl(var(--shadow) / .55); }
+  .statband.stat-3 .stat{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3em; aspect-ratio:1; max-width:210px; width:100%; margin-inline:auto; padding:16px; border:none; border-radius:50%; background:var(--ink); box-shadow:0 18px 32px -20px hsl(var(--shadow) / .55); }
   .statband.stat-3 .num{ font-family:"Pally",sans-serif; font-size:clamp(1.3rem, 2.3vw, 2rem); color:#FFC93C; }
   .statband.stat-3 .lbl{ margin-top:0; color:#F4DEE0; font-size:clamp(.62rem, .9vw, .76rem); text-align:center; }
   @media (max-width: 560px){ .statband.stat-3 .wrap{ grid-template-columns:repeat(2, 1fr); } .statband.stat-3 .stat{ max-width:150px; } }
-  .who-band{ background:#fff; padding-block:clamp(40px, 5vw, 72px); text-align:left; }
+  .who-band{ margin-top:clamp(24px, 3vw, 40px); padding-block:clamp(24px, 3vw, 40px); text-align:left; }
   .who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px, 4vw, 64px); align-items:center; }
   .who-copy .lede{ margin-top:0; }
   .who-actions .cta-row{ margin-top:0; }
@@ -613,14 +611,6 @@
         </div>
       </div>
       <h1>Making healthcare <em>accessible</em> for everyone</h1>
-      <div class="statband stat-3 bleed">
-        <div class="wrap bleed-inner">
-          <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
-          <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
-          <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
-          <div class="stat"><div class="num">100%</div><div class="lbl">USC Student Run</div></div>
-        </div>
-      </div>
       <div class="who-band bleed">
         <div class="bleed-inner who-grid">
           <div class="who-copy">
@@ -639,6 +629,14 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="statband stat-3 bleed">
+        <div class="wrap bleed-inner">
+          <div class="stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
+          <div class="stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
+          <div class="stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
+          <div class="stat"><div class="num">100%</div><div class="lbl">USC Student Run</div></div>
         </div>
       </div>
     </section>
