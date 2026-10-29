@@ -32,3 +32,6 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - 500+: Residents Helped
 
 ## Other
+
+**Removed from the home page "Who we are" section (saved to reuse later):**
+- Covered California logo (`images/cc-logo.png`) with a "Certified Enrollment Counselors" card: "Our trained members can directly sign people up for Covered California insurance plans!" plus "Book a Free Appointment" (mailto) and "How Signing Up Works" (`#get-started`) buttons. Restore from git history (commit before "Who we are: full-width text").
