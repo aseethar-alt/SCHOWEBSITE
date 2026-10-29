@@ -24,4 +24,11 @@ These show on the site as plain text for now. Once the writing is ready, give ea
 - [ ] MCAP (Medi-Cal Access Program) and MCAIP (Medi-Cal Access Infant Program): add links once we have them
 - [ ] Add the CHIP video from the Wix page (need the video file or a YouTube link)
 
+**Stats removed from the homepage (saved to reuse later):**
+- 2019: Year Founded
+- 10+: Community Partners
+- ENG/ESP: Bilingual Resources
+- 100%: Student-Run
+- 500+: Residents Helped
+
 ## Other
