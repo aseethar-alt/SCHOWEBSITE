@@ -117,8 +117,8 @@
   }
   .nav-row{ max-width:1920px; margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   :root{ --logo-h:clamp(66px, 5.6vw, 106px); }
-  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:calc(var(--logo-h) * 1.7); height:calc(var(--logo-h) + 46px); flex:none; padding-top:4px; }
-  .brand .logo{ height:var(--logo-h); width:auto; display:block; flex:none; margin-bottom:-3px; }
+  .brand{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; width:auto; height:calc(var(--logo-h) + 46px); flex:none; padding-top:4px; }
+  .brand .logo{ height:calc(var(--logo-h) + 40px); width:auto; overflow:visible; width:auto; display:block; flex:none; margin-bottom:-3px; }
   .brand .word{ white-space:nowrap; font-weight:700; font-size:clamp(1rem, .95vw, 1.4rem); line-height:1; color:var(--cardinal); letter-spacing:.12em; }
   nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:auto; margin-right:clamp(16px, 2.4vw, 40px); }
   nav.links a{ white-space:nowrap; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:500; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
@@ -142,7 +142,7 @@
 
   @media (min-width: 1081px){ .nav-actions{ margin-left:0; } }
   @media (max-width: 1080px){ nav.links{ display:none; } .menu-toggle{ display:flex; } #mobileNav.open{ display:flex; } }
-  @media (max-width: 600px){ .brand{ width:90px; height:90px; } .brand .logo{ height:50px; } .brand .word{ font-size:.8rem; } .btn.members-btn{ font-size:.82rem; padding:.6em 1.1em; border-radius:10px; } }
+  @media (max-width: 600px){ .brand{ width:auto; height:90px; } .brand .logo{ height:66px; } .brand .word{ font-size:.8rem; } .btn.members-btn{ font-size:.82rem; padding:.6em 1.1em; border-radius:10px; } }
   main{ max-width:1920px; margin-inline:auto; }
 
   /* ============ PAGE ROUTING ============ */
@@ -650,8 +650,7 @@
 <header class="topbar">
   <div class="nav-row">
     <a href="#home" class="brand" data-route-link>
-      <img class="logo" src="images/logo-mark.png" alt="SCHO logo">
-      <span class="word">USC</span>
+      <svg class="logo" viewBox="140 215 1440 830" role="img" aria-label="Southern California Healthcare Outreach"><defs><path id="brandArc" d="M 473.3 1005 A 450 450 0 1 1 1252.7 1005"/></defs><image href="images/caduceus.png" x="617" y="363" width="494" height="512"/><text font-family="Pally, sans-serif" font-weight="700" font-size="128" letter-spacing="9" fill="#AE2B0D"><textPath href="#brandArc" startOffset="50%" text-anchor="middle">SOUTHERN CALIFORNIA</textPath></text><text x="860" y="1021" text-anchor="middle" font-family="Pally, sans-serif" font-weight="700" font-size="124" fill="#AE2B0D" textLength="1400" lengthAdjust="spacing">HEALTHCARE OUTREACH</text></svg>
     </a>
     <nav class="links" id="tabnav">
       <a href="#home" data-route-link>Home</a>
