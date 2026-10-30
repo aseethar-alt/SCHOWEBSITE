@@ -80,7 +80,7 @@
   .site-foot a{ color:var(--ink); display:inline-flex; transition:color .15s ease; }
   .site-foot a:hover{ color:var(--cardinal); }
   #main p, #main li{ line-height:1.6 !important; word-spacing:.05em; }
-  #main .guide li, #main .gloss p, #main .mission-card p, #main .section-head p{ font-size:1.02rem; }
+  #main .guide p, #main .guide li, #main .gloss p, #main .mission-card p, #main .section-head p{ font-size:clamp(19px, 1.7vw, 32px); }
   [hidden]{ display:none !important; }
   a{ color:inherit; }
   ::selection{ background: var(--gold-tint); color: var(--ink); }
@@ -235,7 +235,7 @@
   .statband .lbl{ font-size:.76rem; font-weight:500; color:#F4DEE0; margin-top:.4em; text-transform:uppercase; letter-spacing:.05em; }
 
   /* ============ SECTION HEAD ============ */
-  .section-head{ max-width:640px; margin-bottom: clamp(30px,4vw,48px); }
+  .section-head{ max-width:none; margin-bottom: clamp(30px,4vw,48px); }
   .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-top:.4em; }
   .section-head p{ margin-top:.9em; color:var(--ink-soft); font-size:1.02rem; }
   .section-alt{ background:var(--bg-alt); }
@@ -399,7 +399,7 @@
   /* ============ GUIDE PAGES ============ */
   .back-link{ display:inline-flex; align-items:center; gap:.4em; min-height:44px; padding:.2em .1em; font-size:.95rem; font-weight:700; color:var(--cardinal); text-decoration:none; cursor:pointer; }
   .back-link:hover{ text-decoration:underline; text-underline-offset:3px; }
-  .guide{ max-width:760px; margin-top:28px; }
+  .guide{ max-width:none; margin-top:28px; }
   .guide h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); }
   .guide p{ margin-top:1em; color:var(--ink-soft); font-size:1.02rem; line-height:1.75; }
   .guide strong{ color:var(--ink); }
@@ -448,7 +448,7 @@
   .join-box{ display:grid; grid-template-columns:1.15fr .85fr; gap:0; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
   .join-left{ background:linear-gradient(150deg,var(--cardinal),var(--cardinal-deep)); color:#fff; padding:clamp(30px,4vw,48px); }
   .join-left .pill{ background:rgba(255,255,255,.14); color:#fff; }
-  .join-left h2{ color:#fff; margin-top:16px; font-size:clamp(1.6rem,3vw,2.2rem); }
+  .join-left h2{ color:#fff; margin-top:16px; font-size:clamp(1.6rem,3vw,2.2rem); line-height:1.15; }
   .join-left p{ margin-top:14px; opacity:.88; max-width:48ch; }
   .join-left .btn{ margin-top:24px; background:var(--gold); border-color:var(--gold); color:#241A02; box-shadow:none; }
   .join-right{ background:var(--card); padding:clamp(26px,4vw,40px); display:flex; flex-direction:column; gap:18px; justify-content:center; }
