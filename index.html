@@ -617,7 +617,8 @@
   #page-home .who-band{ padding-bottom:12px; }
   #page-home .hero-stack + .sec-flow{ padding-top:24px; }
   #page-home .co-head + .co-row{ margin-top:clamp(20px, 2.4vw, 30px); }
-  #page-home .co-row .partners{ margin-top:0; }
+  #page-home .co-row .partners{ margin-top:0; display:flex; flex-direction:column; align-self:stretch; }
+  .co-row .partner-logos{ flex:1; align-content:space-evenly; row-gap:clamp(12px, 1.6vw, 22px); }
   .slideshow{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:16 / 9; background:var(--ink); margin-bottom:clamp(28px, 3.4vw, 48px); }
   .slides{ display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; }
   .slides::-webkit-scrollbar{ display:none; }
@@ -628,10 +629,10 @@
   .partner-logos{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:clamp(16px, 2vw, 28px) clamp(18px, 2.2vw, 32px); margin-top:clamp(18px, 2.2vw, 28px); }
   .partner-logos img{ height:calc(var(--h) * clamp(.7px, .085vw, 1.1px)); width:auto; max-width:100%; object-fit:contain; }
   .by-numbers{ margin-top:clamp(24px, 3vw, 40px); }
-  .num-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(24px, 3vw, 40px) clamp(16px, 2vw, 32px); text-align:center; }
+  .num-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(24px, 3vw, 40px) clamp(12px, 2vw, 32px); text-align:center; }
   .num-stat .num{ font-family:"Pally",sans-serif; font-weight:500; font-size:clamp(2.4rem, 4.6vw, 4.4rem); line-height:1; color:var(--cardinal); letter-spacing:-.01em; }
   .num-stat .lbl{ margin-top:clamp(10px, 1.2vw, 18px); font-size:clamp(1rem, 1.3vw, 1.35rem); color:var(--ink); }
-  @media (max-width: 760px){ .num-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width: 560px){ .num-stat .num{ font-size:clamp(1.5rem, 8vw, 2.4rem); } .num-stat .lbl{ font-size:.85rem; } }
   @media (max-width: 760px){ .co-row{ grid-template-columns:1fr; } }
   .slide-btn{ position:absolute; top:50%; transform:translateY(-50%); width:clamp(40px, 3.4vw, 56px); height:clamp(40px, 3.4vw, 56px); border-radius:50%; border:0; background:rgba(255,249,230,.92); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px -8px rgba(0,0,0,.4); }
   .slide-btn:hover{ color:var(--cardinal); }
@@ -767,7 +768,7 @@
           <div class="slide-dots"></div>
         </div>
         <div class="partners">
-          <h2>Current partnerships</h2>
+          <h2>10+ Community Partners</h2>
           <div class="partner-logos">
             <img src="images/partners/childrens-hospital-la.png" style="--h:67" alt="Children's Hospital Los Angeles" loading="lazy">
             <img src="images/partners/la-first-umc.png" style="--h:105" alt="LA First United Methodist Church" loading="lazy">
@@ -787,7 +788,6 @@
         <div class="num-grid">
           <div class="num-stat"><div class="num">ENG/ESP</div><div class="lbl">Bilingual Resources</div></div>
           <div class="num-stat"><div class="num">500+</div><div class="lbl">Residents Helped</div></div>
-          <div class="num-stat"><div class="num">10+</div><div class="lbl">Community Partners</div></div>
           <div class="num-stat"><div class="num">100+</div><div class="lbl">Events Hosted</div></div>
         </div>
       </div>
