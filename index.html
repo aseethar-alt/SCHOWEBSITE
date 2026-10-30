@@ -618,7 +618,7 @@
   #page-home .who-title{ margin-bottom:.25em; }
   #page-home .section-head p{ margin-top:.4em; }
   #page-home .who-band{ padding-bottom:12px; }
-  #page-home .hero-stack + .sec-flow{ padding-top:24px; }
+  #page-home .hero-stack + .sec-flow{ padding-top:28px; }
   #page-home .co-head + .co-row{ margin-top:clamp(20px, 2.4vw, 30px); }
   #page-home .co-row .partners{ margin-top:0; display:flex; flex-direction:column; align-self:stretch; }
   .co-row .partner-logos{ flex:1; align-content:space-evenly; row-gap:clamp(12px, 1.6vw, 22px); }
@@ -636,6 +636,12 @@
   .num-stat .num{ font-family:"Pally",sans-serif; font-weight:500; font-size:clamp(2.4rem, 4.6vw, 4.4rem); line-height:1; color:var(--cardinal); letter-spacing:-.01em; }
   .num-stat .lbl{ margin-top:clamp(10px, 1.2vw, 18px); font-size:clamp(1rem, 1.3vw, 1.35rem); color:var(--ink); }
   @media (max-width: 560px){ .num-stat .num{ font-size:clamp(1.5rem, 8vw, 2.4rem); } .num-stat .lbl{ font-size:.85rem; } }
+  .split-copy, .split-btns{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px, 4vw, 72px); }
+  .split-btns{ gap:clamp(14px, 2vw, 28px); }
+  #page-home .split-copy p{ margin-top:.4em; }
+  @media (max-width: 760px){ .split-copy, .split-btns{ grid-template-columns:1fr; } .split-btns{ gap:0; } }
+  #page-home .sec-flow{ padding-top:0; }
+  #page-home .sec-flow > .bleed-inner::before{ content:""; display:block; border-top:1px solid var(--border); margin-bottom:clamp(32px, 3.6vw, 48px); }
   @media (max-width: 760px){ .co-row{ grid-template-columns:1fr; } }
   .slide-btn{ position:absolute; top:50%; transform:translateY(-50%); width:clamp(40px, 3.4vw, 56px); height:clamp(40px, 3.4vw, 56px); border-radius:50%; border:0; background:rgba(255,249,230,.92); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px -8px rgba(0,0,0,.4); }
   .slide-btn:hover{ color:var(--cardinal); }
@@ -734,8 +740,14 @@
       <div class="bleed-inner">
       <div class="section-head">
         <h2>Resources &amp; education</h2>
-        <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Our online guides walk you through every step of getting insured, even if you're starting from scratch. Everything we create is available in English and Spanish, so anyone can use it.</p>
-        <a href="#resources" class="btn outline learn-bar" data-route-link>Explore health insurance guides</a>
+        <div class="split-copy">
+          <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Our online guides walk you through every step of getting insured, even if you're starting from scratch. Everything we create is available in English and Spanish, so anyone can use it.</p>
+          <p>Not sure where to start? Try the SCHO Coverage Navigator, our interactive chatbot. Tell it about your situation, and it will help you sort through your coverage options and point you to the right next step.</p>
+        </div>
+        <div class="split-btns">
+          <a href="#resources" class="btn outline learn-bar" data-route-link>Explore health insurance guides</a>
+          <a href="https://aseethar-alt.github.io/SCHO/" class="btn outline learn-bar" target="_blank" rel="noopener noreferrer">Open the Coverage Navigator &nearr;</a>
+        </div>
       </div>
       </div>
     </section>
