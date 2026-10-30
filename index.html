@@ -614,14 +614,16 @@
   #page-home .who-band{ padding-bottom:12px; }
   #page-home .hero-stack + .sec-flow{ padding-top:24px; }
   #page-home .co-head{ text-align:center; }
+  #page-home .co-head + .slideshow{ margin-top:clamp(20px, 2.4vw, 30px); }
   .slideshow{ position:relative; border-radius:clamp(14px, 1.6vw, 22px); overflow:hidden; aspect-ratio:16 / 9; background:var(--ink); margin-bottom:clamp(28px, 3.4vw, 48px); }
   .slides{ display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; }
   .slides::-webkit-scrollbar{ display:none; }
   .slides img{ flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; }
   .co-row{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px, 4vw, 72px); align-items:start; margin-bottom:clamp(28px, 3.4vw, 48px); }
   .co-row .slideshow{ aspect-ratio:4 / 3; margin-bottom:0; }
-  #page-home .co-row .partners h2{ font-family:"Satoshi","Pally",sans-serif; font-weight:500; font-style:normal; display:inline-block; transform:skewX(-10deg); transform-origin:left bottom; font-size:clamp(1.4rem, 2.2vw, 2.1rem); color:var(--ink); }
-  .partner-logos{ display:grid; grid-template-columns:repeat(2, 1fr); gap:clamp(20px, 2.6vw, 36px); align-items:center; justify-items:center; margin-top:clamp(18px, 2.2vw, 28px); }
+  #page-home .partners{ margin-top:clamp(32px, 4vw, 56px); }
+  #page-home section:not(.hero) .partners h2{ font-family:"Pally",sans-serif; font-weight:700; font-style:normal; font-size:clamp(1.4rem, 2.2vw, 2.1rem); color:#000; }
+  .partner-logos{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:clamp(20px, 2.6vw, 36px); align-items:center; justify-items:center; margin-top:clamp(18px, 2.2vw, 28px); }
   .partner-logos img{ max-width:100%; max-height:clamp(64px, 7vw, 100px); width:auto; height:auto; object-fit:contain; }
   @media (max-width: 760px){ .co-row{ grid-template-columns:1fr; } }
   .slide-btn{ position:absolute; top:50%; transform:translateY(-50%); width:clamp(40px, 3.4vw, 56px); height:clamp(40px, 3.4vw, 56px); border-radius:50%; border:0; background:rgba(255,249,230,.92); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px -8px rgba(0,0,0,.4); }
@@ -737,23 +739,6 @@
           <img class="cec-logo" src="images/covered-ca-mark.png" alt="Covered California" loading="lazy">
         </div>
         <a href="#contact" class="btn outline learn-bar" data-route-link>Schedule a meeting now</a>
-      </div>
-      </div>
-    </section>
-
-    <section class="sec-blue sec-flow bleed reveal">
-      <div class="bleed-inner">
-      <div class="co-row">
-        <div class="slideshow" aria-roledescription="carousel" aria-label="Community outreach photos">
-          <div class="slides" tabindex="0">
-            <img src="images/outreach-1.jpg" alt="SCHO members at a Covered California table outside a grocery store" width="1600" height="1200" loading="lazy">
-            <img src="images/outreach-2.jpg" alt="SCHO members in matching shirts beside a bilingual health insurance poster board" width="1024" height="768" loading="lazy">
-            <img src="images/outreach-3.jpg" alt="SCHO members at an information table inside a community restaurant" width="1600" height="1200" loading="lazy">
-          </div>
-          <button type="button" class="slide-btn prev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button type="button" class="slide-btn next" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-          <div class="slide-dots"></div>
-        </div>
         <div class="partners">
           <h2>Current partnerships</h2>
           <div class="partner-logos">
@@ -765,9 +750,24 @@
           </div>
         </div>
       </div>
+      </div>
+    </section>
+
+    <section class="sec-blue sec-flow bleed reveal">
+      <div class="bleed-inner">
       <div class="section-head co-head">
         <h2>Community outreach</h2>
         <p>We partner with local organizations to educate LA residents on health insurance, and serve as a resource for USC students navigating the Student Health Insurance Plan (SHIP).</p>
+      </div>
+      <div class="slideshow" aria-roledescription="carousel" aria-label="Community outreach photos">
+        <div class="slides" tabindex="0">
+          <img src="images/outreach-1.jpg" alt="SCHO members at a Covered California table outside a grocery store" width="1600" height="1200" loading="lazy">
+          <img src="images/outreach-2.jpg" alt="SCHO members in matching shirts beside a bilingual health insurance poster board" width="1024" height="768" loading="lazy">
+          <img src="images/outreach-3.jpg" alt="SCHO members at an information table inside a community restaurant" width="1600" height="1200" loading="lazy">
+        </div>
+        <button type="button" class="slide-btn prev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="slide-btn next" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="slide-dots"></div>
       </div>
       <div class="statband stat-3">
         <div class="wrap">
