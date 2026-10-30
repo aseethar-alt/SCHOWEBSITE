@@ -72,9 +72,12 @@
     background: var(--bg); color: var(--ink);
     font-family: "Pally", ui-sans-serif, system-ui, sans-serif;
     line-height:1.6; -webkit-font-smoothing:antialiased;
+    font-kerning:normal; text-rendering:optimizeLegibility;
     padding-inline: clamp(16px, 4vw, 80px);
   }
   img{ max-width:100%; }
+  #main p, #main li{ line-height:1.6 !important; word-spacing:.05em; }
+  #main .guide li, #main .gloss p, #main .mission-card p, #main .section-head p{ font-size:1.02rem; }
   [hidden]{ display:none !important; }
   a{ color:inherit; }
   ::selection{ background: var(--gold-tint); color: var(--ink); }
