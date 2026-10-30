@@ -601,6 +601,12 @@
   .cec-actions .btn{ min-height:48px; }
   .who-actions .info-card{ margin-top:clamp(20px, 2.4vw, 28px); }
   @media (max-width: 860px){ .who-grid{ grid-template-columns:1fr; } }
+  .who-split{ grid-template-columns:1fr auto 1fr; align-items:stretch; }
+  .who-split .who-copy{ display:flex; flex-direction:column; }
+  .who-split .learn-bar{ margin-top:auto; }
+  .who-split .lede{ margin-bottom:clamp(20px, 2.4vw, 30px); }
+  .who-split .who-mark{ height:clamp(56px, 6vw, 110px); width:auto; margin:0; align-self:start; }
+  @media (max-width: 860px){ .who-split{ grid-template-columns:1fr; } .who-split .who-mark{ order:-1; justify-self:center; } }
   .who-title{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); color:var(--cardinal); margin-bottom:.45em; }
   #page-home .sec-blue{ padding-block:clamp(24px, 3vw, 36px) clamp(32px, 4vw, 52px); }
   #page-home .sec-blue .section-head h2{ margin-top:0; }
@@ -700,26 +706,22 @@
       </div>
       </div>
       <div class="who-band bleed reveal">
-        <div class="bleed-inner who-grid">
+        <div class="bleed-inner who-grid who-split">
           <div class="who-copy">
-            <h2 class="who-title">Who we are <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800"></h2>
+            <h2 class="who-title">Who we are</h2>
             <p class="lede">Southern California Healthcare Outreach (SCHO) is a student-run volunteer and advocacy organization dedicated to educating communities in Los Angeles on health insurance. We provide educational resources in both English and Spanish, as well as enrollment support for those in need of a health insurance plan.</p>
             <a href="#about" class="btn outline learn-bar" data-route-link>Learn about our mission</a>
+          </div>
+          <img class="who-mark" src="images/scho-mark.png" alt="" width="770" height="800">
+          <div class="who-copy">
+            <h2 class="who-title">Resources &amp; education</h2>
+            <p class="lede">We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
+            <a href="#resources" class="btn outline learn-bar" data-route-link>Explore health insurance guides</a>
           </div>
         </div>
       </div>
     </section>
 
-
-    <section class="sec-blue sec-flow bleed reveal">
-      <div class="bleed-inner">
-      <div class="section-head">
-        <h2>Resources &amp; education</h2>
-        <p>We make flyers, infographics, and videos that explain Medicare, Medi-Cal, and Covered California. Everything we create is available in English and Spanish, so anyone can use it.</p>
-        <a href="#resources" class="btn outline learn-bar" data-route-link>Explore health insurance guides</a>
-      </div>
-      </div>
-    </section>
 
     <section class="sec-gold sec-flow bleed reveal">
       <div class="bleed-inner">
