@@ -80,7 +80,7 @@
   .site-foot a{ color:var(--ink); display:inline-flex; transition:color .15s ease; }
   .site-foot a:hover{ color:var(--cardinal); }
   #main p, #main li{ line-height:1.6 !important; word-spacing:.05em; }
-  #main .guide p, #main .guide li, #main .gloss p, #main .mission-card p, #main .section-head p{ font-size:clamp(19px, 1.7vw, 32px); }
+  #main .guide p, #main .guide li, #main .gloss p, #main .section-head p{ font-size:clamp(19px, 1.7vw, 32px); }
   [hidden]{ display:none !important; }
   a{ color:inherit; }
   ::selection{ background: var(--gold-tint); color: var(--ink); }
@@ -133,17 +133,6 @@
   nav.links{ display:flex; align-items:center; gap: clamp(18px, 2.4vw, 40px); margin-left:auto; margin-right:clamp(16px, 2.4vw, 40px); }
   nav.links a{ white-space:nowrap; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:500; color:var(--ink); text-decoration:none; transition:color .15s ease; cursor:pointer; }
   nav.links a:hover, nav.links a.active{ color:var(--cardinal); }
-  .nav-drop{ position:relative; }
-  .drop-trigger{ display:inline-flex; align-items:center; gap:.35em; background:none; border:0; padding:0; font:inherit; font-size:clamp(1.25rem, 1.7vw, 1.95rem); font-weight:500; color:var(--ink); cursor:pointer; white-space:nowrap; transition:color .15s ease; }
-  .drop-trigger svg{ transition:transform .2s ease; }
-  .drop-trigger:hover, .nav-drop.active .drop-trigger{ color:var(--cardinal); }
-  .drop-menu{ position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:none; z-index:70; }
-  .drop-menu::before{ content:""; position:absolute; inset:12px 0 0; background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:0 18px 34px -18px hsl(var(--shadow)/.35); }
-  .drop-menu a{ position:relative; display:block; padding:.65em 1.2em; font-size:1rem !important; }
-  .drop-menu a:first-child{ margin-top:6px; }
-  .drop-menu a:last-child{ margin-bottom:6px; }
-  .nav-drop:hover .drop-menu, .nav-drop.open .drop-menu{ display:block; }
-  .nav-drop:hover .drop-trigger svg, .nav-drop.open .drop-trigger svg{ transform:rotate(180deg); }
   .btn.members-btn{ font-size:clamp(.95rem, 1.4vw, 1.6rem); padding:.7em 1.3em; border-radius:.65em; }
   .nav-actions{ display:flex; align-items:center; gap:16px; white-space:nowrap; margin-left:auto; }
   .menu-toggle{ display:none; background:none; border:1.5px solid var(--border); border-radius:10px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); }
@@ -282,18 +271,8 @@
   .explore-card .go{ margin-top:14px; font-size:.8rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:.4em; }
 
   /* ============ BOARD ============ */
-  .mission-banner{ position:relative; border-radius:26px; overflow:hidden; margin-bottom:60px; }
-  .mission-banner img{ width:100%; height:clamp(320px,42vw,460px); object-fit:cover; display:block; }
-  .mission-banner::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,8,6,.06), rgba(10,8,6,.22)); }
-  .mission-card{
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:min(620px,86%); text-align:center;
-    background: color-mix(in srgb, var(--card) 96%, transparent); backdrop-filter: blur(10px) saturate(1.1); -webkit-backdrop-filter: blur(10px) saturate(1.1);
-    border-radius:20px; padding: clamp(28px,4vw,44px); box-shadow: 0 30px 60px -24px hsl(var(--shadow)/.55);
-  }
-  .mission-card h2{ font-size:clamp(1.7rem,3vw,2.3rem); }
-  .mission-card p{ margin-top:16px; color:var(--ink-soft); font-size:.98rem; line-height:1.75; }
-
-  .board-photo{ position:relative; margin:0 0 30px; border-radius:26px; overflow:hidden; }
+  #page-about .section-head p{ margin-top:.4em; color:var(--ink); line-height:1.5; }
+  .board-photo{ position:relative; margin:clamp(36px, 4vw, 56px) 0 30px; border-radius:26px; overflow:hidden; }
   .board-photo img{ display:block; width:100%; height:clamp(300px, 46vw, 640px); object-fit:cover; object-position:center 82%; }
   @media (max-width: 560px){ .board-photo img{ height:420px; object-position:58% 85%; } .board-photo figcaption{ font-size:1.5rem; padding:18px; } }
   .board-photo::after{ content:""; position:absolute; inset:auto 0 0 0; height:45%; background:linear-gradient(180deg, transparent, rgba(10,8,6,.72)); pointer-events:none; }
@@ -356,24 +335,23 @@
   .ag-empty{ margin-top:14px; color:var(--ink-soft); }
 
   /* ============ RESOURCES ============ */
-  .res-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .res-card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:26px; display:flex; gap:16px; }
-  .res-card .icon-badge{ margin-bottom:0; flex:none; width:48px; height:48px; border-radius:50%; }
-  .res-card h3{ font-family:"Pally",sans-serif; font-weight:700; font-size:1.02rem; }
-  .res-card ul{ list-style:none; margin:.6em 0 0; padding:0; display:flex; flex-direction:column; gap:.4em; }
-  .res-card li{ font-size:.87rem; color:var(--ink-soft); padding-left:1em; position:relative; }
-  .res-card li::before{ content:"\2022"; position:absolute; left:0; top:50%; transform:translateY(-50%); color:var(--gold); }
-  .res-card li a{ display:flex; align-items:center; min-height:44px; color:var(--cardinal); text-decoration:none; font-weight:600; }
-  .res-card li a:hover{ text-decoration:underline; text-underline-offset:3px; }
-  .res-card .note{ font-size:.8rem; color:var(--ink-faint); font-style:italic; margin-top:.6em; }
-  .navigator{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; background:linear-gradient(135deg,var(--cardinal),var(--cardinal-deep)); color:#fff; border-radius:20px; padding:clamp(22px,3vw,32px) clamp(24px,3vw,36px); margin-bottom:28px; box-shadow:0 24px 44px -24px hsl(var(--shadow)/.5); }
-  .navigator-icon{ width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; flex:none; color:var(--gold); }
-  .navigator-text{ flex:1 1 280px; }
-  .navigator-text h3{ color:#fff; font-size:1.4rem; }
-  .navigator-text p{ opacity:.9; margin-top:.3em; font-size:.98rem; }
-  .feeling-lost{ margin-top:32px; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; background:linear-gradient(135deg,var(--cardinal),var(--cardinal-deep)); color:#fff; border-radius:18px; padding:26px 30px; }
-  .feeling-lost h3{ color:#fff; font-size:1.2rem; }
-  .feeling-lost p{ opacity:.85; font-size:.9rem; margin-top:.3em; }
+  #page-resources{ --sec-gap:clamp(36px, 4vw, 56px); }
+  #page-resources > section{ padding-block:var(--sec-gap); }
+  #page-resources > section:first-child{ padding-top:clamp(30px,5vw,50px); }
+  #page-resources .section-head{ margin-bottom:0; }
+  #page-resources .section-head p{ margin-top:.4em; color:var(--ink); line-height:1.5; }
+  #page-resources .section-head h3{ font-family:'Alpino','Pally',sans-serif; font-size:clamp(1.4rem, 2.4vw, 2.3rem); color:var(--cardinal); line-height:1.15; margin-top:clamp(28px, 3.4vw, 48px); }
+  .res-topics{ margin-top:clamp(24px, 3vw, 40px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px, 4vw, 64px) clamp(28px, 5vw, 96px); }
+  .res-topic h3{ font-family:'Alpino','Pally',sans-serif; font-size:clamp(1.4rem, 2.4vw, 2.3rem); color:var(--cardinal); line-height:1.15; }
+  #main .res-topic > p{ margin-top:.35em; font-size:clamp(17px, 1.3vw, 24px); color:var(--ink-faint); line-height:1.5; }
+  .res-links{ list-style:none; margin:clamp(14px, 1.6vw, 22px) 0 0; padding:0; border-bottom:1px solid var(--border); }
+  .res-links li{ border-top:1px solid var(--border); }
+  .res-links a{ display:flex; align-items:center; justify-content:space-between; gap:1em; min-height:48px; padding:.75em 0; font-size:clamp(18px, 1.45vw, 27px); font-weight:500; line-height:1.35; color:var(--ink); text-decoration:none; transition:color .15s ease; }
+  .res-links a svg{ flex:none; color:var(--cardinal); transition:transform .18s ease; }
+  .res-links a:hover{ color:var(--cardinal); }
+  .res-links a:hover svg{ transform:translateX(4px); }
+  .res-links a .ext{ font-size:.85em; color:var(--cardinal); flex:none; }
+  @media (max-width: 860px){ .res-topics{ grid-template-columns:1fr; } }
 
   /* ============ UPDATES ============ */
   .updates-groups{ display:flex; flex-direction:column; gap:44px; }
@@ -404,12 +382,12 @@
   .guide p{ margin-top:1em; color:var(--ink-soft); font-size:1.02rem; line-height:1.75; }
   .guide strong{ color:var(--ink); }
   .guide h3{ font-family:"Pally",sans-serif; font-weight:700; font-size:1.1rem; margin-top:2em; }
-  .guide-points{ list-style:none; margin:1em 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
-  .guide-points li{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px 24px; }
-  .guide-points li > strong{ font-size:1.05rem; }
+  .guide-points{ list-style:none; margin:1em 0 0; padding:0; }
+  .guide-points li{ border-top:1px solid var(--border); padding:clamp(16px, 1.8vw, 24px) 0; }
+  .guide-points li > strong{ font-size:1.1em; color:var(--cardinal); }
   .guide-points li p{ margin-top:.4em; }
   .guide a{ color:var(--cardinal); font-weight:700; }
-  .guide .soon{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 26px; margin-top:24px; }
+  .guide .soon{ border-left:4px solid var(--gold); padding:4px 0 4px clamp(16px, 1.6vw, 24px); margin-top:24px; }
   .guide .soon p{ margin-top:0; }
 
   .guide-list{ margin:.8em 0 0; padding-left:1.3em; color:var(--ink-soft); display:flex; flex-direction:column; gap:.4em; }
@@ -423,22 +401,22 @@
   .guide-next li a{ display:inline-flex; align-items:center; min-height:44px; }
   .guide-next li::marker{ color:var(--gold); }
   .guide .guide-btn{ margin-top:1.2em; color:var(--cardinal-ink); }
-  .plan-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:1em; }
-  .plan-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; flex-direction:column; align-items:flex-start; gap:.4em; }
-  .plan-card b{ font-family:'Alpino','Pally',sans-serif; font-size:1.15rem; color:var(--ink); }
+  .plan-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px, 3vw, 48px); margin-top:1em; }
+  .plan-card{ border-top:4px solid var(--cardinal); padding:16px 0 0; display:flex; flex-direction:column; align-items:flex-start; gap:.4em; }
+  .plan-card b{ font-family:'Alpino','Pally',sans-serif; font-size:1.3rem; color:var(--cardinal); }
   .guide .plan-card p{ margin:0; font-size:.88rem; line-height:1.55; flex:1; }
   .guide .plan-card .btn{ margin-top:.8em; color:var(--cardinal-ink); }
   .plan-soon{ margin-top:.8em; font-size:.8rem; font-weight:700; color:var(--ink-faint); padding:.6em 0; }
   @media (max-width: 760px){ .plan-cards{ grid-template-columns:1fr; } }
-  .gloss{ list-style:none; counter-reset:g; margin:1.6em 0 0; padding:0; display:flex; flex-direction:column; gap:14px; }
-  .gloss li.flash{ border-color:var(--cardinal); box-shadow:0 0 0 3px var(--cardinal-tint); }
-  .gloss li{ counter-increment:g; scroll-margin-top:130px; transition:border-color .3s ease, box-shadow .3s ease; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px 22px; }
+  .gloss{ list-style:none; counter-reset:g; margin:1.6em 0 0; padding:0; border-bottom:1px solid var(--border); }
+  .gloss li.flash{ background:var(--gold-tint); }
+  .gloss li{ counter-increment:g; scroll-margin-top:130px; transition:background .4s ease; border-top:1px solid var(--border); padding:clamp(16px, 1.8vw, 22px) 0; }
   .gloss li b{ display:flex; align-items:baseline; gap:.6em; font-size:1.05rem; color:var(--ink); }
   .gloss li b::before{ content:counter(g); font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:.9rem; color:var(--cardinal); min-width:1.4em; }
   .guide .gloss li p{ margin-top:.45em; font-size:.95rem; line-height:1.65; padding-left:calc(1.4em + .6em); }
   @media (max-width: 560px){ .guide .gloss li p{ padding-left:0; } }
-  .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:1em; }
-  .part{ background:var(--card); border:1px solid var(--border); border-top:4px solid var(--cardinal); border-radius:14px; padding:18px; }
+  .parts{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(24px, 3vw, 44px) clamp(18px, 3vw, 48px); margin-top:1em; }
+  .part{ border-top:4px solid var(--cardinal); padding:16px 0 0; }
   .part b{ display:block; font-family:'Alpino','Pally',sans-serif; font-size:1.2rem; color:var(--cardinal); }
   .part span{ display:block; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-top:.1em; }
   .guide .part p{ font-size:.88rem; line-height:1.6; margin-top:.7em; }
@@ -506,7 +484,6 @@
     .pillars{ grid-template-columns:1fr; }
     .story{ grid-template-columns:1fr; }
     .explore-grid{ grid-template-columns:1fr 1fr; }
-    .res-grid{ grid-template-columns:1fr; }
     .cal-card{ display:none; }
     .cal-title{ min-width:0; }
     .update-list{ grid-template-columns:1fr; }
@@ -646,7 +623,7 @@
   .usc-row img{ width:clamp(150px, 20vw, 300px); height:auto; }
   .usc-row p{ margin:0; font-family:"Pally",sans-serif; font-weight:700; font-size:clamp(1.4rem, 3vw, 2.8rem); line-height:1.1; color:var(--cardinal); }
   @media (max-width: 560px){ .usc-row img{ width:130px; } .usc-row p{ font-size:1.15rem; white-space:nowrap; } }
-  .page:not(#page-home) .section-head h2, .mission-card h2, .guide h2{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:clamp(1.9rem, 3.5vw, 3.6rem); line-height:1.1; letter-spacing:-.015em; color:var(--cardinal); }
+  .page:not(#page-home) .section-head h2, .guide h2{ font-family:'Alpino','Pally',sans-serif; font-weight:700; font-size:clamp(1.9rem, 3.5vw, 3.6rem); line-height:1.1; letter-spacing:-.015em; color:var(--cardinal); }
   @media (max-width: 760px){ .co-row{ grid-template-columns:1fr; } }
   .slide-btn{ position:absolute; top:50%; transform:translateY(-50%); width:clamp(40px, 3.4vw, 56px); height:clamp(40px, 3.4vw, 56px); border-radius:50%; border:0; background:rgba(255,249,230,.92); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px -8px rgba(0,0,0,.4); }
   .slide-btn:hover{ color:var(--cardinal); }
@@ -685,15 +662,9 @@
     </a>
     <nav class="links" id="tabnav">
       <a href="#home" data-route-link>Home</a>
-      <div class="nav-drop" id="aboutDrop">
-        <button type="button" class="drop-trigger" aria-haspopup="true" aria-expanded="false">About <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="drop-menu">
-          <a href="#about" data-route-link>About Us</a>
-          <a href="#board" data-route-link>Executive Board</a>
-        </div>
-      </div>
-      <a href="#events" data-route-link>Events</a>
+      <a href="#about" data-route-link>About</a>
       <a href="#resources" data-route-link>Resources</a>
+      <a href="#events" data-route-link>Events</a>
       <a href="#join" data-route-link>Join Us</a>
       <a href="#contact" data-route-link>Contact</a>
     </nav>
@@ -706,10 +677,9 @@
   </div>
   <nav id="mobileNav" class="wrap">
     <a href="#home" data-route-link>Home</a>
-    <a href="#about" data-route-link>About Us</a>
-    <a href="#board" data-route-link>Executive Board</a>
-    <a href="#events" data-route-link>Events</a>
+    <a href="#about" data-route-link>About</a>
     <a href="#resources" data-route-link>Resources</a>
+    <a href="#events" data-route-link>Events</a>
     <a href="#join" data-route-link>Join Us</a>
     <a href="#contact" data-route-link>Contact</a>
     <a href="#members" data-route-link>Members Only</a>
@@ -830,23 +800,14 @@
     </section>
   </div>
 
-  <!-- ============ PAGE: ABOUT ============ -->
+  <!-- ============ PAGE: ABOUT (mission + executive board) ============ -->
   <div class="page" data-route="about" id="page-about">
     <section>
-      <div class="mission-banner">
-        <img src="images/usc-village.jpg" alt="USC campus">
-        <div class="mission-card">
-          <h2>Our Mission</h2>
-          <p>At SCHO, we believe health insurance information should be understandable and readily accessible to all. By providing free-of-cost educational materials and informational sessions to underinsured populations, we aim to simplify the enrollment process, help individuals and families navigate the healthcare system, and expand coverage in Los Angeles and beyond.</p>
-        </div>
+      <div class="section-head">
+        <h2>Our Mission</h2>
+        <p>At SCHO, we believe health insurance information should be understandable and readily accessible to all. By providing free-of-cost educational materials and informational sessions to underinsured populations, we aim to simplify the enrollment process, help individuals and families navigate the healthcare system, and expand coverage in Los Angeles and beyond.</p>
       </div>
-    </section>
-  </div>
-
-  <!-- ============ PAGE: EXECUTIVE BOARD ============ -->
-  <div class="page" data-route="board" id="page-board">
-    <section>
-      <figure class="board-photo">
+      <figure class="board-photo" id="board">
         <img src="images/board/executive-board.jpg" alt="The SCHO executive board standing together in a USC colonnade">
         <figcaption>Meet the Executive Board</figcaption>
       </figure>
@@ -954,67 +915,72 @@
   <div class="page" data-route="resources" id="page-resources">
     <section>
       <div class="section-head">
-        <h2>Health insurance, demystified</h2>
-        <p>Whether you're signing up for the first time or comparing plans, we break down what you need to know in plain language, in English and Spanish.</p>
+        <h2>Your guide to health insurance</h2>
+        <p>Whether you're signing up for the first time or comparing plans, we explain what you need to know in plain language, in English and Spanish.</p>
+        <h3>Not sure where to start?</h3>
+        <p>Try the SCHO Coverage Navigator, our interactive chatbot. Tell it about your situation, and it will help you sort through your coverage options and point you to the right next step.</p>
+        <a class="btn learn-bar" href="https://aseethar-alt.github.io/SCHO/" target="_blank" rel="noopener noreferrer">Open the Coverage Navigator &nearr;</a>
       </div>
+    </section>
 
-      <div class="navigator">
-        <div class="navigator-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
-        <div class="navigator-text">
-          <h3>SCHO Coverage Navigator</h3>
-          <p>Not sure where to start? Try our interactive chatbot to navigate your coverage options.</p>
-        </div>
-        <a class="btn gold" href="https://aseethar-alt.github.io/SCHO/" target="_blank" rel="noopener noreferrer">Open the Navigator &nearr;</a>
+    <section class="reveal">
+      <div class="section-head">
+        <h2>Browse our guides</h2>
       </div>
-
-      <div class="res-grid reveal">
-        <div class="res-card">
-          <div class="icon-badge c1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg></div>
-          <div>
-            <h3>Start Here</h3>
-            <ul>
-              <li><a href="#why-insurance" data-route-link>Why should I get health insurance?</a></li>
-              <li><a href="#get-started" data-route-link>I want insurance. How do I get started?</a></li>
-              <li><a href="https://www.healthcare.gov/coverage-outside-open-enrollment/your-options/" target="_blank" rel="noopener noreferrer">When can I enroll?</a></li>
-              <li><a href="#unemployed" data-route-link>Staying insured while recently unemployed</a></li>
-              <li><a href="#undocumented" data-route-link>I'm undocumented. What are my options?</a></li>
-            </ul>
-          </div>
+      <div class="res-topics">
+        <div class="res-topic">
+          <h3>Start here</h3>
+          <p>New to health insurance? Begin with the basics.</p>
+          <ul class="res-links">
+            <li><a href="#why-insurance" data-route-link>Why should I get health insurance?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#get-started" data-route-link>I want insurance. How do I get started?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="https://www.healthcare.gov/coverage-outside-open-enrollment/your-options/" target="_blank" rel="noopener noreferrer">When can I enroll?<span class="ext" aria-hidden="true">&nearr;</span></a></li>
+            <li><a href="#undocumented" data-route-link>I'm undocumented. What are my options?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#glossary" data-route-link>Glossary of common terms<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          </ul>
         </div>
-        <div class="res-card">
-          <div class="icon-badge c2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div>
-            <h3>Specific Programs</h3>
-            <ul>
-              <li><a href="#medicaid" data-route-link>What is Medi-Cal / Medicaid?</a></li>
-              <li><a href="#chip" data-route-link>Insurance for children &amp; pregnant women (CHIP)</a></li>
-            </ul>
-          </div>
+        <div class="res-topic">
+          <h3>Types of coverage</h3>
+          <p>Public programs and the law that shapes them.</p>
+          <ul class="res-links">
+            <li><a href="#medicaid" data-route-link>What is Medi-Cal / Medicaid?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#medicare" data-route-link>What is Medicare?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#chip" data-route-link>Insurance for children &amp; pregnant women (CHIP)<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#aca" data-route-link>What is the Affordable Care Act (Obamacare)?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          </ul>
         </div>
-        <div class="res-card">
-          <div class="icon-badge c3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
-          <div>
-            <h3>Reducing the Cost of Coverage</h3>
-            <ul>
-              <li><a href="#csr" data-route-link>Cost Sharing Reductions</a></li>
-              <li><a href="#ptc-qualify" data-route-link>Premium Tax Credits</a></li>
-              <li><a href="#ptc-use" data-route-link>Income-related subsidies</a></li>
-            </ul>
-          </div>
+        <div class="res-topic">
+          <h3>Lowering your costs</h3>
+          <p>Financial help that makes a plan more affordable.</p>
+          <ul class="res-links">
+            <li><a href="#ptc-qualify" data-route-link>How can I qualify for Premium Tax Credits?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#ptc-use" data-route-link>How can I use Premium Tax Credits?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#csr" data-route-link>Cost-Sharing Reductions<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="docs/FPL-chart.pdf" target="_blank" rel="noopener">Federal Poverty Level chart (PDF)<span class="ext" aria-hidden="true">&nearr;</span></a></li>
+          </ul>
         </div>
-        <div class="res-card">
-          <div class="icon-badge c1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-          <div>
-            <h3>Facing Job Loss or Loss of Coverage</h3>
-            <ul>
-              <li><a href="#lose-job" data-route-link>What happens if I lose my job or insurance?</a></li>
-              <li><a href="#unemployed" data-route-link>COBRA (health insurance after job loss)</a></li>
-              <li><a href="#special-enrollment" data-route-link>Special Enrollment Periods</a></li>
-            </ul>
-          </div>
+        <div class="res-topic">
+          <h3>Lost your job or coverage?</h3>
+          <p>Your options for staying insured after a change.</p>
+          <ul class="res-links">
+            <li><a href="#lose-job" data-route-link>What happens if I lose my job or insurance?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#unemployed" data-route-link>What is COBRA?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#cal-cobra" data-route-link>Cal-COBRA<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#special-enrollment" data-route-link>Special Enrollment Periods<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          </ul>
         </div>
       </div>
+    </section>
 
+    <section class="reveal">
+      <div class="section-head">
+        <h2>Still feeling lost?</h2>
+        <p>Our Certified Enrollment Counselors can answer your questions and sign you up for a plan, in person or over an online meeting. It's free.</p>
+        <div class="split-btns">
+          <a href="#contact" class="btn learn-bar" data-route-link>Schedule a meeting</a>
+          <a href="mailto:schealthcareoutreach@gmail.com" class="btn outline learn-bar">Email schealthcareoutreach@gmail.com</a>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -1585,6 +1551,7 @@
 
     function routeFromHash(){
       var h = (window.location.hash || '').replace('#','').split('/')[0];
+      if (h === 'board') return 'about';
       return routes.indexOf(h) !== -1 ? h : 'home';
     }
 
@@ -1596,16 +1563,12 @@
         p.classList.toggle('active', on);
         if (on && p.getAttribute('data-nav')) navRoute = p.getAttribute('data-nav');
       });
-      var drop = document.getElementById('aboutDrop');
-      drop.classList.toggle('active', navRoute === 'about' || navRoute === 'board');
-      drop.classList.remove('open');
-      drop.querySelector('.drop-trigger').setAttribute('aria-expanded', 'false');
       navLinks.forEach(function(a){
         var target = (a.getAttribute('href') || '').replace('#','');
         a.classList.toggle('active', target === navRoute);
       });
       var term = (window.location.hash || '').split('/')[1];
-      var target = term && document.getElementById('term-' + term);
+      var target = term ? document.getElementById('term-' + term) : (window.location.hash === '#board' && document.getElementById('board'));
       if (target) {
         target.scrollIntoView({ block: 'start' });
         target.classList.add('flash');
@@ -1629,18 +1592,6 @@
         btn.setAttribute('aria-expanded', 'false');
       });
     });
-  })();
-
-  (function(){
-    var drop = document.getElementById('aboutDrop');
-    var trigger = drop.querySelector('.drop-trigger');
-    trigger.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = drop.classList.toggle('open');
-      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', function(){ drop.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { drop.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); } });
   })();
 
   (function(){
