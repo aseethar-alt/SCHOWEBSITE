@@ -1505,10 +1505,8 @@
         <div id="membersLocked">
           <img class="members-logo" src="images/logo-white.png" alt="Southern California Healthcare Outreach" width="800" height="447">
           <h2>SCHO Members Only Drive</h2>
-          <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the login.</p>
+          <p>Current members can log in here to open the club's shared Google Drive. Ask an executive board member if you need the password.</p>
           <form id="membersForm">
-            <label class="sr-only" for="m-user">Username</label>
-            <input id="m-user" name="username" type="text" placeholder="Username" autocomplete="username" autocapitalize="none" required>
             <label class="sr-only" for="m-pass">Password</label>
             <input id="m-pass" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
             <button type="submit" class="members-btn-login">Log In</button>
@@ -1717,17 +1715,17 @@
     render();
   })();
   (function(){
-    // The Drive link is stored encrypted with the members' username + password, so it isn't readable in the page source.
-    var VAULT={salt:'SYejQlgDnAyk0/vSKESS+w==', iv:'IZVBksiu83x17g0c', ct:'uM4ZRk91DHOSbLCuf0YC9oLHbOfMXsG/MBVySqeRwVGyNcRhrvv4h+EWBxjus93H7Y54KuVPEOtjwBoO4nkmAR8EgE/xjZdxxjM8JSeMfAFwNaTJrEURgg=='};
+    // The Drive link is stored encrypted with the members' password, so it isn't readable in the page source.
+    var VAULT={salt:'fnM+S89cHnzhrcS4gb1omg==', iv:'6UdBbSBmU+722JH7', ct:'zH30USP456Si2raeo2hJks9nVi0zGUAaGF6b/IgjfyDmbF2rYPgqGoswHvfFJ4DoXNwZG6TxPMbC86qiNU4T5hQF9GqJn9fSA0AsiJXpPe2ihK4sWEeJ7w=='};
     var form=document.getElementById('membersForm');
     var status=document.getElementById('login-status');
     var locked=document.getElementById('membersLocked');
     var unlocked=document.getElementById('membersUnlocked');
     var driveLink=document.getElementById('driveLink');
     function bytes(b64){ return Uint8Array.from(atob(b64), function(c){ return c.charCodeAt(0); }); }
-    function unlock(user, pass){
+    function unlock(pass){
       var enc=new TextEncoder();
-      return crypto.subtle.importKey('raw', enc.encode(user.trim().toLowerCase()+':'+pass), 'PBKDF2', false, ['deriveKey'])
+      return crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey'])
         .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2', salt:bytes(VAULT.salt), iterations:250000, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']); })
         .then(function(key){ return crypto.subtle.decrypt({name:'AES-GCM', iv:bytes(VAULT.iv)}, key, bytes(VAULT.ct)); })
         .then(function(buf){ return new TextDecoder().decode(buf); });
@@ -1740,12 +1738,12 @@
     form.addEventListener('submit', function(e){
       e.preventDefault();
       status.textContent='Checking…';
-      unlock(document.getElementById('m-user').value, document.getElementById('m-pass').value).then(function(url){
+      unlock(document.getElementById('m-pass').value).then(function(url){
         try{ sessionStorage.setItem('scho-drive', url); }catch(e){}
         form.reset(); status.textContent='';
         show(url);
       }).catch(function(){
-        status.textContent='That username or password isn\'t right.';
+        status.textContent='That password isn\'t right.';
       });
     });
     document.getElementById('membersLogout').addEventListener('click', function(){
