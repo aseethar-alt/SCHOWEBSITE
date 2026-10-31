@@ -425,17 +425,15 @@
   @media (max-width: 560px){ .parts{ grid-template-columns:1fr; } }
 
   /* ============ JOIN US ============ */
-  .join-box{ display:grid; grid-template-columns:1.15fr .85fr; gap:0; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
-  .join-left{ background:linear-gradient(150deg,var(--cardinal),var(--cardinal-deep)); color:#fff; padding:clamp(30px,4vw,48px); }
-  .join-left .pill{ background:rgba(255,255,255,.14); color:#fff; }
-  .join-left h2{ color:#fff; margin-top:16px; font-size:clamp(1.6rem,3vw,2.2rem); line-height:1.15; }
-  .join-left p{ margin-top:14px; opacity:.88; max-width:48ch; }
-  .join-left .btn{ margin-top:24px; background:var(--gold); border-color:var(--gold); color:#241A02; box-shadow:none; }
-  .join-right{ background:var(--card); padding:clamp(26px,4vw,40px); display:flex; flex-direction:column; gap:18px; justify-content:center; }
-  .join-right .row{ display:flex; justify-content:space-between; gap:12px; padding-bottom:14px; border-bottom:1px solid var(--border); }
-  .join-right .row:last-child{ border-bottom:none; padding-bottom:0; }
-  .join-right dt{ font-size:.88rem; font-weight:700; color:var(--ink-faint); }
-  .join-right dd{ margin:.3em 0 0; font-weight:700; font-size:.94rem; }
+  #page-join .section-head{ margin-bottom:0; }
+  #page-join .section-head p{ margin-top:.4em; color:var(--ink); line-height:1.5; }
+  #page-join .section-head h3{ font-family:'Alpino','Pally',sans-serif; font-size:clamp(1.4rem, 2.4vw, 2.3rem); color:var(--cardinal); line-height:1.15; margin-top:clamp(28px, 3.4vw, 48px); }
+  .join-facts{ margin:clamp(14px, 1.6vw, 22px) 0 0; border-bottom:1px solid var(--border); }
+  .join-facts div{ display:grid; grid-template-columns:minmax(150px, 22%) 1fr; gap:4px 24px; padding:.85em 0; border-top:1px solid var(--border); font-size:clamp(18px, 1.45vw, 27px); line-height:1.4; }
+  .join-facts dt{ font-weight:700; color:var(--cardinal); }
+  .join-facts dd{ margin:0; }
+  .join-facts a{ color:var(--cardinal); font-weight:700; }
+  @media (max-width: 560px){ .join-facts div{ grid-template-columns:1fr; } }
 
   /* ============ CONTACT ============ */
   .contact-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:48px; }
@@ -490,7 +488,6 @@
     .cal-title{ min-width:0; }
     .update-list{ grid-template-columns:1fr; }
     .steps{ grid-template-columns:1fr; }
-    .join-box{ grid-template-columns:1fr; }
     .contact-grid{ grid-template-columns:1fr; }
     .statband .wrap{ grid-template-columns:repeat(2,1fr); }
     .statband .stat:nth-child(3){ border-left:none; }
@@ -1547,21 +1544,20 @@
   <div class="page" data-route="join" id="page-join">
     <section>
       <div class="section-head">
-        <h2>There are many ways to connect</h2>
-      </div>
-      <div class="join-box reveal">
-        <div class="join-left">
-          <span class="pill">Recruiting for Fall 2026</span>
-          <h2>Help make health coverage make sense for Los Angeles.</h2>
-          <p>No healthcare background required &mdash; just an interest in outreach, advocacy, and learning alongside a team that partners directly with LA's clinics, churches, schools, and community organizations.</p>
-          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfOjeFkbPS65DSvCKRRRirhw1Qy_MwQZMJglAGbCnZYuK3O_Q/viewform" target="_blank" rel="noopener">Open the Fall 2026 Application</a>
-        </div>
-        <div class="join-right">
-          <div class="row"><dt>Application</dt><dd>Fall 2026 cycle</dd></div>
-          <div class="row"><dt>Commitment</dt><dd>Weekly meetings + outreach events</dd></div>
-          <div class="row"><dt>Open to</dt><dd>All majors, all years</dd></div>
-          <div class="row"><dt>Questions</dt><dd>schealthcareoutreach@gmail.com</dd></div>
-        </div>
+        <h2>Join SCHO</h2>
+        <p>Help make health coverage make sense for Los Angeles. No healthcare background required, just an interest in outreach, advocacy, and learning alongside a team that partners directly with LA's clinics, churches, schools, and community organizations.</p>
+
+        <h3>Recruiting for Fall 2026</h3>
+        <p>Applications for the Fall 2026 cycle are open now.</p>
+        <a class="btn learn-bar" href="https://docs.google.com/forms/d/e/1FAIpQLSfOjeFkbPS65DSvCKRRRirhw1Qy_MwQZMJglAGbCnZYuK3O_Q/viewform" target="_blank" rel="noopener noreferrer">Open the Fall 2026 Application &nearr;</a>
+
+        <h3>What to know</h3>
+        <dl class="join-facts">
+          <div><dt>Application</dt><dd>Fall 2026 cycle</dd></div>
+          <div><dt>Commitment</dt><dd>Weekly meetings + outreach events</dd></div>
+          <div><dt>Open to</dt><dd>All majors, all years</dd></div>
+          <div><dt>Questions</dt><dd><a href="mailto:schealthcareoutreach@gmail.com">schealthcareoutreach@gmail.com</a></dd></div>
+        </dl>
       </div>
     </section>
   </div>
