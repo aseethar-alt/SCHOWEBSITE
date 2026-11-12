@@ -3,6 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SCHO at USC</title>
+<meta name="description" content="Southern California Healthcare Outreach (SCHO) is a student-run volunteer and advocacy organization at USC that helps Los Angeles communities understand and enroll in health insurance, in English and Spanish.">
+<meta property="og:site_name" content="Southern California Healthcare Outreach">
+<link rel="canonical" href="https://www.uscscho.org/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Southern California Healthcare Outreach", "alternateName": ["SCHO", "SCHO at USC"], "url": "https://www.uscscho.org/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Southern California Healthcare Outreach", "alternateName": "SCHO", "url": "https://www.uscscho.org/", "logo": "https://www.uscscho.org/images/icon-512.png", "email": "schealthcareoutreach@gmail.com", "sameAs": ["https://www.instagram.com/schealthcareoutreach/", "https://www.linkedin.com/company/southern-california-healthcare-outreach", "https://www.youtube.com/channel/UCbFVLVOdlFLdvgHmXpoAx8Q"]}</script>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
@@ -1788,6 +1793,18 @@
       if (render.ran) { var m = document.getElementById('main'); if (m) m.focus({ preventScroll: true }); }
       render.ran = true;
       if (typeof fitHeroName === "function") fitHeroName();
+      setPageInfo(route);
+    }
+
+    // Give each page its own title and address for browser tabs and search engines.
+    var TITLES = { home:'SCHO at USC', about:'About Us', events:'Events', resources:'Resources', join:'Join Us', contact:'Contact', 'get-enrolled':'Get Enrolled', navigator:'Coverage Navigator', members:'Members Only' };
+    function setPageInfo(route){
+      var page = document.getElementById('page-' + route);
+      var h = page && page.querySelector('.guide h2');
+      var name = TITLES[route] || (h ? h.textContent.trim() : '');
+      document.title = route === 'home' ? 'SCHO at USC' : name + ' | SCHO at USC';
+      var link = document.querySelector('link[rel="canonical"]');
+      if (link) link.href = 'https://www.uscscho.org/' + (route === 'home' ? '' : route);
     }
 
     // Links to pages on this site switch pages without reloading.
